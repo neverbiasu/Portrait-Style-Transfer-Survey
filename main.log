@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -582,7 +582,7 @@ File: images/overview.png Graphic file (type png)
 <use images/overview.png>
 Package pdftex.def Info: images/overview.png  used on input line 70.
 (pdftex.def)             Requested size: 505.6778pt x 230.98311pt.
-<images/timeline.png, id=272, 2340.745pt x 1234.6125pt>
+<images/timeline.png, id=274, 2340.745pt x 1234.6125pt>
 File: images/timeline.png Graphic file (type png)
 <use images/timeline.png>
 Package pdftex.def Info: images/timeline.png  used on input line 77.
@@ -641,6 +641,9 @@ Underfull \hbox (badness 1852) in paragraph at lines 103--103
 
 
 [3 <./images/overview.png>]
+Underfull \vbox (badness 6658) has occurred while \output is active []
+
+
 
 
 
@@ -653,7 +656,7 @@ Underfull \hbox (badness 1852) in paragraph at lines 103--103
 
 
 [6]
-<images/pipeline.png, id=462, 2320.67pt x 970.62625pt>
+<images/pipeline.png, id=466, 2320.67pt x 970.62625pt>
 File: images/pipeline.png Graphic file (type png)
 <use images/pipeline.png>
 Package pdftex.def Info: images/pipeline.png  used on input line 301.
@@ -681,79 +684,54 @@ Package pdftex.def Info: images/pipeline.png  used on input line 301.
 [11]
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) CC BY-NC-SA 4.0
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 583--583
+[]|\OT1/ptm/m/n/8 (+20) Non-Commercial;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Non-Commercial;
+Underfull \hbox (badness 10000) in paragraph at lines 583--583
+[]|\OT1/ptm/m/n/8 (+20) BSD; art-work rights
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Semantic pars-ing for
+Underfull \hbox (badness 10000) in paragraph at lines 583--583
+[]|\OT1/ptm/m/n/8 (+20) Tag-based con-trol-lable
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-\OT1/ptm/m/n/9 (+20) region-aware lo-cal
+Underfull \hbox (badness 10000) in paragraph at lines 583--583
+[]|\OT1/ptm/m/n/8 (+20) Non-Commercial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Tag-based con-trol-lable
+Underfull \hbox (badness 10000) in paragraph at lines 583--583
+[]|\OT1/ptm/m/n/8 (+20) Open (Privacy-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Public Do-main
- []
-
-
-Underfull \hbox (badness 1521) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Artistic por-trait bench-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Temporal con-sis-tency
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Open (Privacy-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--550
-[]|\OT1/ptm/m/n/9 (+20) Diversity pre-train-ing
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 550--550
+Underfull \hbox (badness 10000) in alignment at lines 583--583
 [][][][][][] 
  []
 
 
 
-[12]
-
 
 
 [13]
-Underfull \hbox (badness 3138) in paragraph at lines 630--633
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 663--666
 []\OT1/ptm/b/n/10 (+20) Sub-Second In-fer-ence for Open-Domain High-
  []
 
 
 
-(./main.bbl
+[14] (./main.bbl
 
-[14]
+
 Underfull \vbox (badness 1158) has occurred while \output is active []
-
-
 
 
 
@@ -762,16 +740,22 @@ Underfull \vbox (badness 1158) has occurred while \output is active []
 
 
 [16]
-Underfull \hbox (badness 1960) in paragraph at lines 631--634
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 636--639
 \OT1/ptm/m/n/8 (+20) sourced & tagged anime il-lus-tra-tion dataset,'' []$https
  : / / gwern . net /
  []
 
 
 
-)
+[17])
 
-[17] (./main.aux)
+
+
+[18
+
+] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -780,13 +764,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AD70D4E068D7A721D84ACD31A3083F96;13674.
  ) 
 Here is how much of TeX's memory you used:
- 14613 strings out of 473190
- 228517 string characters out of 5715799
- 695426 words of memory out of 5000000
- 36881 multiletter control sequences out of 15000+600000
- 631990 words of font info for 489 fonts, out of 8000000 for 9000
+ 14612 strings out of 473190
+ 228543 string characters out of 5715799
+ 696775 words of memory out of 5000000
+ 36883 multiletter control sequences out of 15000+600000
+ 631755 words of font info for 485 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1788b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1788b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
@@ -810,10 +794,10 @@ texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist
 /fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on main.pdf (17 pages, 814400 bytes).
+Output written on main.pdf (18 pages, 819148 bytes).
 PDF statistics:
- 916 PDF objects out of 1000 (max. 8388607)
- 813 compressed objects within 9 object streams
- 228 named destinations out of 1000 (max. 500000)
+ 942 PDF objects out of 1000 (max. 8388607)
+ 837 compressed objects within 9 object streams
+ 231 named destinations out of 1000 (max. 500000)
  64960 words of extra memory for PDF output out of 74296 (max. 10000000)
 

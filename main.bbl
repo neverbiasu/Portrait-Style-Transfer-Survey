@@ -397,6 +397,11 @@ J.~N. Pinkney and D.~Adler, ``Resolution dependent gan interpolation for
   controllable image synthesis between domains,'' \emph{arXiv preprint
   arXiv:2010.05334}, 2020.
 
+\bibitem{ruiz2023dreambooth}
+N.~Ruiz, T.~Li, and N.~Jegelova, ``{DreamBooth}: Fine tuning text-to-image
+  diffusion models for subject-driven generation,'' in \emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 2023.
+
 \bibitem{gal2022image}
 R.~Gal, Y.~Alaluf, Y.~Atzmon, O.~Patashnik, A.~H. Bermano, G.~Chechik, and
   D.~Cohen-Or, ``An image is worth one word: Personalizing text-to-image
@@ -497,6 +502,11 @@ J.~Han, J.~Liu, Y.~Jiang, B.~Yan, Y.~Zhang, Z.~Yuan, B.~Peng, and X.~Liu,
   synthesis,'' in \emph{Proceedings of the IEEE/CVF Conference on Computer
   Vision and Pattern Recognition (CVPR)}, June 2025, pp. 15\,733--15\,744.
 
+\bibitem{yang2022vtoonify}
+S.~Yang, L.~Jiang, Z.~Liu, and C.~C. Loy, ``Vtoonify: Controllable
+  high-resolution portrait video style transfer,'' \emph{ACM Transactions on
+  Graphics (TOG)}, vol.~41, no.~6, pp. 1--15, 2022.
+
 \bibitem{ruder2018artistic}
 M.~Ruder, A.~Dosovitskiy, and T.~Brox, ``Artistic style transfer for videos,''
   \emph{International Journal of Computer Vision}, vol. 126, no.~11, pp.
@@ -516,11 +526,6 @@ J.~Liu, H.~Huang, C.~Jin, and R.~He, ``Portrait diffusion: Training-free face
 S.~Yang, Y.~Zhou, Z.~Liu, and C.~C. Loy, ``Fresco: Spatial-temporal
   correspondence for zero-shot video translation,'' in \emph{Proceedings of the
   IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
-
-\bibitem{yang2022vtoonify}
-S.~Yang, L.~Jiang, Z.~Liu, and C.~C. Loy, ``Vtoonify: Controllable
-  high-resolution portrait video style transfer,'' \emph{ACM Transactions on
-  Graphics (TOG)}, vol.~41, no.~6, pp. 1--15, 2022.
 
 \bibitem{yan2023facestudiopy}
 Y.~Yan, C.~Zhang, R.~Wang, Y.~Zhou, G.~Zhang, P.~Cheng, G.~Yu, and B.~Fu,

@@ -68,7 +68,7 @@ Unlike early diffusion frameworks that often struggle with identity preservation
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.98\textwidth]{images/overview.png}
-  \caption{Portrait editing trilemma and representative result slots. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: qualitative comparison slots to be filled with controlled method outputs.}
+  \caption{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes; representative qualitative comparisons across paradigms are discussed in Section~\ref{sec:methodology}.}
   \label{fig:teaser_trilemma}
 \end{figure*}
 
@@ -122,7 +122,7 @@ Most portrait stylization objectives can be written as a weighted sum
 \begin{equation}
   \mathcal{L}_{total} = \lambda_{sty}\mathcal{L}_{style} + \lambda_{con}\mathcal{L}_{content} + \lambda_{id}\mathcal{L}_{id} + \lambda_{geo}\mathcal{L}_{geo},
 \end{equation}
-where the key difference from generic NST is the explicit identity and geometry terms. In practice, reported weighting strategies vary by architecture and objective normalization; common settings keep content/style terms at comparable scales in NST-style formulations \cite{gatys2016image,johnson2016perceptual,huang2017arbitraryst}, while portrait-identity pipelines typically assign higher weight to identity constraints and lighter geometric regularization relative to content/style terms \cite{yang2022dualstylegan,sain2023styleface}.
+where the key difference from generic NST is the explicit identity and geometry terms. Weight schedules vary substantially across architectures and normalization schemes; specific values are reported in the original method papers \cite{gatys2016image,johnson2016perceptual,huang2017arbitraryst,yang2022dualstylegan,sain2023styleface} and should not be treated as universal hyperparameters.
 
 \subsubsection{Identity Loss}
 Identity preservation is commonly enforced via face-recognition embeddings. Given a face encoder $F(\cdot)$ (e.g., ArcFace), identity loss can be defined as the cosine distance between embeddings of the source portrait $I_{src}$ and the generated output $I_{gen}$ \cite{deng2019arcface}:
@@ -194,12 +194,12 @@ where $\alpha_t$ defines the noise schedule. Style conditioning is incorporated 
 
 Portrait-specific diffusion systems incorporate identity-aware constraints to avoid drift \cite{meng2021sdedit,kim2023diffface}. A key technical lever in this paradigm is \emph{attention control}: identity embeddings can be injected into cross-attention layers to stabilize identity while prompts guide texture and style \cite{wang2024instantid,zhang2023adding,ye2023ipadapter}.
 
-Following identity-conditioned cross-attention formulations in adapter-based diffusion editors \cite{ye2023ipadapter,wang2024instantid}, one abstraction is to treat an identity embedding $e_c \in \mathbb{R}^{d_k}$ as key/value features for cross-attention:
+Following identity-conditioned cross-attention formulations in adapter-based diffusion editors \cite{ye2023ipadapter,wang2024instantid}, one abstraction is to treat an identity embedding $e_c \in \mathbb{R}^{d_k}$ as key/value features through learned projections $W_K, W_V \in \mathbb{R}^{d_k \times d_k}$:
 \begin{equation}
-  \mathrm{Attn}(Q_s^i, e_c, e_c) =
-  \mathrm{softmax}\left(\frac{Q_s^i e_c^{T}}{\sqrt{d_k}}\right)e_c,
+  \mathrm{Attn}(Q_s^i, W_K e_c, W_V e_c) =
+  \mathrm{softmax}\left(\frac{Q_s^i (W_K e_c)^T}{\sqrt{d_k}}\right) W_V e_c,
 \end{equation}
-where $Q_s^i \in \mathbb{R}^{d_k}$ is a query feature at layer $i$ and $d_k$ is the key dimension. Following adapter alignment objectives \cite{zhang2023adding,wang2024instantid}, trainable modules can be constrained to remain close to content features using adapted query features $Q_f^i$ and content-anchored queries $Q_c^i$:
+where $Q_s^i \in \mathbb{R}^{d_k}$ is a query feature at layer $i$ and $d_k$ is the key dimension. Following adapter alignment objectives \cite{zhang2023adding,wang2024instantid}, trainable modules can be constrained to remain close to content features using adapted query features $Q_f^i \in \mathbb{R}^{d_k}$ and content-anchored queries $Q_c^i \in \mathbb{R}^{d_k}$:
 \begin{equation}
   \mathcal{L}_{align} = \frac{1}{N} \sum_{i=1}^{N} \lVert Q_f^i - Q_c^i \rVert^2.
 \end{equation} In addition, following moment-matching style constraints in stylization models \cite{gatys2016image,huang2017arbitraryst}, statistic-consistency losses can encourage structure/style separation by matching moments across denoising predictions:
@@ -264,7 +264,7 @@ This decomposition reveals a clear spectrum: control signals progress from raw p
 \section{Methods and Method Taxonomy}
 \label{sec:methodology}
 
-To avoid misleading cross-protocol ranking, we do not provide a single merged score table across heterogeneous test sets. Instead, quantitative evidence is discussed within each method family and task-specific subsection under their original experimental settings.
+We complement the paradigm-level analysis below with a qualitative capability matrix (Table~\ref{tab:comparison_matrix}) at the end of this section. Because test sets, metrics, and protocols differ across methods, direct numeric ranking would be misleading; we therefore use qualitative indicators for cross-paradigm comparisons and defer per-method numeric evidence to the original papers.
 
 This section reviews how generative modeling frameworks have shaped portrait stylization. To provide a rigorous and symmetric analysis, we categorize the field into four foundational method families: NST \& Feature Transforms, Generative Adversarial Networks (GANs), Diffusion Models, and Autoregressive (AR) Models. Following the evaluation standards, each family is systematically analyzed through its instantiation of the unifying framework (Section~\ref{sec:theory:unified}): its core generative mechanism, representative methods with coverage statistics, inherent advantages, and fundamental limitations.
 
@@ -316,7 +316,7 @@ For task-specific evidence, DualStyleGAN reports strong performance on FS2K face
 \textbf{Core Mechanism:} Diffusion models formulate image generation as a reverse Markov chain, iteratively denoising a Gaussian distribution conditioned on textual or visual prompts \cite{ho2020denoising}. For portrait stylization, the mechanism relies on manipulating the UNet's attention layers. Textual or visual style cues are injected into \textit{Cross-Attention} layers, while structural identity is maintained by swapping the Key ($K$) and Value ($V$) matrices in \textit{Self-Attention} layers with those of the source image. Recent advances freeze the backbone and train lightweight \textit{Adapters} to decouple identity embeddings (e.g., via ArcFace) from style conditionings.
 
 \textbf{Representative Methods (Coverage: $\sim$45 papers):} This is currently the most heavily researched paradigm. This count includes directly discussed methods and cited baselines within the referenced works.
-1) \textit{Fine-tuning methods:} DreamBooth and Textual Inversion \cite{gal2022image} paved the way for subject-driven generation, with ProSpect \cite{zhang2023prospectps}, StyleDrop \cite{sohn2023styledrop}, ZipLoRA \cite{shah2023ziplora}, and DiffStyler \cite{huang2024diffstyler} extending controllable style personalization under low-rank or dual-path adaptation.
+1) \textit{Fine-tuning methods:} DreamBooth~\cite{ruiz2023dreambooth} and Textual Inversion~\cite{gal2022image} paved the way for subject-driven generation, with ProSpect \cite{zhang2023prospectps}, StyleDrop \cite{sohn2023styledrop}, ZipLoRA \cite{shah2023ziplora}, and DiffStyler \cite{huang2024diffstyler} extending controllable style personalization under low-rank or dual-path adaptation.
 2) \textit{Training-free methods:} InstantStyle \cite{wang2025instantstyleplus}, StyleAligned \cite{hertz2023styleai}, Style Injection \cite{chung2023styleii}, MasaCtrl \cite{cao2023masactrl}, ZeCon \cite{yang2023zecon}, Visual Style Prompting \cite{jeong2024visualsp}, FreeStyle \cite{he2024freestylefl}, and DiffuseIT \cite{kwon2022diffuseit} achieved zero-shot transfer via attention-control and feature-guidance mechanisms. To accelerate the process, ZePo \cite{liu2024zepozp} and DEADiff \cite{qi2024deadiff} introduced efficient stylization paths without full model retraining.
 3) \textit{Adapters:} InstantID \cite{wang2024instantid}, StyleBooth \cite{han2024styleboothis}, MagicFace \cite{wang2024magicfacetu}, Visual Concept Translator \cite{cheng2023visual}, StyleTokenizer \cite{li2024styletokenizerdi}, and CreativeSynth \cite{huang2024creativesynthcf} utilized lightweight conditioning modules to bind identity, style tokens, and cross-art attention signals.
 
@@ -342,10 +342,44 @@ Recent empirical results highlight the competitiveness of this paradigm. For exa
 
 \textbf{Limitations:} The reliance on a discrete codebook fundamentally restricts the preservation of high-frequency identity details (e.g., fine skin pores or individual hair strands), leading to \textit{quantization artifacts}. Furthermore, scaling these models demands enormous computational resources and massive datasets to prevent the sequence predictions from degenerating during complex style adaptations.
 
-\textbf{Takeaway:} Across these four families, portrait stylization methods consistently trade off geometric faithfulness, texture controllability, and computational efficiency, with no single paradigm dominating all constraints simultaneously. In practice, modern systems increasingly adopt hybrid pipelines (e.g., diffusion backbones with adapter/inversion controls) to recover identity while preserving open-domain stylization capacity. This taxonomy therefore serves as the technical basis for the task-level analysis and benchmark interpretation in the following sections.
+\begin{table*}[t]
+\centering
+\caption{Capability matrix of representative PST methods. Qualitative symbols: $\bigstar$ = strong/fast; $\blacktriangle$ = moderate; $\bullet$ = weak/slow. Numeric values are indicative under each method's original evaluation protocol.}
+\label{tab:comparison_matrix}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lcccp{1.8cm}ccl}
+\toprule
+\textbf{Method} & \textbf{Paradigm} & \textbf{Identity} & \textbf{Setup} & \textbf{Speed} & \textbf{T} & \textbf{Limitation} \\
+\midrule
+Gatys et al.~\cite{gatys2015ana} & NST & Gram matrix & Opt., style img & $\bullet$~min & --- & Structural drift \\
+AdaIN~\cite{huang2017arbitraryst} & NST & AdaIN stats & FF, style set & $\bigstar$~$<$1s & --- & Washed-out texture \\
+Deep Photo~\cite{luan2017deepps} & NST & Semantic corresp. & Opt., style img & $\bullet$~min & --- & Semantic misalign. \\
+\midrule
+DualStyleGAN~\cite{yang2022dualstylegan} & GAN & Intrinsic/extrinsic path & FF, StyleGAN & $\bigstar$~$<$1s & --- & Domain lock-in \\
+pSp/e4e~\cite{richardson2021encoding} & GAN & Encoder $W^+$ inv. & FF, enc. trn. & $\blacktriangle$~sec & --- & Inv. quality trade-off \\
+AgileGAN~\cite{song2021agilegan} & GAN & Hier. VAE $W^+$ inv. & FF, few-shot & $\bigstar$~130ms & --- & Geometric collapse \\
+VToonify~\cite{yang2022vtoonify} & GAN & Multiscale feat.+StyleGAN & FF, StyleGAN ft. & $\bigstar$~RT & $\checkmark$ & Domain bound \\
+\midrule
+InstantID~\cite{wang2024instantid} & Diff. & ArcFace cross-attn. & FF, zero-shot & $\blacktriangle$~sec & --- & Content leakage \\
+IP-Adapter~\cite{ye2023ipadapter} & Diff. & Decoupled cross-attn. & FF, adapt. trn. & $\blacktriangle$~sec & --- & Style bleeding \\
+DreamBooth~\cite{ruiz2023dreambooth} & Diff. & Subject token tuning & FT, few-shot & $\bullet$~min & --- & Catastr. overfit \\
+StyleMaster~\cite{ye2024stylemastersy} & Diff. & Motion adapt.+global proj. & FF, 10K pairs & $\blacktriangle$~0.6s & $\checkmark$ & Flicker \\
+\midrule
+EditAR~\cite{mu2025editar} & AR & Feat. distill.+tokens & FF, large-scale & $\bigstar$~$<$1s & --- & Quantiz. artifacts \\
+VAR~\cite{tian2024var} & AR & Next-scale predict. & FF, large-scale & $\bigstar$~0.8s & --- & Codebook collapse \\
+MaskGIT~\cite{chang2022maskgit} & AR & Bidir. masked modeling & FF, large-scale & $\bigstar$~$<$1s & --- & Resolution limit \\
+\bottomrule
+\end{tabular}
+\setlength{\tabcolsep}{6pt}
+\end{table*}
+
+\textbf{Takeaway:} Across these four families (summarized in Table~\ref{tab:comparison_matrix}), portrait stylization methods consistently trade off geometric faithfulness, texture controllability, and computational efficiency, with no single paradigm dominating all constraints simultaneously. In practice, modern systems increasingly adopt hybrid pipelines (e.g., diffusion backbones with adapter/inversion controls) to recover identity while preserving open-domain stylization capacity. This taxonomy therefore serves as the technical basis for the task-level analysis and benchmark interpretation in the following sections.
 
 \section{Advanced Stylization Tasks and Applications}
 \label{sec:advanced}
+Beyond the core paradigms above, portrait stylization extends along three dimensions of increasing complexity: from global 2D editing toward fine-grained local control, from static images to temporally coherent video, and from 2D to 3D-aware multiview generation. This section surveys these advanced tasks, organized by the spatial, temporal, and geometric dimensions they address.
+
 \subsection{Video Portrait Stylization (Temporal Consistency)}
 \label{sec:advanced:video}
 Video portrait stylization extends static style transfer to temporal sequences, where professional-grade results require both temporal coherence and identity stability \cite{ruder2018artistic,ye2024stylemastersy,huang2023styleavideoad,yang2023rerender,liu2023portraitdt,yang2024fresco}. While per-frame stylization is straightforward, the central technical challenge is to prevent high-frequency temporal variance from producing perceptually disruptive artifacts.
@@ -533,7 +567,6 @@ Selecting the appropriate dataset is the most critical determinant of a model's 
 \centering
 \caption{Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status.}
 \label{tab:datasets_pst}
-\small
 \begin{tabularx}{\textwidth}{lcrlp{2.8cm}p{3.2cm}}
 \toprule
 \textbf{Dataset} & \textbf{Year} & \textbf{Size} & \textbf{Type} & \textbf{License / Availability} & \textbf{Primary Utility} \\
