@@ -53,7 +53,7 @@ Existing models often sacrifice at least one of these strictly competing objecti
 This paper makes the following principal contributions:
 \begin{itemize}
   \item \textbf{Unified Mechanism Taxonomy (covering $\sim$12 NST, $\sim$25 GAN, $\sim$45 diffusion, and $\sim$10 AR methods):} We provide a systematic categorization based on the underlying generative mechanisms rather than target applications, enabling cross-paradigm comparisons.
-  \item \textbf{Critical Analysis of Failure Modes}: A taxonomy of "Killer Failures" including the Identity-Style Conflict and Texture Swimming.
+  \item \textbf{Critical Analysis of Failure Modes}: A taxonomy of common failure patterns including identity-style conflict and texture swimming.
   \item \textbf{Evaluation Protocol}: Proposing (and calling for adoption of) a "Golden Protocol" for robust benchmarking using Multi-Pillar metrics.
 \end{itemize}
 
@@ -96,6 +96,7 @@ Unlike early diffusion frameworks that often struggle with identity preservation
     Diversity & Variation across valid outputs under fixed content/style conditions. & Used to characterize generative breadth and mode-collapse risk. \\
     Content Leakage & Unintended transfer of source/style semantics into identity-critical regions. & Framed as a failure mode in cross-attention and entangled latent control. \\
     Temporal Consistency & Cross-frame stability of identity, texture, and motion in video stylization. & Used for evaluating flicker and drift in video-oriented PST pipelines. \\
+    Texture Swimming & High-frequency texture artifacts that shift or ``swim'' across frames or spatial regions under large pose/viewpoint changes. & A failure mode diagnosed in video PST and extreme stylization settings. \\
     \bottomrule
   \end{tabularx}
 \end{table*}
