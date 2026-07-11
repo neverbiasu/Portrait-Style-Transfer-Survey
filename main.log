@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 04:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 13:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,6 +642,9 @@ Underfull \hbox (badness 1852) in paragraph at lines 101--101
 
 
 [3 <./images/overview.png>]
+Underfull \vbox (badness 6658) has occurred while \output is active []
+
+
 
 
 
@@ -657,22 +660,23 @@ OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;
 
 [5]
 
-<images/pipeline.png, id=471, 2320.67pt x 970.62625pt>
+
+
+[6]
+<images/pipeline.png, id=489, 2320.67pt x 970.62625pt>
 File: images/pipeline.png Graphic file (type png)
 <use images/pipeline.png>
 Package pdftex.def Info: images/pipeline.png  used on input line 251.
 (pdftex.def)             Requested size: 505.6778pt x 211.49458pt.
 
 
-[6]
+
+
+[7]
 
 
 
-[7 <./images/pipeline.png>]
-
-
-
-[8]
+[8 <./images/pipeline.png>]
 
 
 
@@ -681,11 +685,11 @@ Package pdftex.def Info: images/pipeline.png  used on input line 251.
 
 
 [10]
+
+
 Overfull \hbox (90.2596pt too wide) in paragraph at lines 456--470
  [][] 
  []
-
-
 
 
 
@@ -699,6 +703,9 @@ Overfull \hbox (90.2596pt too wide) in paragraph at lines 456--470
 Underfull \hbox (badness 3138) in paragraph at lines 586--589
 []\OT1/ptm/b/n/10 (+20) Sub-Second In-fer-ence for Open-Domain High-
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -737,11 +744,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  14625 strings out of 473190
  229048 string characters out of 5715799
- 696370 words of memory out of 5000000
+ 696990 words of memory out of 5000000
  36893 multiletter control sequences out of 15000+600000
  631821 words of font info for 485 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1593b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1788b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
@@ -757,7 +764,7 @@ exlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/202
 5/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 742570 bytes).
+Output written on main.pdf (17 pages, 743046 bytes).
 PDF statistics:
  889 PDF objects out of 1000 (max. 8388607)
  809 compressed objects within 9 object streams
