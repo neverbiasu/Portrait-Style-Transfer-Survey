@@ -607,9 +607,20 @@ A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
   models from natural language supervision,'' \emph{Proceedings of the
   International Conference on Machine Learning (ICML)}, 2021.
 
+\bibitem{streijl2016mean}
+R.~C. Streijl, S.~Winkler, and D.~S. Hands, ``Mean opinion score ({MOS})
+  revisited: Methods and applications, limitations and alternatives,''
+  \emph{Multimedia Systems}, vol.~22, no.~2, pp. 213--227, 2016.
+
 \bibitem{hurst2024gpt4o}
 A.~Hurst, OpenAI \emph{et~al.}, ``Gpt-4o system card,'' OpenAI Technical
   Report, 2024, online; accessed for multimodal evaluation protocol discussion.
+
+\bibitem{chen2024mllmjudge}
+D.~Chen, R.~Chen, S.~Zhang, Y.~Wang, Y.~Liu, H.~Zhou, Q.~Zhang, Y.~Wan,
+  P.~Zhou, and L.~Sun, ``{MLLM-as-a-Judge}: Assessing multimodal
+  {LLM-as-a-Judge} with vision-language benchmark,'' in \emph{Proceedings of
+  the 41st International Conference on Machine Learning (ICML)}, 2024.
 
 \bibitem{wikiart}
 B.~Saleh and A.~Elgammal, ``Large-scale classification of fine-art paintings:

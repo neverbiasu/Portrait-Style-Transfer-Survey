@@ -412,6 +412,27 @@ For 3D-aware tasks, while static NeRFs provide high-fidelity novel views, dynami
 
 In portrait style transfer, evaluation must account for a delicate duality: the biometric sensitivity of human faces and the deliberate structural deviations introduced by abstract artistic intent. Standard reconstruction-oriented metrics frequently fail to capture these nuances, often penalizing highly creative stylizations as "geometric distortions."
 
+Before presenting the Golden Protocol configuration, we survey which metrics the surveyed PST methods actually report (Table~\ref{tab:metric_usage}). The pattern reveals two gaps: first, ArtFID---arguably the most holistic single metric---is adopted by fewer than 10\% of methods, most published after 2023; second, fewer than 20\% of papers report user studies, and those that do vary widely in sample size and statistical rigor. This fragmentation motivates the standardized protocol below.
+
+\begin{table*}[t]
+\centering
+\caption{Metric reporting frequency across paradigms. "Common" = $\ge$50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%.}
+\label{tab:metric_usage}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Metric} & \textbf{NST} & \textbf{GAN} & \textbf{Diffusion} & \textbf{AR} \\
+\midrule
+FID / KID        & Rare & Common & Common & Rare \\
+LPIPS            & Common & Occasional & Occasional & Rare \\
+ID Score (ArcFace) & Rare & Common & Common & Occasional \\
+CLIP Score       & Rare & Rare & Common & Common \\
+ArtFID           & Rare & Rare & Occasional & Rare \\
+User Study       & Occasional & Common & Occasional & Rare \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 To address the inconsistencies highlighted in prior works and improve cross-paper reproducibility, we formalize a comprehensive benchmark framework, termed the \textbf{"Golden Protocol"}. This protocol mandates a multi-pillar approach encompassing standardized experimental configurations, distribution-aware quantitative metrics, and rigorous human-centric qualitative studies.
 
 % ==========================================
@@ -441,6 +462,8 @@ Following the configurations above, the generated outputs must be assessed along
 
 \textbf{2) Holistic Style-Content Trade-off (ArtFID):} Relying solely on Style Loss often leads to texture overfitting, while raw FID \cite{heusel2017ttur} ignores spatial content. We recommend \textbf{ArtFID} \cite{wright2022artfidqe} as the primary distributional metric. ArtFID mathematically balances content drift and style matching by combining LPIPS \cite{zhang2018lpips} and FID: $\text{ArtFID} = (1 + \text{LPIPS}) \cdot (1 + \text{FID})$. A lower ArtFID indicates a highly stylized image that structurally respects the source content.
 
+\emph{Limitations:} ArtFID inherits the biases of its components. LPIPS, pretrained on photorealistic image pairs, penalizes non-photorealistic distortions intrinsic to artistic styles (e.g., visible brushstrokes or line distortions in caricatures). FID, computed on Inception features trained on ImageNet, is sensitive to texture statistics and may mis-rank methods that produce stylistically diverse outputs within the same domain \cite{wright2022artfidqe}. Consequently, ArtFID should be interpreted as a holistic ranking tool rather than an absolute quality measure; cross-paradigm comparisons (e.g., GAN vs.\ diffusion) are meaningful only when evaluated on the same test set and style domain.
+
 \textbf{3) Cross-Modal Semantic Alignment (CLIP Score):} For open-domain text-driven methods, CLIP-T measures the cosine similarity between the stylized image and the driving textual prompt in the CLIP embedding space \cite{radford2021learningtv}. Similarly, CLIP-I is used to measure visual stylistic alignment between the output and a reference style image without requiring paired ground truths.
 
 % ==========================================
@@ -451,11 +474,15 @@ Following the configurations above, the generated outputs must be assessed along
 
 Because stylization quality is ultimately determined by human perception, objective metrics must be anchored by rigorous subjective evaluation.
 
-\textbf{Human A/B Testing Protocol:} We standardize the user study methodology to a Two-Alternative Forced Choice (2AFC) or a Mean Opinion Score (MOS) framework \cite{ambiel2023portraitsa}. Evaluators must score outputs on a 5-point Likert scale across three isolated criteria: \textit{(i) Identity Preservation}, \textit{(ii) Style Faithfulness}, and \textit{(iii) Overall Aesthetic Preference}. To ensure statistical validity, studies should include a minimum of 20 distinct style-content pairs assessed by at least 25 independent raters, with reported inter-rater agreement (e.g., Fleiss' Kappa). To reduce demographic bias in aesthetic judgments, rater pools should include diverse age, gender, and cultural backgrounds.
+\textbf{Human A/B Testing Protocol:} We standardize the user study methodology to a Two-Alternative Forced Choice (2AFC) or a Mean Opinion Score (MOS) framework \cite{ambiel2023portraitsa}. Evaluators must score outputs on a 5-point Likert scale across three isolated criteria: \textit{(i) Identity Preservation}, \textit{(ii) Style Faithfulness}, and \textit{(iii) Overall Aesthetic Preference}.
+
+\emph{Methodological considerations.} Surveying current user studies in PST reveals wide variability: sample sizes range from 10 to 100+ raters per condition, and fewer than half report inter-rater reliability (e.g., Fleiss' Kappa or Krippendorff's Alpha) \cite{selim2016portrait,yi2019apdrawinggan}. Best practices from perceptual quality assessment recommend at least 20--30 raters per condition for MOS and 15+ pairwise comparisons per pair for 2AFC designs to achieve 80\% statistical power at $\alpha = 0.05$ \cite{streijl2016mean}. To further reduce demographic bias in aesthetic judgments, rater pools should include diverse age, gender, and cultural backgrounds.
 
 While current literature coverage of ArtFID remains limited, we strongly call for its adoption as a standard metric in future PST benchmarks to unify aesthetic evaluation.
 
-\textbf{Large Multimodal Models (LMMs) as Evaluators:} Driven by the high cost of human crowdsourcing, recent pipelines incorporate advanced LMMs (e.g., GPT-4o \cite{hurst2024gpt4o}) as scalable proxies for qualitative scoring. Under the Golden Protocol, when using LMMs, the evaluation prompt must be explicitly structured to mimic human cognitive processes via Chain-of-Thought (CoT) reasoning. The prompt should explicitly instruct the LMM to disentangle "biometric preservation" from "stylistic abstraction". Preliminary observations suggest LMMs may exhibit biases towards color saturation and fail to detect subtle high-frequency artifacts (e.g., texture swimming in video); thus, they should augment rather than entirely replace human-centric studies.
+\textbf{Large Multimodal Models (LMMs) as Evaluators:} Driven by the high cost of human crowdsourcing, recent pipelines incorporate advanced LMMs (e.g., GPT-4o \cite{hurst2024gpt4o}) as scalable proxies for qualitative scoring. Under the Golden Protocol, when using LMMs, the evaluation prompt must be explicitly structured to mimic human cognitive processes via Chain-of-Thought (CoT) reasoning. The prompt should explicitly instruct the LMM to disentangle "biometric preservation" from "stylistic abstraction".
+
+\emph{Current limitations and calibration.} Despite their promise, LMM-based evaluation introduces systematic biases. Recent benchmarks show LMMs exhibit position bias, authority bias, and sensitivity to superficial visual features (e.g., color saturation and contrast), while under-detecting high-frequency artifacts such as texture swimming \cite{chen2024mllmjudge}. Moreover, LMM judgments lack the perceptual grounding of human vision; they are trained on caption--image alignment rather than aesthetic preference. Calibration strategies---including multi-prompt aggregation, temperature averaging over repeated trials, and human-anchored normalization---can reduce but not eliminate these distortions. We therefore recommend LMM scores as a rapid screening tool rather than a replacement for formal user studies.
 
 \section{Datasets, Privacy, and Ethical Benchmarks}
 \label{sec:datasets}
