@@ -46,7 +46,11 @@ We use \textbf{Trilemma} as the primary framing in this survey; when prior work 
 
 To avoid term drift across sections, we explicitly standardize core terms in Table~\ref{tab:definitions_glossary} (Definitions/Glossary) and use these definitions consistently throughout the paper.
 
-Existing models often sacrifice at least one of these strictly competing objectives. General-purpose editors (e.g., InstructPix2Pix~\cite{brooks2023instructpix2pix}) excel at fidelity but distort identity; specialized identity models (e.g., InstantID~\cite{wang2024instantid}) preserve likeness but often struggle with complex stylistic instructions or suffer from high latency. In diffusion pipelines, inference commonly uses tens of denoising steps; under typical training-free DDIM-family settings, stable stylization often falls in the 30--50 step range, while practical accelerated configurations are commonly reported around 20--50 steps \cite{song2020denoising,rombach_2022_cvpr}.
+Existing models often sacrifice at least one of these strictly competing objectives. General-purpose editors (e.g., InstructPix2Pix~\cite{brooks2023instructpix2pix}) excel at fidelity but distort identity; specialized identity models (e.g., InstantID~\cite{wang2024instantid}) preserve likeness but often struggle with complex stylistic instructions or suffer from high latency.
+
+Formally, let a method $m$ be characterized by its identity preservation score $I_m$, editing fidelity $E_m$, and inference speed $S_m$ (higher is better on all axes). $m$ \emph{Pareto-dominates} $m'$ if $I_m \ge I_{m'}$, $E_m \ge E_{m'}$, and $S_m \ge S_{m'}$ with at least one strict inequality. The Pareto frontier $\mathcal{P}$ is the set of non-dominated methods. Qualitatively: NST methods achieve high editing fidelity and moderate speed but weak identity; GANs offer strong identity and fast speed yet limited editing range; diffusion models attain high identity and editing fidelity at the cost of speed; AR models balance structure control and speed but introduce quantization artifacts. This mapping is formalized in the unifying framework (Section~\ref{sec:theory:unified}).
+
+In diffusion pipelines, inference commonly uses tens of denoising steps; under typical training-free DDIM-family settings, stable stylization often falls in the 30--50 step range, while practical accelerated configurations are commonly reported around 20--50 steps \cite{song2020denoising,rombach_2022_cvpr}.
 
 \subsection{Research Objectives and Contributions}
 \label{sec:intro:contributions}
@@ -184,9 +188,10 @@ where $f(\cdot,t)$ is the drift coefficient, $g(t)$ the diffusion coefficient, a
 dx = \bigl[f(x,t) - g(t)^2 \nabla_x \log p_t(x)\bigr] dt + g(t)\,d\bar{w},
 \end{equation}
 with $\nabla_x \log p_t(x)$ being the score function, approximated by a learned noise estimator $\epsilon_\theta(x_t,t)$ \cite{ho2020denoising,song2020denoising}. For efficient sampling, DDIM \cite{song2020denoising} proposes a deterministic reverse process
-\begin{equation}
-x_{t-1} = \sqrt{\alpha_{t-1}} \left( \frac{x_t - \sqrt{1-\alpha_t}\,\epsilon_\theta(x_t,t)}{\sqrt{\alpha_t}} \right) + \sqrt{1-\alpha_{t-1}}\,\epsilon_\theta(x_t,t),
-\end{equation}
+\begin{multline}
+x_{t-1} = \sqrt{\alpha_{t-1}} \left( \frac{x_t - \sqrt{1-\alpha_t}\,\epsilon_\theta(x_t,t)}{\sqrt{\alpha_t}} \right) \\
++ \sqrt{1-\alpha_{t-1}}\,\epsilon_\theta(x_t,t),
+\end{multline}
 where $\alpha_t$ defines the noise schedule. Style conditioning is incorporated through classifier-free guidance by replacing the score estimate with $\tilde{\epsilon}_\theta(x_t,t,c) = \epsilon_\theta(x_t,t,\emptyset) + \gamma\bigl[\epsilon_\theta(x_t,t,c) - \epsilon_\theta(x_t,t,\emptyset)\bigr]$, where $c$ is the conditioning signal (e.g., style reference or text prompt) and $\gamma$ controls guidance strength.
 
 Portrait-specific diffusion systems incorporate identity-aware constraints to avoid drift \cite{meng2021sdedit,kim2023diffface}. A key technical lever in this paradigm is \emph{attention control}: identity embeddings can be injected into cross-attention layers to stabilize identity while prompts guide texture and style \cite{wang2024instantid,zhang2023adding,ye2023ipadapter}.
@@ -211,12 +216,59 @@ Within the Adapter paradigm, the core architectures differ significantly: Contro
 
 Quantitatively, recent evaluations demonstrate competitive ArtFID scores for methods like InstantStyle (42.48) and StyleID (38.57) on their respective benchmarks \cite{ye2024stylemastersy}. To ensure global artistic coherence, recent systems also employ semantic-aligned adversarial objectives that operate on pretrained vision backbones (e.g., ViT feature manifolds \cite{kwon2022diffuseit}, a diffusion-based method discussed further in Section \ref{sec:methodology}, \cite{cheng2023visual}). Despite their strengths, diffusion models typically require explicit identity/structure controls to avoid identity drift and content leakage under strong stylization.
 
+\subsection{Unifying Framework: Control Signal, Prior, and Constraint}
+\label{sec:theory:unified}
+
+Despite their architectural diversity, all PST paradigms share a common form: a control signal $c$ encodes user intent (style, identity, or structure), a generative prior $p_\theta$ constrains the output manifold, and a constraint functional $\mathcal{L}$ drives optimization. This tripartite decomposition is expressed as
+\begin{equation}
+x^* = \mathcal{F}\bigl(\text{Control}(c),\; \text{Prior}(p_\theta),\; \text{Constraint}(\mathcal{L})\bigr),
+\label{eq:unified}
+\end{equation}
+where each paradigm instantiates the three components differently (Table~\ref{tab:unified_paradigms}).
+
+\begin{table*}[t]
+\centering
+\caption{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families.}
+\label{tab:unified_paradigms}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Paradigm} & \textbf{Control} $(c)$ & \textbf{Prior} $(p_\theta)$ & \textbf{Constraint} $(\mathcal{L})$ \\
+\midrule
+NST & Style reference image & VGG feature hierarchy & Gram-matrix matching + content \\
+GAN & Inverted latent $w^+$ & StyleGAN face manifold & Adversarial + identity + recon. \\
+Diffusion & Text/style CLIP embedding & Score function $\nabla_x \log p_t$ & Denoising + classifier-free guidance \\
+AR & Discrete visual/text tokens & Transformer next-token distrib. & Cross-entropy over codebook \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Qualitative mapping of PST paradigms to the Portrait Editing Trilemma axes. $\bigstar$ = strong, $\blacktriangle$ = moderate, $\bullet$ = weak.}
+\label{tab:trilemma_paradigms}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Paradigm} & \textbf{Identity} & \textbf{Editing Fidelity} & \textbf{Speed} \\
+\midrule
+NST (optimization)  & $\bullet$ & $\blacktriangle$ & $\bullet$ \\
+NST (feed-forward)  & $\bullet$ & $\blacktriangle$ & $\bigstar$ \\
+GAN                 & $\bigstar$ & $\blacktriangle$ & $\bigstar$ \\
+Diffusion           & $\bigstar$ & $\bigstar$ & $\bullet$ \\
+AR                  & $\blacktriangle$ & $\bigstar$ & $\blacktriangle$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+This decomposition reveals a clear spectrum: control signals progress from raw pixels (NST) to latent codes (GAN) to abstract embeddings (diffusion) to discrete tokens (AR); generative priors evolve from hand-crafted features to learned manifolds to score-based distributions to autoregressive distributions; and constraints transition from direct pixel objectives to learned adversarial and denoising losses. The choice of formulation determines each paradigm's inherent trade-off on the Trilemma, as detailed in Section~\ref{sec:methodology}.
+
 \section{Methods and Method Taxonomy}
 \label{sec:methodology}
 
 To avoid misleading cross-protocol ranking, we do not provide a single merged score table across heterogeneous test sets. Instead, quantitative evidence is discussed within each method family and task-specific subsection under their original experimental settings.
 
-This section reviews how generative modeling frameworks have shaped portrait stylization. To provide a rigorous and symmetric analysis, we categorize the field into four foundational method families: NST \& Feature Transforms, Generative Adversarial Networks (GANs), Diffusion Models, and Autoregressive (AR) Models. Following the evaluation standards, each family is systematically analyzed through a unified framework: its core generative mechanism, representative methods with coverage statistics, inherent advantages, and fundamental limitations.
+This section reviews how generative modeling frameworks have shaped portrait stylization. To provide a rigorous and symmetric analysis, we categorize the field into four foundational method families: NST \& Feature Transforms, Generative Adversarial Networks (GANs), Diffusion Models, and Autoregressive (AR) Models. Following the evaluation standards, each family is systematically analyzed through its instantiation of the unifying framework (Section~\ref{sec:theory:unified}): its core generative mechanism, representative methods with coverage statistics, inherent advantages, and fundamental limitations.
 
 To avoid ambiguity in survey writing, we use \textit{Methods and Method Taxonomy} here to denote technical model families and mechanisms, not the literature-retrieval methodology. The paper-selection and screening protocol is documented separately in the Introduction (Section~\ref{sec:intro:contributions}).
 
@@ -453,20 +505,21 @@ Selecting the appropriate dataset is the most critical determinant of a model's 
 \centering
 \caption{Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status.}
 \label{tab:datasets_pst}
-\begin{tabular}{lccccl}
+\small
+\begin{tabularx}{\textwidth}{lcrlp{2.8cm}p{3.2cm}}
 \toprule
 \textbf{Dataset} & \textbf{Year} & \textbf{Size} & \textbf{Type} & \textbf{License / Availability} & \textbf{Primary Utility} \\
 \midrule
-FFHQ \cite{karras2019style} & 2019 & 70k & Real Faces & CC BY-NC-SA 4.0 (Research) & High-resolution face prior for GAN inversion. \\
-CelebAMask-HQ \cite{lee2020} & 2020 & 30k & Real+Labels & Non-Commercial; redistribution-sensitive & Semantic parsing for region-aware local editing. \\
-Danbooru \cite{danbooru2021} & 2021 & 4.9M & Anime Art & BSD software layer; artwork rights mixed/high-risk & Tag-based controllable anime stylization. \\
-WikiArt \cite{wikiart} & 2015 & 250k+ & Artworks & Public Domain (Mixed) & General artistic textures and brushstroke baseline. \\
-AAHQ & 2021 & 25k & Artistic Faces & Research-Only & Human-centric artistic portrait benchmark. \\
-OmniStyle-1M \cite{wang2025omnistyle} & 2025 & 1M & Synthetic Triplets & Open for Research & Text-image triplets for long-tail instruction editing. \\
-CelebV-HQ \cite{celebvhq} & 2022 & 35k clips & Real Video & Non-Commercial (Research) & Temporal consistency benchmarks for video. \\
-StyleGAN-Human \cite{stylegan-human} & 2022 & 40k+ & Synthetic Faces & Open (Privacy-Compliant) & Diversity-rich pretraining without real-face GDPR risk. \\
+FFHQ \cite{karras2019style} & 2019 & 70k & Real Faces & CC BY-NC-SA 4.0 (Research) & High-res face prior for GAN inversion \\
+CelebAMask-HQ \cite{lee2020} & 2020 & 30k & Real+Labels & Non-Commercial; redistrib.-sensitive & Semantic parsing for region-aware local editing \\
+Danbooru \cite{danbooru2021} & 2021 & 4.9M & Anime Art & BSD; artwork rights mixed/high-risk & Tag-based controllable anime stylization \\
+WikiArt \cite{wikiart} & 2015 & 250k+ & Artworks & Public Domain (Mixed) & General artistic textures and brushstroke \\
+AAHQ & 2021 & 25k & Artistic Faces & Research-Only & Artistic portrait benchmark \\
+OmniStyle-1M \cite{wang2025omnistyle} & 2025 & 1M & Synthetic Tr. & Open for Research & Text-image triplets for instruction editing \\
+CelebV-HQ \cite{celebvhq} & 2022 & 35k clips & Real Video & Non-Commercial (Research) & Temporal consistency benchmarks for video \\
+StyleGAN-Human \cite{stylegan-human} & 2022 & 40k+ & Synthetic F. & Open (Privacy-Compliant) & Diversity pretraining without real-face GDPR risk \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table*}
 
 \section{Discussion and Open Challenges}

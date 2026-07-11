@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 13:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  11 JUL 2026 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -553,7 +553,7 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -562,7 +562,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -577,59 +577,59 @@ ocal/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-<images/overview.png, id=290, 3183.895pt x 1454.43375pt>
+<images/overview.png, id=298, 3183.895pt x 1454.43375pt>
 File: images/overview.png Graphic file (type png)
 <use images/overview.png>
-Package pdftex.def Info: images/overview.png  used on input line 66.
+Package pdftex.def Info: images/overview.png  used on input line 70.
 (pdftex.def)             Requested size: 505.6778pt x 230.98311pt.
-<images/timeline.png, id=292, 2340.745pt x 1234.6125pt>
+<images/timeline.png, id=300, 2340.745pt x 1234.6125pt>
 File: images/timeline.png Graphic file (type png)
 <use images/timeline.png>
-Package pdftex.def Info: images/timeline.png  used on input line 73.
+Package pdftex.def Info: images/timeline.png  used on input line 77.
 (pdftex.def)             Requested size: 505.6778pt x 266.71754pt.
 
 (./Survey/paper/tabs/tab_chronology.tex)
-Underfull \hbox (badness 6575) in paragraph at lines 101--101
+Underfull \hbox (badness 6575) in paragraph at lines 105--105
 []|\OT1/ptm/m/n/9 (+20) Subject-specific bio-met-ric
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 101--101
+Underfull \hbox (badness 3872) in paragraph at lines 105--105
 \OT1/ptm/m/n/9 (+20) con-sis-tency (face em-bed-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 \OT1/ptm/m/n/9 (+20) con-fig-u-ra-tion (land-marks,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 []|\OT1/ptm/m/n/9 (+20) Variation across valid
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 \OT1/ptm/m/n/9 (+20) out-puts un-der fixed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 []|\OT1/ptm/m/n/9 (+20) Unintended trans-fer of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 []|\OT1/ptm/m/n/9 (+20) High-frequency tex-ture
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 \OT1/ptm/m/n/9 (+20) ar-ti-facts that shift or
  []
 
 
-Underfull \hbox (badness 1852) in paragraph at lines 101--101
+Underfull \hbox (badness 1852) in paragraph at lines 105--105
 \OT1/ptm/m/n/9 (+20) ``swim'' across frames or
  []
 
@@ -642,19 +642,10 @@ Underfull \hbox (badness 1852) in paragraph at lines 101--101
 
 
 [3 <./images/overview.png>]
-Underfull \vbox (badness 6658) has occurred while \output is active []
-
-
 
 
 
 [4 <./images/timeline.png>]
-Overfull \hbox (13.58391pt too wide) detected at line 189
-[][][]\OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 = [] [] + [] \OML/cmm/m/it/10 ^^O[]\
-OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;
- []
-
-
 
 
 
@@ -663,13 +654,12 @@ OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;
 
 
 [6]
-<images/pipeline.png, id=489, 2320.67pt x 970.62625pt>
+
+<images/pipeline.png, id=490, 2320.67pt x 970.62625pt>
 File: images/pipeline.png Graphic file (type png)
 <use images/pipeline.png>
-Package pdftex.def Info: images/pipeline.png  used on input line 251.
+Package pdftex.def Info: images/pipeline.png  used on input line 303.
 (pdftex.def)             Requested size: 505.6778pt x 211.49458pt.
-
-
 
 
 [7]
@@ -687,37 +677,88 @@ Package pdftex.def Info: images/pipeline.png  used on input line 251.
 [10]
 
 
-Overfull \hbox (90.2596pt too wide) in paragraph at lines 456--470
- [][] 
+
+[11]
+Underfull \hbox (badness 1975) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) CC BY-NC-SA 4.0
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Non-Commercial;
+ []
 
-[11]
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Semantic pars-ing for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+\OT1/ptm/m/n/9 (+20) region-aware lo-cal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Tag-based con-trol-lable
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Public Do-main
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Artistic por-trait bench-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Temporal con-sis-tency
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Open (Privacy-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--522
+[]|\OT1/ptm/m/n/9 (+20) Diversity pre-train-ing
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 522--522
+[][][][][][] 
+ []
+
+
 
 
 
 [12]
 
 
-Underfull \hbox (badness 3138) in paragraph at lines 586--589
+
+[13]
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 639--642
 []\OT1/ptm/b/n/10 (+20) Sub-Second In-fer-ence for Open-Domain High-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[13] (./main.bbl
-
-
-
-[14]
+[14] (./main.bbl
 
 
 
 [15]
+
+
+
+[16]
 
 
 Underfull \hbox (badness 1960) in paragraph at lines 620--623
@@ -725,49 +766,50 @@ Underfull \hbox (badness 1960) in paragraph at lines 620--623
  : / / gwern . net /
  []
 
+)
 
-
-[16])
-
-
-
-[17
-
-] (./main.aux)
+[17] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 462244DABEB7B7D92EC974648663AA7A;15296.
+(rerunfilecheck)             Checksum: 3DA5C569C3FD06E6B1FAF25F81B99DDF;15657.
  ) 
 Here is how much of TeX's memory you used:
- 14625 strings out of 473190
- 229048 string characters out of 5715799
- 696990 words of memory out of 5000000
- 36893 multiletter control sequences out of 15000+600000
- 631821 words of font info for 485 fonts, out of 8000000 for 9000
+ 14641 strings out of 473190
+ 229287 string characters out of 5715799
+ 696901 words of memory out of 5000000
+ 36900 multiletter control sequences out of 15000+600000
+ 632072 words of font info for 489 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1788b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1788b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
-r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/loc
-al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
-texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/tex
-live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/t
-exlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/202
-5/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 743046 bytes).
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+25/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-di
+st/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on main.pdf (17 pages, 809038 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 809 compressed objects within 9 object streams
- 229 named destinations out of 1000 (max. 500000)
- 65008 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 942 PDF objects out of 1000 (max. 8388607)
+ 841 compressed objects within 9 object streams
+ 233 named destinations out of 1000 (max. 500000)
+ 65016 words of extra memory for PDF output out of 74296 (max. 10000000)
 
