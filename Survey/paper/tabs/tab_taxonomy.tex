@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{Taxonomy of PST Paradigms: Trade-offs in Quality, Speed/Cost Tiers, and Control.}
+\label{tab:taxonomy}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|ccccc|l}
+\toprule
+\textbf{Paradigm} & \textbf{Style Fidelity} & \textbf{ID Preservation} & \textbf{Inference Speed} & \textbf{Compute Cost Tier} & \textbf{Control} & \textbf{Primary Drawback} \\
+\midrule
+Optimization (Gatys) & High & Low & Minutes & High & Low & Geom Rigidity \\
+Feed-Forward (AdaIN) & Med & Low & ms & Low & Low & Texture only \\
+GAN Inversion (StyleGAN) & High & High & Seconds & Medium & High & Inversion Artifacts \\
+Diffusion (SD/InstantID) & Very High & High & Seconds & High & Very High & ID Drift / Speed \\
+Flow Matching & High & High & ms & Medium & High & Training Cost \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

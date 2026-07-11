@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{Comparison of Generative Mechanisms for Portrait Style Transfer.}
+\label{tab:mechanisms}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{2.5cm}p{4cm}p{4cm}p{4cm}}
+\toprule
+\textbf{Mechanism} & \textbf{GAN-based} & \textbf{Diffusion-based} & \textbf{3D/NeRF} \\
+\midrule
+\textbf{Core Principle} & Adversarial min-max game & Denoising score matching & Neural radiance fields \\
+\textbf{Latent Space} & $W+$ space (StyleGAN) & Text/Image embeddings & 3D-aware latent codes \\
+\textbf{Strengths} & \textit{Fidelity}: Discriminator drives high-frequency texture details | \textit{Speed}: Single forward pass | \textit{Control}: Disentangled latent space & \textit{Diversity}: Superior mode coverage | \textit{Text-guidance}: CLIP/T5 integration | \textit{Flexibility}: Arbitrary style via prompts & \textit{Consistency}: Multi-view coherence | \textit{Geometry}: Explicit 3D structure | \textit{Rendering}: Novel view synthesis \\
+\textbf{Weaknesses} & \textit{Instability}: Mode collapse and training difficulty | \textit{Domain}: Requires domain-specific fine-tuning & \textit{Speed}: Iterative sampling is slow | \textit{Identity}: Content leakage in cross-attention & \textit{Data}: Requires multi-view training data | \textit{Speed}: Volume rendering is expensive \\
+\textbf{Representative} & StyleGAN, DualStyleGAN, VToonify & Stable Diffusion, InstantID, ControlNet & EG3D, StyleNeRF, AgileGAN3D \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
