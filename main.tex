@@ -158,7 +158,12 @@ VAEs, however, face a performance trade-off in portraiture: while they often cap
 \label{sec:theory:gan}
 The adversarial paradigm introduced the photorealism and high-frequency detail required for high-quality portraiture through a min--max game between a generator $G$ and a discriminator $D$ \cite{goodfellow2014generative}. Key multi-domain translation and stabilization techniques such as StarGAN and TTUR helped generalize GAN-based stylization and improve training stability \cite{choi2018stargan,heusel2017ttur}. A critical deep dive into the StyleGAN architecture reveals that its mapping network ($Z \to W$) is a key hub for portrait control \cite{karras2019style}.
 
-The $W$ and $W^+$ spaces enable a high degree of disentanglement, allowing independent manipulation of facial attributes (e.g., pose and expression) and artistic style. In this space, identity-critical features can be held constant while style is injected into the synthesis network. Practical StyleGAN encoders such as pSp/e4e invert real images into $W^+$ to enable image-to-image translation and editing \cite{richardson2021encoding}. The reader is referred to the survey by Xia et al. \cite{xia2023gan} for a comprehensive overview of GAN inversion techniques, including encoder-based, optimization-based, and hybrid approaches. Despite this power, GANs struggle with one-shot transfer and domain generalization across diverse styles, which motivates the emergence of alternative continuous-time formulations \cite{karras2019style}.
+The $W$ and $W^+$ spaces enable a high degree of disentanglement, allowing independent manipulation of facial attributes (e.g., pose and expression) and artistic style. In this space, identity-critical features can be held constant while style is injected into the synthesis network. Practical StyleGAN encoders such as pSp/e4e invert real images into $W^+$ to enable image-to-image translation and editing \cite{richardson2021encoding}. For cases requiring precise reconstruction---particularly when the domain shift between source and target is large---\emph{pivotal tuning} (PTI) \cite{roich2022pivotal} extends inversion by first optimizing a latent code $w^+$ and then fine-tuning the generator:
+\begin{align}
+w^+ &= \arg\min_{w \in \mathcal{W}^+} \mathcal{L}_{LPIPS}\bigl(G(w), x\bigr) + \lambda_{L2}\lVert G(w) - x \rVert_2^2, \\
+\min_{G'} &\;\; \lVert G'(w^+) - x \rVert_2^2 + \lambda_{LPIPS}\,\mathcal{L}_{LPIPS}\bigl(G'(w^+), x\bigr),
+\end{align}
+where the first stage finds a pivotal latent code and the second stage overfits the generator $G'$ to the specific portrait, trading editability for reconstruction accuracy. The reader is referred to the survey by Xia et al. \cite{xia2023gan} for a comprehensive overview of GAN inversion techniques. Despite this power, GANs struggle with one-shot transfer and domain generalization across diverse styles, which motivates the emergence of alternative continuous-time formulations \cite{karras2019style}.
 
 \subsection{Flow Matching Models}
 \label{sec:theory:flowmatching}
@@ -170,7 +175,21 @@ In short, flow matching is no longer only a conceptual bridge between diffusion 
 
 \subsection{Diffusion Models}
 \label{sec:theory:diffusion}
-Diffusion models, operating through forward and reverse Markov chains, currently offer high diversity in portrait stylization \cite{ho2020denoising}. In addition to classic editing via stochastic differential equations, portrait-specific diffusion systems incorporate identity-aware constraints to avoid drift \cite{meng2021sdedit,kim2023diffface}. A key technical lever in this paradigm is \emph{attention control}: identity embeddings can be injected into cross-attention layers to stabilize identity while prompts guide texture and style \cite{wang2024instantid,zhang2023adding,ye2023ipadapter}.
+Diffusion models formulate image generation as a gradual denoising process. The forward diffusion perturbs data $x_0 \sim p_{\text{data}}$ via a stochastic differential equation (SDE)
+\begin{equation}
+dx = f(x,t)\,dt + g(t)\,dw,
+\end{equation}
+where $f(\cdot,t)$ is the drift coefficient, $g(t)$ the diffusion coefficient, and $dw$ a Wiener process. The corresponding reverse SDE recovers the data distribution by denoising
+\begin{equation}
+dx = \bigl[f(x,t) - g(t)^2 \nabla_x \log p_t(x)\bigr] dt + g(t)\,d\bar{w},
+\end{equation}
+with $\nabla_x \log p_t(x)$ being the score function, approximated by a learned noise estimator $\epsilon_\theta(x_t,t)$ \cite{ho2020denoising,song2020denoising}. For efficient sampling, DDIM \cite{song2020denoising} proposes a deterministic reverse process
+\begin{equation}
+x_{t-1} = \sqrt{\alpha_{t-1}} \left( \frac{x_t - \sqrt{1-\alpha_t}\,\epsilon_\theta(x_t,t)}{\sqrt{\alpha_t}} \right) + \sqrt{1-\alpha_{t-1}}\,\epsilon_\theta(x_t,t),
+\end{equation}
+where $\alpha_t$ defines the noise schedule. Style conditioning is incorporated through classifier-free guidance by replacing the score estimate with $\tilde{\epsilon}_\theta(x_t,t,c) = \epsilon_\theta(x_t,t,\emptyset) + \gamma\bigl[\epsilon_\theta(x_t,t,c) - \epsilon_\theta(x_t,t,\emptyset)\bigr]$, where $c$ is the conditioning signal (e.g., style reference or text prompt) and $\gamma$ controls guidance strength.
+
+Portrait-specific diffusion systems incorporate identity-aware constraints to avoid drift \cite{meng2021sdedit,kim2023diffface}. A key technical lever in this paradigm is \emph{attention control}: identity embeddings can be injected into cross-attention layers to stabilize identity while prompts guide texture and style \cite{wang2024instantid,zhang2023adding,ye2023ipadapter}.
 
 Following identity-conditioned cross-attention formulations in adapter-based diffusion editors \cite{ye2023ipadapter,wang2024instantid}, one abstraction is to treat an identity embedding $e_c \in \mathbb{R}^{d_k}$ as key/value features for cross-attention:
 \begin{equation}
@@ -281,7 +300,17 @@ Recent empirical results highlight the competitiveness of this paradigm. For exa
 \label{sec:advanced:video}
 Video portrait stylization extends static style transfer to temporal sequences, where professional-grade results require both temporal coherence and identity stability \cite{ruder2018artistic,ye2024stylemastersy,huang2023styleavideoad,yang2023rerender,liu2023portraitdt,yang2024fresco}. While per-frame stylization is straightforward, the central technical challenge is to prevent high-frequency temporal variance from producing perceptually disruptive artifacts.
 
-The primary hurdle is \emph{flickering}: inconsistent stylization across consecutive frames that breaks the viewer's suspension of disbelief \cite{ye2024stylemastersy}. Furthermore, ReRender-A-Video \cite{yang2023rerender} proposes a zero-shot, text-guided video translation framework that enforces hierarchical cross-frame constraints to maintain global style coherence without requiring expensive per-video fine-tuning. Achieving temporal consistency is a non-trivial extension of both GAN and diffusion paradigms, since the model must accommodate motion while preserving identity-critical facial cues.
+The primary hurdle is \emph{flickering}: inconsistent stylization across consecutive frames that breaks the viewer's suspension of disbelief \cite{ye2024stylemastersy}. Temporal consistency is commonly formalized through optical-flow-based warping losses. Given consecutive frames $I_t, I_{t-1}$ and estimated optical flow $F_{t\to t-1}$, a warping loss encourages the stylized frames to be consistent under motion:
+\begin{equation}
+\mathcal{L}_{warp} = \sum_{t} \bigl\lVert \phi(I_t) - \mathcal{W}\bigl(\phi(I_{t-1}), F_{t\to t-1}\bigr) \bigr\rVert_1,
+\end{equation}
+where $\phi(\cdot)$ denotes a feature extractor (e.g., VGG layers) and $\mathcal{W}$ is the backward warping operation. A temporal perceptual loss further penalizes feature deviations across warped pairs:
+\begin{equation}
+\mathcal{L}_{temp} = \sum_{t,l} \bigl\lVert \Phi_l(I_t) - \Phi_l\bigl(\mathcal{W}(I_{t-1}, F_{t\to t-1})\bigr) \bigr\rVert_2^2,
+\end{equation}
+with $\Phi_l$ the activations at layer $l$ of a pretrained network. These formulations, adopted by Ruder et al. \cite{ruder2018artistic} and refined in later portrait-specific pipelines, provide a principled basis for enforcing cross-frame coherence beyond simple per-frame stylization.
+
+Furthermore, ReRender-A-Video \cite{yang2023rerender} proposes a zero-shot, text-guided video translation framework that enforces hierarchical cross-frame constraints to maintain global style coherence without requiring expensive per-video fine-tuning. Achieving temporal consistency is a non-trivial extension of both GAN and diffusion paradigms, since the model must accommodate motion while preserving identity-critical facial cues.
 
 \subsubsection{StyleMaster: Decoupling Motion and Style}
 \label{sec:advanced:video:stylemaster}

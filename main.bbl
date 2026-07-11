@@ -262,6 +262,11 @@ E.~Richardson, Y.~Alaluf, O.~Patashnik, Y.~Nitzan, Y.~Azar, S.~Shapiro, and
   translation,'' in \emph{Proceedings of the IEEE/CVF Conference on Computer
   Vision and Pattern Recognition}, 2021, pp. 2287--2296.
 
+\bibitem{roich2022pivotal}
+D.~Roich, R.~Mokady, A.~H. Bermano, and D.~Cohen-Or, ``Pivotal tuning for
+  latent-based editing of real images,'' \emph{ACM Transactions on Graphics},
+  vol.~42, no.~1, pp. 1--13, 2022.
+
 \bibitem{lipman2023flow}
 \BIBentryALTinterwordspacing
 Y.~Lipman, R.~T.~Q. Chen, H.~Ben-Hamu, M.~Nickel, and M.~Le, ``Flow matching
