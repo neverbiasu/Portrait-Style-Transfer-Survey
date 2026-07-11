@@ -484,6 +484,9 @@ While current literature coverage of ArtFID remains limited, we strongly call fo
 
 \emph{Current limitations and calibration.} Despite their promise, LMM-based evaluation introduces systematic biases. Recent benchmarks show LMMs exhibit position bias, authority bias, and sensitivity to superficial visual features (e.g., color saturation and contrast), while under-detecting high-frequency artifacts such as texture swimming \cite{chen2024mllmjudge}. Moreover, LMM judgments lack the perceptual grounding of human vision; they are trained on caption--image alignment rather than aesthetic preference. Calibration strategies---including multi-prompt aggregation, temperature averaging over repeated trials, and human-anchored normalization---can reduce but not eliminate these distortions. We therefore recommend LMM scores as a rapid screening tool rather than a replacement for formal user studies.
 
+\paragraph{Visual Artifact Analysis and Failure Modes.}
+Qualitative evaluation should further categorize failure modes from existing methods: (i) \textit{content leakage}, where unintended semantic elements from a style reference (e.g., hats, signatures, background objects) bleed into the portrait via entangled cross-attention, and (ii) \textit{identity distortion}, where geometric changes to facial components break recognizability. A recurring pitfall is high-strength stylization: pushing style strength beyond a paradigm-specific threshold can cause identity collapse into a generic face in the target domain. Reporting such failure cases alongside aggregate metrics is essential for a complete evaluation picture.
+
 \section{Datasets, Privacy, and Ethical Benchmarks}
 \label{sec:datasets}
 
@@ -553,43 +556,6 @@ StyleGAN-Human \cite{stylegan-human} & 2022 & 40k+ & Synthetic F. & Open (Privac
 \label{sec:discussion:triangle}
 As established in Section~\ref{sec:intro:trilemma}, portrait stylization is governed by a multi-objective trade-off. In deployment, this tension appears as concrete operating points rather than a single optimum: systems with strong identity retention often limit stylization amplitude, while aggressively stylized outputs tend to reduce facial consistency or increase latency.
 Recent systems explicitly analyze this structure when proposing single-step or adapter-based stylizers, revealing recurring constraints between realism, stylization strength, and runtime efficiency \cite{wang2025instantstyleplus,zhang2023prospectps}.
-
-\subsection{Quantitative Evaluation Metrics}
-\label{sec:evaluation:metrics}
-Following the metric definitions in Section~\ref{sec:evaluation:configuration}, this section focuses on practical interpretation rather than redefining each metric. In specialized portraiture, standard computer vision metrics designed for generic reconstruction can be misaligned with stylization objectives. A successful stylization must navigate a high-dimensional manifold in which identity-preserving structure coexists with transformative aesthetics. As a result, quantitative analysis should jointly examine (i) identity integrity via face-embedding similarity, (ii) style alignment via multimodal encoders, and (iii) perceptual distribution matching using generative quality metrics.
-
-\subsubsection{Identity Preservation and Facial Integrity}
-\label{sec:evaluation:metrics:identity}
-Identity preservation is a primary benchmark in portrait evaluation. Modern frameworks employ pretrained face recognition networks (e.g., ArcFace/InsightFace/FaceNet-like encoders) to compute identity similarity as cosine similarity in a hyperspherical embedding space \cite{deng2019arcface}. Compared with pixel-level or landmark-only constraints, embedding-based scores reflect higher-level biometric cues and are therefore more aligned with human perception of ``who'' a person is.
-
-These encoders, however, have limitations: most are trained on photorealistic face datasets and may be biased toward photorealistic features. Under highly abstract target styles (e.g., minimalist sketches), identity embeddings can become unreliable because biometric cues are intentionally suppressed. This motivates complementary structure-preserving measures (e.g., edge/landmark constraints or Canny-guided controllers) that evaluate spatial geometry rather than identity in a latent recognition space.
-
-\subsubsection{Style Alignment and Text--Image Consistency}
-\label{sec:evaluation:metrics:style}
-Evaluation has shifted from purely reference-based metrics toward reference-free paradigms enabled by vision--language models. CLIP-like similarities allow alignment to be evaluated against text prompts (or style descriptors) without requiring paired ground truth stylizations. In practice, style alignment is often quantified using rescaled cosine similarity between textual embeddings and visual embeddings; reference-augmented variants can combine prompt alignment with similarity to a style reference.
-
-Reference-free metrics provide practical advantages: they scale to large datasets without paired supervision, generalize across visual domains (e.g., paintings and illustrations), and often correlate better with human judgments than n-gram captioning metrics \cite{gal2022image,zhang2023ssrencoderes}. However, CLIP-based scores can still be sensitive to prompt templates and should be interpreted alongside other measures.
-
-\subsubsection{Perceptual Quality and Distribution Matching}
-\label{sec:evaluation:metrics:quality}
-Holistic quality assessment commonly uses FID and perceptual similarity measures (e.g., LPIPS-like metrics) \cite{heusel2017ttur,zhang2018lpips}. In stylization, FID is sometimes decomposed into a content-oriented distance and a style-oriented distance to isolate model behaviors. Importantly, ``content distance'' metrics can be paradoxical for portraits: strong stylization intentionally modifies color/texture and sometimes geometry; therefore, a near-perfect content-preservation score may indicate under-stylization rather than success. Robust evaluation should therefore be interpreted in light of the target style regime.
-
-\paragraph{Metric applicability and paradoxes.}
-To avoid metric misuse, we recommend reporting applicability conditions together with each score. Identity embedding metrics are most reliable under photorealistic and mildly stylized regimes, while abstract or geometry-altering styles require stronger reliance on human studies and structure-based checks. Prompt-alignment metrics are appropriate for text-driven settings but should be template-controlled and variance-reported across prompt paraphrases. For decomposed ``content/style'' distances, the interpretation must be regime-aware: in deformation-heavy styles (e.g., anime-like eye/face-shape shifts), improved ``content distance'' can indicate weaker stylization rather than better quality, so conclusions should be made jointly with style-strength and human preference results.
-
-\subsection{Qualitative Evaluation and Human Studies}
-\label{sec:evaluation:human}
-User studies remain essential because stylization quality is ultimately determined by whether outputs are both recognizable and aesthetically coherent to human observers. Human-centric evaluation is particularly important for diagnosing failures that distributional metrics may miss, and recent portrait stylization studies formalize these protocols to align with ArtFID-like assessments \cite{wright2022artfidqe,ambiel2023portraitsa}.
-
-\subsubsection{User Study Methodologies and Preference Mapping}
-\label{sec:evaluation:human:userstudy}
-A practical protocol is to score outputs along three axes: identity preservation, style transfer strength/faithfulness, and overall preference. A standard 5-point Likert scale can be used to reduce variance across raters, and results can be reported with confidence intervals and inter-rater agreement statistics when applicable \cite{wright2022artfidqe,ambiel2023portraitsa}.
-
-Recently, large multimodal language models have been explored as scalable proxies for preference scoring, by prompting the model to rate identity and style consistency. Such proxies can improve throughput but should be treated as complementary to human studies, not replacements.
-
-\subsubsection{Visual Artifact Analysis and Failure Modes}
-\label{sec:evaluation:human:artifacts}
-Qualitative analysis often categorizes failure modes into (i) content leakage, where unintended elements from a style reference appear in the portrait, and (ii) identity distortion, where geometric changes to facial components break recognizability. A recurring trap is high-strength stylization: increasing style strength parameters can cause identity collapse into a generic face in the target domain. Understanding and mitigating this trade-off motivates the architectural innovations discussed next.
 
 \subsection{Key Innovations under the Trilemma}
 \label{sec:evaluation:innovations}
