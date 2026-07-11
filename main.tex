@@ -52,12 +52,12 @@ Existing models often sacrifice at least one of these strictly competing objecti
 \label{sec:intro:contributions}
 This paper makes the following principal contributions:
 \begin{itemize}
-  \item \textbf{Unified Mechanism Taxonomy (covering $\sim$12 NST, $\sim$25 GAN, $\sim$45 diffusion methods, inclusive of cited structural baselines within the discussed works, and $\sim$10 AR methods):} We provide a systematic categorization based on the underlying generative mechanisms rather than target applications, enabling cross-paradigm comparisons.
+  \item \textbf{Unified Mechanism Taxonomy (covering $\sim$12 NST, $\sim$25 GAN, $\sim$45 diffusion, and $\sim$10 AR methods):} We provide a systematic categorization based on the underlying generative mechanisms rather than target applications, enabling cross-paradigm comparisons.
   \item \textbf{Critical Analysis of Failure Modes}: A taxonomy of "Killer Failures" including the Identity-Style Conflict and Texture Swimming.
   \item \textbf{Evaluation Protocol}: Proposing (and calling for adoption of) a "Golden Protocol" for robust benchmarking using Multi-Pillar metrics.
 \end{itemize}
 
-\textbf{Survey Methodology:} To ensure rigorous coverage, our literature search targeted flagship conferences (e.g., CVPR, ICCV, ECCV, NeurIPS, ICLR) and journals (e.g., TPAMI, TOG, TIP) published between 2015 and 2025. Search keywords included ``portrait stylization'', ``style transfer'', ``GAN inversion'', and ``diffusion-based editing''. We excluded purely unconditional generation works, strictly including methods that offer identity-preserving or structure-preserving stylistic controls. Foundational generative models without stylization components (e.g., DDPM \cite{ho2020denoising}) are included as theoretical prerequisites but are not counted in the $\sim$90 distinct methods.
+\textbf{Survey Methodology:} To ensure rigorous coverage, our literature search targeted flagship conferences (e.g., CVPR, ICCV, ECCV, NeurIPS, ICLR) and journals (e.g., TPAMI, TOG, TIP) published between 2015 and 2025. Search keywords included ``portrait stylization'', ``style transfer'', ``GAN inversion'', and ``diffusion-based editing''. We excluded purely unconditional generation works, strictly including methods that offer identity-preserving or structure-preserving stylistic controls. Foundational generative models without stylization components (e.g., DDPM \cite{ho2020denoising}) are included as theoretical prerequisites but are not counted in the $\sim$90 distinct methods covered by our taxonomy.
 We further highlight recent one-shot and real-time portrait stylization systems as motivating use cases for the taxonomy and evaluation protocol \cite{lai2025instantportraitop,wang2024magicfacetu}. Figure~\ref{fig:teaser_trilemma} provides a visual teaser of the Trilemma framing, while Figure~\ref{fig:timeline_evolution} summarizes the mechanism-level timeline used in this survey.
 Unlike early diffusion frameworks that often struggle with identity preservation during abstract stylization, recent adapter-based methods improve facial-topology consistency, as discussed in Section \ref{sec:methodology}. Nevertheless, failures under large style-domain shifts remain documented in recent analyses and benchmarks \cite{wright2022artfidqe,wang2025domaingp}. Furthermore, instead of vanilla 1000-step generation, practical pipelines commonly use accelerated samplers and typically operate in about 20--50 inference steps (e.g., DDIM-family settings) \cite{song2020denoising,rombach_2022_cvpr}.
 
@@ -119,7 +119,7 @@ Most portrait stylization objectives can be written as a weighted sum
 \begin{equation}
   \mathcal{L}_{total} = \lambda_{sty}\mathcal{L}_{style} + \lambda_{con}\mathcal{L}_{content} + \lambda_{id}\mathcal{L}_{id} + \lambda_{geo}\mathcal{L}_{geo},
 \end{equation}
-where the key difference from generic NST is the explicit identity and geometry terms. In practice, reported weighting strategies vary by architecture and objective normalization; common settings keep content/style terms at comparable scales in NST-style formulations \cite{gatys2016image,johnson2016perceptual,huang2017arbitraryst}, while portrait-identity pipelines usually increase identity constraints (often around $\lambda_{id}\approx0.5$--$1.0$) and apply lighter geometric regularization (often around $\lambda_{geo}\approx0.1$--$0.5$) \cite{yang2022dualstylegan,sain2023styleface}.
+where the key difference from generic NST is the explicit identity and geometry terms. In practice, reported weighting strategies vary by architecture and objective normalization; common settings keep content/style terms at comparable scales in NST-style formulations \cite{gatys2016image,johnson2016perceptual,huang2017arbitraryst}, while portrait-identity pipelines typically assign higher weight to identity constraints and lighter geometric regularization relative to content/style terms \cite{yang2022dualstylegan,sain2023styleface}.
 
 \subsubsection{Identity Loss}
 Identity preservation is commonly enforced via face-recognition embeddings. Given a face encoder $F(\cdot)$ (e.g., ArcFace), identity loss can be defined as the cosine distance between embeddings of the source portrait $I_{src}$ and the generated output $I_{gen}$ \cite{deng2019arcface}:
@@ -170,16 +170,15 @@ In short, flow matching is no longer only a conceptual bridge between diffusion 
 \label{sec:theory:diffusion}
 Diffusion models, operating through forward and reverse Markov chains, currently offer high diversity in portrait stylization \cite{ho2020denoising}. In addition to classic editing via stochastic differential equations, portrait-specific diffusion systems incorporate identity-aware constraints to avoid drift \cite{meng2021sdedit,kim2023diffface}. A key technical lever in this paradigm is \emph{attention control}: identity embeddings can be injected into cross-attention layers to stabilize identity while prompts guide texture and style \cite{wang2024instantid,zhang2023adding,ye2023ipadapter}.
 
-Following identity-conditioned cross-attention formulations in adapter-based diffusion editors \cite{ye2023ipadapter,wang2024instantid}, one abstraction is to treat an identity embedding $e_c$ as key/value features for cross-attention:
+Following identity-conditioned cross-attention formulations in adapter-based diffusion editors \cite{ye2023ipadapter,wang2024instantid}, one abstraction is to treat an identity embedding $e_c \in \mathbb{R}^{d_k}$ as key/value features for cross-attention:
 \begin{equation}
   \mathrm{Attn}(Q_s^i, e_c, e_c) =
-  \mathrm{softmax}\left(\frac{Q_s^i e_c^{T}}{\sqrt{d}}\right)e_c,
+  \mathrm{softmax}\left(\frac{Q_s^i e_c^{T}}{\sqrt{d_k}}\right)e_c,
 \end{equation}
-where $Q_s^i$ is a query feature at layer $i$ and $d$ is the attention dimensionality. Following adapter alignment objectives \cite{zhang2023adding,wang2024instantid}, trainable modules can be constrained to remain close to content features:
+where $Q_s^i \in \mathbb{R}^{d_k}$ is a query feature at layer $i$ and $d_k$ is the key dimension. Following adapter alignment objectives \cite{zhang2023adding,wang2024instantid}, trainable modules can be constrained to remain close to content features using adapted query features $Q_f^i$ and content-anchored queries $Q_c^i$:
 \begin{equation}
   \mathcal{L}_{align} = \frac{1}{N} \sum_{i=1}^{N} \lVert Q_f^i - Q_c^i \rVert^2.
-\end{equation}
-where $Q_f^i$ denotes the adapted (fine-tuned) query feature at layer $i$, and $Q_c^i$ denotes the corresponding content-anchored query feature. In addition, following moment-matching style constraints in stylization models \cite{gatys2016image,huang2017arbitraryst}, statistic-consistency losses can encourage structure/style separation by matching moments across denoising predictions:
+\end{equation} In addition, following moment-matching style constraints in stylization models \cite{gatys2016image,huang2017arbitraryst}, statistic-consistency losses can encourage structure/style separation by matching moments across denoising predictions:
 \begin{equation}
   \mathcal{L}_{style} =
   \lVert \mu(\epsilon_t) - \mu(\epsilon_t^c) \rVert^2
