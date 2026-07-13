@@ -542,6 +542,10 @@ While current literature coverage of ArtFID remains limited, we strongly call fo
 \paragraph{Visual Artifact Analysis and Failure Modes.}
 Qualitative evaluation should further categorize failure modes from existing methods: (i) \textit{content leakage}, where unintended semantic elements from a style reference (e.g., hats, signatures, background objects) bleed into the portrait via entangled cross-attention, and (ii) \textit{identity distortion}, where geometric changes to facial components break recognizability. A recurring pitfall is high-strength stylization: pushing style strength beyond a paradigm-specific threshold can cause identity collapse into a generic face in the target domain. Reporting such failure cases alongside aggregate metrics is essential for a complete evaluation picture.
 
+\subsection{Benchmark Scope and Limitations}
+\label{sec:evaluation:benchmark_scope}
+We clarify the scope of benchmarking in this survey. The literature screening that grounds our corpus is reported transparently as a PRISMA-style funnel (Table~\ref{tab:prisma}), and cross-paradigm comparability is provided qualitatively through the capability matrix (Table~\ref{tab:comparison_matrix}) and the metric-reporting frequency analysis (Table~\ref{tab:metric_usage}). We deliberately \textit{do not} present an executed numerical leaderboard that ranks methods on a single benchmark: doing so honestly would require re-implementing and running every surveyed method under one identical protocol, datasets, and hardware---a controlled experimental study beyond the scope of a literature survey, and one that current source papers cannot support because they report heterogeneous setups (see the speed caveat in Table~\ref{tab:comparison_matrix}). Instead, the proposed Golden Protocol (Section~\ref{sec:evaluation:configuration}) defines the standardized configuration under which such a leaderboard \textit{should} be constructed; we position its empirical execution as essential future work and a call for community adoption, rather than a claim already fulfilled here.
+
 \section{Datasets, Privacy, and Ethical Benchmarks}
 \label{sec:datasets}
 
