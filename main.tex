@@ -471,7 +471,7 @@ Before presenting the Golden Protocol configuration, we survey which metrics the
 
 \begin{table*}[t]
 \centering
-\caption{Metric reporting frequency across paradigms. "Common" = $\ge$50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%.}
+\caption{Metric reporting frequency across paradigms. "Common" = $\ge$50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite{zhang2018lpips} was proposed in 2018, after classic NST \cite{gatys2015ana,gatys2016image}), and is only applied retrospectively in later works.}
 \label{tab:metric_usage}
 \small
 \begin{tabular}{lcccc}
@@ -479,7 +479,7 @@ Before presenting the Golden Protocol configuration, we survey which metrics the
 \textbf{Metric} & \textbf{NST} & \textbf{GAN} & \textbf{Diffusion} & \textbf{AR} \\
 \midrule
 FID / KID        & Rare & Common & Common & Rare \\
-LPIPS            & Common & Occasional & Occasional & Rare \\
+LPIPS            & N/A*   & Occasional & Occasional & Rare \\
 ID Score (ArcFace) & Rare & Common & Common & Occasional \\
 CLIP Score       & Rare & Rare & Common & Common \\
 ArtFID           & Rare & Rare & Occasional & Rare \\
