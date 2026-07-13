@@ -19,7 +19,7 @@
 | 15 | 公式记号粗糙：Eq. (5) e_c 同时作 key/value 无维度交代；Eq. (6) Q_f/Q_c 首次使用未定义 | 记号 | 🟡 次要 | Eq. (5)(6) | 补投影矩阵与维度，首次使用即定义 | ✅ 已验证修复(前期会话):L209 已定义 $e_c\in\mathbb{R}^{d_k}$ 与投影 $W_K,W_V\in\mathbb{R}^{d_k\times d_k}$;L214 已定义 $Q_s^i,Q_f^i,Q_c^i\in\mathbb{R}^{d_k}$ 及 $d_k$ 为 key 维度;维度与首次定义均完备 | ✅ 已修 |
 | 16 | 权重取值含糊："λ_id≈0.5–1.0""λ_geo≈0.1–0.5" 伪精确、缺具体出处 | 严谨性 | 🟡 次要 | Sec. II-B | 用各方法真实设置表支撑，或删去伪精确值 | ✅ 已验证修复(前期会话):L132-136 已改写为 "Weight schedules vary substantially across architectures... specific values are reported in the original method papers... should not be treated as universal hyperparameters",无伪精确数值 | ✅ 已修 |
 | 17 | 缺 StyleGAN2/StyleGAN3 引用，却大量依赖 StyleGAN 家族 | 引用 | 🟡 次要 | Sec. II-E | 补齐 | ✅ 已修 |
-| 18 | 局部 vs 全局编辑未作为一级分类轴，埋在"高级任务"里；Sec. IV 内部逻辑联系不够紧密 | 分类 | 🟡 次要 | Sec. IV | 提为独立分类维度；强化"从 2D 到 spatiotemporal"递进逻辑 | 未修 |
+| 18 | 局部 vs 全局编辑未作为一级分类轴，埋在"高级任务"里；Sec. IV 内部逻辑联系不够紧密 | 分类 | 🟡 次要 | Sec. IV | 提为独立分类维度；强化"从 2D 到 spatiotemporal"递进逻辑 | ✅ 已修:Sec.IV 引言显式将 "control granularity (global vs local editing)" 提为跨所有范式的一级轴,并说明其叠加于 temporal/geometric 两维;组织逻辑改为 spatial(local/global)→temporal→geometric 递进;pdflatex 通过 | ✅ 已修 |
 | 19 | 表格缺单位/脚注，内联指标（DualStyleGAN FS2K、偏好）缺具体来源表与协议说明 | 图表 | 🟡 次要 | Tables / Sec. III | 补来源与 caption | ✅ 已修 |
 | 20 | 行文偶有堆砌辞藻（"navigational constraints""pendulum swing"等） | 文字 | 🟡 次要 | 全文 | 收敛到技术语体 | ✅ 已修 |
 | 21 | abstract "five paradigms" → "four core families + emerging frontiers" | 结构/逻辑 | ✅ | Abstract | 已与 body 一致 | ✅ 已修 |
