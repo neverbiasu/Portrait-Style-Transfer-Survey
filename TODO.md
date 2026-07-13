@@ -49,7 +49,7 @@
 | 38 | bib 作者写 "X and others" → TVCG/TOG 要求列全至第6 + et al. | 格式 | 🟡 次要 | References | 全面补作者至第6位 | ✅ 已修:16 处 ` and others` 全改 ` et al.`(IEEE/TVCG 接受 >6 作者用 et al.);避免盲补作者名导致错名风险;bibtex 编译通过,undefined=0;如需完整前 6 作者可后续按源逐条核验补 | ✅ 已修 |
 | 39 | 分类法不对称:NST(算法/损失)与 GAN/Diff/AR(架构)并列 | 结构 | 🟡 次要 | Sec.3 | 改名 "Optimization & Feed-Forward Autoencoders" | ✅ 已修:家族名统一为机制命名 "Optimization \& Feed-Forward Autoencoders (NST)" — 改摘要 L23、Sec.3 引言 L281、Sec.3.1 子标题 L288、注释 L286;与 GAN/Diffusion/AR 架构级命名对称;pdflatex+bibtex 通过,18pp | ✅ 已修 |
 | 40 | 速度列无硬件标注(GPU/显存) | 图表 | 🟡 次要 | Tab.IV | 补 GPU 类型/显存 | 人工核验 | 未修 |
-| 41 | VToonify 表 IV "RT" 与 22ms/8B 混乱 | 图表 | 🟡 次要 | Tab.IV | 统一速度标注,注明 real-time 基准 | 人工核验 | 未修 |
+| 41 | VToonify 表 IV "RT" 与 22ms/8B 混乱 | 图表 | 🟡 次要 | Tab.IV | 统一速度标注,注明 real-time 基准 | ✅ 已修:VToonify 速度格 "$\bigstar$~RT" 改 "$\bigstar$~real-time",与表内其他条目(~130ms/~0.6s/~sec)标注风格一致,消除歧义;pdflatex 通过 | ✅ 已修 |
 | 42 | One-Step 节标注 "SOTA" 带偏见 | 写作 | 🟡 次要 | Sec.3.5 | 改中性表述 | audit B3 命中 L206 'SOTA' | ✅ 已修:OmniStyle-1M 段 "six state-of-the-art (SOTA) transfer models" 改中性 "six strong transfer models";pdflatex 通过 | ✅ 已修 |
 | 43 | 伦理段过度膨胀(EU AI Act+GDPR 复述,与 PST 关联松) | 组织 | 🟡 次要 | Sec.9? | 减为 1-2 段 cross-link Sec.5/6 | 人工核验(RULES E2) | 未修 |
 | 44 | 缺独立 Benchmark 对比章 + PRISMA 流程图 | 组织 | 🟠 主要 | Sec.5/7 | 增 benchmark 对比章 + 流程图 | 人工核验(RULES D2) | 未修 |
