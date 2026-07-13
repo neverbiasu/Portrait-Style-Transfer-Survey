@@ -16,8 +16,8 @@
 | 12 | 评估内容重复：Sec. V 与 Sec. VII-B 大量重叠 | 组织 | 🟡 次要 | Sec. V / VII-B | 合并去重 | ✅ 已修 |
 | 13 | 参考文献质量差：作者字段损坏、裸 "et al."、年份不一致、arXiv 与正式出版区分不清晰、中文姓名缩写不一致 | 引用格式 | 🟡 次要 | References | 全面校对；统一标注 arXiv 预印本状态；统一人名缩写规范 | ✅ 已修 |
 | 14 | 未来日期引用：FlowAlign "ICLR 2026"、FlowEdit "ICCV 2025" 超出综述范围 | 引用 | 🟡 次要 | References | 明确标注为预印本，在正文说明纳入理由 | ✅ 已修 |
-| 15 | 公式记号粗糙：Eq. (5) e_c 同时作 key/value 无维度交代；Eq. (6) Q_f/Q_c 首次使用未定义 | 记号 | 🟡 次要 | Eq. (5)(6) | 补投影矩阵与维度，首次使用即定义 | 未修 |
-| 16 | 权重取值含糊："λ_id≈0.5–1.0""λ_geo≈0.1–0.5" 伪精确、缺具体出处 | 严谨性 | 🟡 次要 | Sec. II-B | 用各方法真实设置表支撑，或删去伪精确值 | 未修 |
+| 15 | 公式记号粗糙：Eq. (5) e_c 同时作 key/value 无维度交代；Eq. (6) Q_f/Q_c 首次使用未定义 | 记号 | 🟡 次要 | Eq. (5)(6) | 补投影矩阵与维度，首次使用即定义 | ✅ 已验证修复(前期会话):L209 已定义 $e_c\in\mathbb{R}^{d_k}$ 与投影 $W_K,W_V\in\mathbb{R}^{d_k\times d_k}$;L214 已定义 $Q_s^i,Q_f^i,Q_c^i\in\mathbb{R}^{d_k}$ 及 $d_k$ 为 key 维度;维度与首次定义均完备 | ✅ 已修 |
+| 16 | 权重取值含糊："λ_id≈0.5–1.0""λ_geo≈0.1–0.5" 伪精确、缺具体出处 | 严谨性 | 🟡 次要 | Sec. II-B | 用各方法真实设置表支撑，或删去伪精确值 | ✅ 已验证修复(前期会话):L132-136 已改写为 "Weight schedules vary substantially across architectures... specific values are reported in the original method papers... should not be treated as universal hyperparameters",无伪精确数值 | ✅ 已修 |
 | 17 | 缺 StyleGAN2/StyleGAN3 引用，却大量依赖 StyleGAN 家族 | 引用 | 🟡 次要 | Sec. II-E | 补齐 | ✅ 已修 |
 | 18 | 局部 vs 全局编辑未作为一级分类轴，埋在"高级任务"里；Sec. IV 内部逻辑联系不够紧密 | 分类 | 🟡 次要 | Sec. IV | 提为独立分类维度；强化"从 2D 到 spatiotemporal"递进逻辑 | 未修 |
 | 19 | 表格缺单位/脚注，内联指标（DualStyleGAN FS2K、偏好）缺具体来源表与协议说明 | 图表 | 🟡 次要 | Tables / Sec. III | 补来源与 caption | ✅ 已修 |
@@ -58,7 +58,7 @@
 | 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | audit E4:hits=2(边界通过) | 未修 |
 | 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | 前期 grep -c=2;audit D3 仅命中注释行(需人工复确认) | 未修 |
 | 49 | Table V LPIPS 对经典 NST 标 "Common"(LPIPS 2018 才提出) | 事实错误 | 🟡 次要 | Tab.V | 改 Rare/N-A,注明现代 retrospectively 应用 | 人工核验(RULES B2) | 未修 |
-| 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | grep 确认已加 caveat | 未修 |
+| 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | ✅ 已验证:caveat 已存在 — L23 abstract "though modern hybrid methods increasingly blur this boundary";L645 conclusion "this dichotomy is a historical generalization rather than a strict partition... boundary continues to blur as hybrid designs emerge" | ✅ 已修 |
 
 ## 评审意见（参考）
 
