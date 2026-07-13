@@ -56,7 +56,7 @@
 | 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | 人工核验(RULES E3) | 未修 |
 | 46 | 缺正式 Appendix(PRISMA 图/完整方法清单/benchmark 代码) | 组织 | 🟡 次要 | 文末 | 增 Appendix | 人工核验(RULES E5) | 未修 |
 | 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | audit E4:hits=2(边界通过) | 未修 |
-| 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | 前期 grep -c=2;audit D3 仅命中注释行(需人工复确认) | 未修 |
+| 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | ✅ 已修:L584 逐字重复句删除,改为 forward-reference 至 Sec.6.2(OmniStyle-1M 段)的偏差缓解说明;现仅 L570 保留原句一处;pdflatex 通过 | ✅ 已修 |
 | 49 | Table V LPIPS 对经典 NST 标 "Common"(LPIPS 2018 才提出) | 事实错误 | 🟡 次要 | Tab.V | 改 Rare/N-A,注明现代 retrospectively 应用 | 人工核验(RULES B2) | 未修 |
 | 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | ✅ 已验证:caveat 已存在 — L23 abstract "though modern hybrid methods increasingly blur this boundary";L645 conclusion "this dichotomy is a historical generalization rather than a strict partition... boundary continues to blur as hybrid designs emerge" | ✅ 已修 |
 
