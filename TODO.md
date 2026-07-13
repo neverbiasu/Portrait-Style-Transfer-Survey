@@ -51,7 +51,7 @@
 | 40 | 速度列无硬件标注(GPU/显存) | 图表 | 🟡 次要 | Tab.IV | 补 GPU 类型/显存 | ✅ 已修:Tab.IV caption 显式说明速度数字在各源论文硬件(GPU/分辨率/batch/backbone)下异质报告、不可直接比较、仅示意相对数量级;避免编造统一硬件基准(超出综述范围);与 R41(real-time 标注)一致;pdflatex 通过 | ✅ 已修 |
 | 41 | VToonify 表 IV "RT" 与 22ms/8B 混乱 | 图表 | 🟡 次要 | Tab.IV | 统一速度标注,注明 real-time 基准 | ✅ 已修:VToonify 速度格 "$\bigstar$~RT" 改 "$\bigstar$~real-time",与表内其他条目(~130ms/~0.6s/~sec)标注风格一致,消除歧义;pdflatex 通过 | ✅ 已修 |
 | 42 | One-Step 节标注 "SOTA" 带偏见 | 写作 | 🟡 次要 | Sec.3.5 | 改中性表述 | audit B3 命中 L206 'SOTA' | ✅ 已修:OmniStyle-1M 段 "six state-of-the-art (SOTA) transfer models" 改中性 "six strong transfer models";pdflatex 通过 | ✅ 已修 |
-| 43 | 伦理段过度膨胀(EU AI Act+GDPR 复述,与 PST 关联松) | 组织 | 🟡 次要 | Sec.9? | 减为 1-2 段 cross-link Sec.5/6 | 人工核验(RULES E2) | 未修 |
+| 43 | 伦理段过度膨胀(EU AI Act+GDPR 复述,与 PST 关联松) | 组织 | 🟡 次要 | Sec.9? | 减为 1-2 段 cross-link Sec.5/6 | ✅ 已修:伦理子节由 ~2 段含 EU AI Act/GDPR 复述,压缩为 1 段,聚焦 PST 直接相关两项义务(透明水印/生物特征隐私),并 cross-link 至 Sec.6 数据集隐私 与 Sec.5 Golden Protocol 披露要求;pdflatex 通过 | ✅ 已修 |
 | 44 | 缺独立 Benchmark 对比章 + PRISMA 流程图 | 组织 | 🟠 主要 | Sec.5/7 | 增 benchmark 对比章 + 流程图 | 人工核验(RULES D2) | 未修 |
 | 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | 人工核验(RULES E3) | 未修 |
 | 46 | 缺正式 Appendix(PRISMA 图/完整方法清单/benchmark 代码) | 组织 | 🟡 次要 | 文末 | 增 Appendix | 人工核验(RULES E5) | 未修 |
