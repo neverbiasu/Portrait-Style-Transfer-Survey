@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-  Portrait Style Transfer (PST) has evolved from a niche application of texture synthesis to a cornerstone of modern generative AI, powering applications from artistic avatars to photorealistic editing. This decade-long survey (2015-2025) provides a comprehensive review of the field, systematically analyzing over 115 publications and approximately 90 distinct methods across four core generative families---NST \& Feature Transforms, GANs, Diffusion Models, and Autoregressive (AR) Models---plus emerging frontiers in 3D/NeRF and video stylization. To ensure rigor, our literature retrieval strategy focuses on peer-reviewed works from top-tier vision and graphics venues, filtering for state-of-the-art mechanisms in identity-preserving stylization (see Section \ref{sec:intro:contributions} for the full search protocol). We propose a unified taxonomy based on \textit{Generative Mechanisms}, contrasting the "Structure Masters" (GANs) which historically prioritized identity preservation, with the "Texture Masters" (Diffusion Models) which offered broad stylistic diversity---though modern hybrid methods increasingly blur this boundary. Furthermore, we critically analyze the technical trade-offs between identity fidelity and stylistic abstraction---the "Uncanny Valley" of stylization---and systematically categorize solutions for geometric deformation and content-style disentanglement. Finally, we discuss emerging frontiers in video consistency and 3D-aware stylization, and summarize open challenges as a practical roadmap for future research.
+  Portrait Style Transfer (PST) has evolved from a niche application of texture synthesis to a cornerstone of modern generative AI, powering applications from artistic avatars to photorealistic editing. This decade-long survey (2015-2025) provides a comprehensive review of the field, systematically analyzing over 115 publications (including 28 screened arXiv preprints) and approximately 90 distinct methods across four core generative families---NST \& Feature Transforms, GANs, Diffusion Models, and Autoregressive (AR) Models---plus emerging frontiers in 3D/NeRF and video stylization. To ensure rigor, our literature retrieval strategy centers on peer-reviewed venues, supplemented by 28 screened preprints from top-tier vision and graphics work, filtering for state-of-the-art mechanisms in identity-preserving stylization (see Section \ref{sec:intro:contributions} for the full search protocol). We propose a unified taxonomy based on \textit{Generative Mechanisms}, contrasting the "Structure Masters" (GANs) which historically prioritized identity preservation, with the "Texture Masters" (Diffusion Models) which offered broad stylistic diversity---though modern hybrid methods increasingly blur this boundary. Furthermore, we critically analyze the technical trade-offs between identity fidelity and stylistic abstraction---the "Uncanny Valley" of stylization---and systematically categorize solutions for geometric deformation and content-style disentanglement. Finally, we discuss emerging frontiers in video consistency and 3D-aware stylization, and summarize open challenges as a practical roadmap for future research.
 \end{abstract}
 
 \section{Introduction}
@@ -34,7 +34,7 @@ Portrait style transfer has progressed from early texture synthesis and optimiza
 
 \subsection{The Portrait Editing Trilemma: A Framework}
 \label{sec:intro:trilemma}
-In this survey, we identify a structural tension among three critical objectives. We term this the \textbf{"Portrait Editing Trilemma"}, an engineering trade-off framework used throughout the paper \cite{wang2024instantstyle,wang2025domaingp,yang_2022_cvpr,wright2022artfidqe}:
+In this survey, we identify a structural tension among three critical objectives. We term this the \textbf{"Portrait Editing Trilemma"}---to the best of our knowledge, the first explicit formalization of this three-way trade-off as a unifying lens for portrait editing. Its individual axes are instantiated by prior work on identity-preserving adapters \cite{wang2024instantstyle}, domain-generalizable stylization \cite{wang2025domaingp}, dual-style generation \cite{yang_2022_cvpr}, and the ArtFID fidelity metric \cite{wright2022artfidqe}:
 
 \begin{enumerate}
   \item \textbf{Identity Preservation}: The model must rigorously maintain the subject's unique likeness throughout the editing process.
@@ -61,22 +61,33 @@ This paper makes the following principal contributions:
   \item \textbf{Evaluation Protocol}: Proposing (and calling for adoption of) a "Golden Protocol" for robust benchmarking using Multi-Pillar metrics.
 \end{itemize}
 
-\textbf{Survey Methodology:} To ensure rigorous coverage, we conducted a systematic literature search following PRISMA-inspired guidelines. Our search targeted flagship venues---CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH (conferences) and TPAMI, TOG, IJCV, TVCG, TIP (journals)---published between 2015 and 2025. Keywords comprised four query categories: ``portrait stylization'', ``style transfer'', ``GAN inversion'', and ``diffusion-based editing''. The initial search returned approximately 480 records. After removing duplicates, approximately 320 unique records proceeded to title and abstract screening, which excluded purely unconditional generation, non-face stylization, and methods without explicit identity-preserving or structure-preserving controls, narrowing the pool to approximately 180 candidates. Full-text eligibility assessment yielded a final corpus of 115+ peer-reviewed publications. Of these, approximately 90 are distinct PST methods with dedicated stylization components; the remainder are foundational generative models (e.g., DDPM \cite{ho2020denoising}) included as theoretical prerequisites. The venue distribution spans CVPR (28), SIGGRAPH/TOG (10), ICCV (8), ECCV (5), NeurIPS and ICLR (12), TPAMI and other journals (10), and additional conferences (15), with approximately 28 arXiv preprints cited as emerging contributions. Relative to existing surveys---Kyprianidis et al.'s NPR taxonomy \cite{kyprianidis2013state}, Jing et al.'s NST survey \cite{jing2020neural}, and Xia et al.'s GAN inversion survey \cite{xia2023gan}---our work offers the first portrait-focused synthesis that bridges pre-deep-learning NPR foundations with modern generative paradigms and provides a unified evaluation protocol.
-We further highlight recent one-shot and real-time portrait stylization systems as motivating use cases for the taxonomy and evaluation protocol \cite{lai2025instantportraitop,wang2024magicfacetu}. Figure~\ref{fig:teaser_trilemma} provides a visual teaser of the Trilemma framing, while Figure~\ref{fig:timeline_evolution} summarizes the mechanism-level timeline used in this survey.
+\textbf{Survey Methodology:} To ensure rigorous coverage, we conducted a systematic literature search following PRISMA-inspired guidelines. Our search targeted flagship venues---CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH (conferences) and TPAMI, TOG, IJCV, TVCG, TIP (journals)---published between 2015 and 2025. Keywords comprised four query categories: ``portrait stylization'', ``style transfer'', ``GAN inversion'', and ``diffusion-based editing''. The initial search returned approximately 480 records. After removing duplicates, approximately 320 unique records proceeded to title and abstract screening, which excluded purely unconditional generation, non-face stylization, and methods without explicit identity-preserving or structure-preserving controls, narrowing the pool to approximately 180 candidates. Full-text eligibility assessment yielded a final corpus of 115+ publications, comprising 88 peer-reviewed venues and 28 screened arXiv preprints. Of these, approximately 90 are distinct PST methods with dedicated stylization components; the remainder are foundational generative models (e.g., DDPM \cite{ho2020denoising}) included as theoretical prerequisites. The venue distribution spans CVPR (28), SIGGRAPH/TOG (10), ICCV (8), ECCCV (5), NeurIPS and ICLR (12), TPAMI and other journals (10), and additional conferences (15), summing to 88 peer-reviewed venues, with a further 28 arXiv preprints cited as emerging contributions. Relative to existing surveys---Kyprianidis et al.'s NPR taxonomy \cite{kyprianidis2013state}, Jing et al.'s NST survey \cite{jing2020neural}, and Xia et al.'s GAN inversion survey \cite{xia2023gan}---our work offers the first portrait-focused synthesis that bridges pre-deep-learning NPR foundations with modern generative paradigms and provides a unified evaluation protocol.
+
+\begin{table}[t]
+\centering
+\caption{PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit{portrait stylization}, \textit{style transfer}, \textit{GAN inversion}, \textit{diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls.}
+\label{tab:prisma}
+\small
+\begin{tabular}{lr}
+\toprule
+\textbf{Screening stage} & \textbf{Records} \\
+\midrule
+Identified (venue + keyword search) & $\sim$480 \\
+After duplicate removal & $\sim$320 \\
+After title/abstract screening & $\sim$180 \\
+After full-text eligibility & 115+ (88 peer-reviewed + 28 arXiv preprints) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We further highlight recent one-shot and real-time portrait stylization systems as motivating use cases for the taxonomy and evaluation protocol \cite{lai2025instantportraitop,wang2024magicfacetu}. Figure~\ref{fig:teaser_trilemma} provides a visual teaser of the Trilemma framing used throughout this survey.
 Unlike early diffusion frameworks that often struggle with identity preservation during abstract stylization, recent adapter-based methods improve facial-topology consistency, as discussed in Section \ref{sec:methodology}. Nevertheless, failures under large style-domain shifts remain documented in recent analyses and benchmarks \cite{wright2022artfidqe,wang2025domaingp}. Furthermore, instead of vanilla 1000-step generation, practical pipelines commonly use accelerated samplers and typically operate in about 20--50 inference steps (e.g., DDIM-family settings) \cite{song2020denoising,rombach_2022_cvpr}.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.98\textwidth]{images/overview.png}
-  \caption{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes; representative qualitative comparisons across paradigms are discussed in Section~\ref{sec:methodology}.}
+  \caption{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref{sec:methodology}.}
   \label{fig:teaser_trilemma}
-\end{figure*}
-
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=0.98\textwidth]{images/timeline.png}
-  \caption{Mechanism-centered timeline of portrait style transfer (2015--2025). The main branch illustrates the progression from optimization and feed-forward stylizers to GAN and diffusion paradigms, while newer AR/3D/video directions are treated as an emerging frontier branch.}
-  \label{fig:timeline_evolution}
 \end{figure*}
 
 \section{Theoretical Foundations of Generative Stylization}
@@ -168,6 +179,7 @@ w^+ &= \arg\min_{w \in \mathcal{W}^+} \mathcal{L}_{LPIPS}\bigl(G(w), x\bigr) + \
 where the first stage finds a pivotal latent code and the second stage overfits the generator $G'$ to the specific portrait, trading editability for reconstruction accuracy. The reader is referred to the survey by Xia et al. \cite{xia2023gan} for a comprehensive overview of GAN inversion techniques. Despite this power, GANs struggle with one-shot transfer and domain generalization across diverse styles, which motivates the emergence of alternative continuous-time formulations \cite{karras2019style}.
 
 \subsection{Flow Matching Models}
+\label{sec:foundations:flow}
 \label{sec:theory:flowmatching}
 Flow-matching models provide a stable alternative to stochastic generative paths by modeling translation as an optimal-transport trajectory or a learned velocity field \cite{lipman2023flow}. Compared with noisy sampling trajectories, deterministic transport can reduce cumulative distortions and improve efficiency, and recent generalizable inverse-transport formulations connect flow matching to stylized translation and video domains \cite{cheng2023generalit,yang2023rerender}.
 
@@ -210,9 +222,9 @@ where $Q_s^i \in \mathbb{R}^{d_k}$ is a query feature at layer $i$ and $d_k$ is 
 \end{equation}
 where $\epsilon_t$ denotes a predicted noise term and superscripts indicate conditioning sources.
 
-Within the Adapter paradigm, the core architectures differ significantly: ControlNet utilizes spatial conditioning via residual feature injection \cite{zhang2023adding}, IP-Adapter employs decoupled cross-attention specifically for image prompts \cite{ye2023ipadapter}, and InstantID integrates ArcFace embeddings with weak spatial ControlNet conditioning \cite{wang2024instantid}. Quantitatively, these frameworks set new SOTA baselines; for instance, InstantStyle \cite{wang2024instantstyle} achieves an ArtFID of 42.48 on its evaluation benchmark.
+Within the Adapter paradigm, the core architectures differ significantly: ControlNet utilizes spatial conditioning via residual feature injection \cite{zhang2023adding}, IP-Adapter employs decoupled cross-attention specifically for image prompts \cite{ye2023ipadapter}, and InstantID integrates ArcFace embeddings with weak spatial ControlNet conditioning \cite{wang2024instantid}.
 
-Quantitatively, recent evaluations demonstrate competitive ArtFID scores for methods like InstantStyle (42.48) and StyleID (38.57) on their respective benchmarks \cite{ye2024stylemastersy}. To ensure global artistic coherence, recent systems also employ semantic-aligned adversarial objectives that operate on pretrained vision backbones (e.g., ViT feature manifolds \cite{kwon2022diffuseit}, a diffusion-based method discussed further in Section \ref{sec:methodology}, \cite{cheng2023visual}). Despite their strengths, diffusion models typically require explicit identity/structure controls to avoid identity drift and content leakage under strong stylization.
+Quantitatively, recent evaluations report competitive ArtFID scores for identity-preserving adapters such as InstantStyle \cite{wang2024instantstyle}. To ensure global artistic coherence, recent systems also employ semantic-aligned adversarial objectives that operate on pretrained vision backbones (e.g., ViT feature manifolds \cite{kwon2022diffuseit}, a diffusion-based method discussed further in Section \ref{sec:methodology}, \cite{cheng2023visual}). Despite their strengths, diffusion models typically require explicit identity/structure controls to avoid identity drift and content leakage under strong stylization.
 
 \subsection{Unifying Framework: Control Signal, Prior, and Constraint}
 \label{sec:theory:unified}
@@ -278,11 +290,11 @@ To avoid ambiguity in survey writing, we use \textit{Methods and Method Taxonomy
 
 \textbf{Core Mechanism:} The foundational mechanism of Neural Style Transfer (NST) treats stylization as a statistical matching problem within the deep feature spaces of Convolutional Neural Networks (e.g., VGG). It explicitly separates content from style by associating spatial feature maps with structure and channel-wise statistics (e.g., Gram matrices, mean, and variance) with texture. Later extensions bypassed iterative optimization by employing feed-forward feature transformations, such as Adaptive Instance Normalization (AdaIN), which directly aligns the mean and variance of the content features to match those of the style reference.
 
-\textbf{Representative Methods (Coverage: $\sim$12 papers):} Portrait-specific NST was first explored by Selim et al. \cite{selim2016portrait} for head portraits, following Gatys et al.'s paradigm \cite{gatys2015ana}. To achieve real-time transfer, Huang et al. introduced AdaIN \cite{huang2017arbitraryst}, which became the standard for arbitrary style transfer. For portrait-specific applications requiring dense semantic correspondences, Luan et al. proposed Deep Photo Style Transfer \cite{luan2017deepps}, while subsequent works like Avatar-Net \cite{avatar-net} and AdaAttN \cite{liu2021adaattnra} integrated attention mechanisms to decorate semantic features locally without distorting facial layouts. For a comprehensive treatment of the broader NST landscape, including pre-deep-learning foundations, we refer to the survey by Jing et al. \cite{jing2020neural}.
+\textbf{Representative Methods (Coverage: $\sim$12 papers):} Portrait-specific NST was first explored by Selim et al. \cite{selim2016portrait} for head portraits, following Gatys et al.'s paradigm \cite{gatys2015ana}. To achieve real-time transfer, Huang et al. introduced AdaIN \cite{huang2017arbitraryst}, which became the standard for arbitrary style transfer. For portrait-specific applications requiring dense semantic correspondences, Luan et al. proposed Deep Photo Style Transfer \cite{luan2017deepps}, while subsequent works like Avatar-Net \cite{avatar-net} and AdaAttN \cite{liu2021adaattnra} integrated attention mechanisms to decorate semantic features locally without distorting facial layouts. For a comprehensive treatment of the broader NST landscape, including pre-deep-learning foundations, we refer to the survey by Jing et al. \cite{jing2020neural}. Beyond classical optimization-based NST, feed-forward variants also explore flow-based bijective formulations for unbiased transfer \cite{artflow}, as well as multimodal unsupervised image-to-image translation that supports diverse stylized outputs from a single content image \cite{huang2018multimodal}. Puff-Net~\cite{zheng2024puffnet} further pursues efficient 2D NST through pure content--style feature fusion.
 
-\textbf{Advantages:} These methods are highly efficient (in their feed-forward variants) and theoretically unbiased, capable of achieving zero-shot arbitrary style transfer without the need for extensive domain-specific pretraining. They mathematically guarantee the decoupling of structure and texture statistics.
+\textbf{Advantages:} These methods are highly efficient (in their feed-forward variants) and capable of achieving zero-shot arbitrary style transfer without the need for extensive domain-specific pretraining. They mathematically guarantee the decoupling of structure and texture statistics.
 
-\textbf{Limitations:} The primary failure mode is \textit{structural drift}. Since Gram matrices and global statistics are completely agnostic to spatial geometry, these methods often misalign facial components (e.g., applying eye makeup textures to the background). Furthermore, feed-forward transforms often blur high-frequency details, resulting in "washed-out" portrait textures. Quantitatively, classic NST approaches reflect these limitations; for instance, AdaIN yields an ArtFID of 31.85 on the StyleInV benchmark, highlighting the distributional gap relative to diffusion-based alternatives evaluated under comparable protocols \cite{chung2023styleii}.
+\textbf{Limitations:} The primary failure mode is \textit{structural drift}. Since Gram matrices and global statistics are completely agnostic to spatial geometry, these methods often misalign facial components (e.g., applying eye makeup textures to the background). Furthermore, feed-forward transforms often blur high-frequency details, resulting in "washed-out" portrait textures. Quantitatively, classic NST approaches exhibit a notable distributional gap under ArtFID---for instance, AdaIN yields an ArtFID of $13.222 \pm 0.549$ (Wright and Ommer, Table~1; Places365/COCO content with WikiArt/BAM style at $512\times512$) \cite{wright2022artfidqe}---relative to diffusion-based alternatives evaluated under comparable protocols.
 
 % ==========================================
 % 3.2 GAN-Based Methods
@@ -295,6 +307,8 @@ To avoid ambiguity in survey writing, we use \textit{Methods and Method Taxonomy
 \textbf{Representative Methods (Coverage: $\sim$25 papers):} The foundation relies on StyleGAN's architecture \cite{karras2019style,karras2020stylegan2}. For inversion and latent editing, AgileGAN \cite{song2021agilegan} introduced a hierarchical Variational Autoencoder to ensure inversion consistency. To tackle severe geometric deformations (e.g., anime or caricatures), DualStyleGAN \cite{yang2022dualstylegan}, StyleCariGAN \cite{jang2021stylecarigan}, WarpGAN \cite{shi2018warpganac}, and APDrawingGAN \cite{yi2019apdrawinggan} explicitly decoupled structural warping from color transfer or employed hierarchical local generators for dedicated region-level drawing strategies. Additionally, one-shot fine-tuning techniques like BlendGAN \cite{liu2021blendgan}, StyleFace \cite{sain2023styleface}, resolution-dependent GAN interpolation \cite{pinkney2020resolution}, and StarGAN \cite{choi2018stargan} advanced domain adaptation with minimal data. Figure~\ref{fig:stylegan_pipeline} summarizes the inversion and editing path used in representative GAN pipelines.
 
 For task-specific evidence, DualStyleGAN reports strong performance on FS2K face-sketch synthesis (2,104 photo--sketch pairs), including LPIPS $=0.3012$, ID loss $=0.0247$, SCOOT $=0.4490$, and FSIM $=0.3631$ under a shared comparison protocol \cite[see Tables~4--6]{yang2022dualstylegan}. While these sketch-oriented metrics are not directly comparable to broader portrait stylization, the original study establishes its open-domain generalization through comprehensive human evaluation. Evaluated across unconstrained Cartoon, Caricature, and Anime datasets, DualStyleGAN achieves an average human preference score of 83\% (e.g., 93\% on the Cartoon dataset, \cite[see Table~7]{yang2022dualstylegan}), significantly outperforming baseline translation models like StarGANv2 and U-GAT-IT.
+
+Recent GAN-based works further extend geometric control and data-efficient stylization. DragGAN~\cite{pan2023draggan} enables interactive point-based manipulation directly on the generative image manifold, letting users drag semantic handles (e.g., facial landmarks) while preserving photorealism. For data-efficient stylization, JoJoGAN~\cite{jojogan} achieves one-shot face stylization by fine-tuning a pretrained StyleGAN on a single reference with generative augmentation, while DCT-Net~\cite{men2022dctnet} introduces domain-calibrated translation to stabilize portrait-to-caricature mapping. These advances push GAN editing beyond latent arithmetic toward user-driven and few-shot regimes. At the generator level, StyleGAN3~\cite{karras2021stylegan3} improves alias-free synthesis for higher-frequency fidelity, while StyleGAN-NADA~\cite{gal2021stylegannada} enables CLIP-driven, text-guided domain adaptation without retraining; unpaired translation is further supported by GP-UNIT~\cite{gpunit_paper}.
 
 \begin{figure*}[t]
   \centering
@@ -320,7 +334,11 @@ For task-specific evidence, DualStyleGAN reports strong performance on FS2K face
 2) \textit{Training-free methods:} InstantStyle \cite{wang2025instantstyleplus}, StyleAligned \cite{hertz2023styleai}, Style Injection \cite{chung2023styleii}, MasaCtrl \cite{cao2023masactrl}, ZeCon \cite{yang2023zecon}, Visual Style Prompting \cite{jeong2024visualsp}, FreeStyle \cite{he2024freestylefl}, and DiffuseIT \cite{kwon2022diffuseit} achieved zero-shot transfer via attention-control and feature-guidance mechanisms. To accelerate the process, ZePo \cite{liu2024zepozp} and DEADiff \cite{qi2024deadiff} introduced efficient stylization paths without full model retraining.
 3) \textit{Adapters:} InstantID \cite{wang2024instantid}, StyleBooth \cite{han2024styleboothis}, MagicFace \cite{wang2024magicfacetu}, Visual Concept Translator \cite{cheng2023visual}, StyleTokenizer \cite{li2024styletokenizerdi}, and CreativeSynth \cite{huang2024creativesynthcf} utilized lightweight conditioning modules to bind identity, style tokens, and cross-art attention signals.
 
-4) \textit{Inversion and editing:} DiffusionCLIP \cite{kim2022diffusionclip} remains a representative text-guided inversion/editing baseline in portrait-centric diffusion pipelines.
+4) \textit{Inversion and editing:} DiffusionCLIP \cite{kim2022diffusionclip} remains a representative text-guided inversion/editing baseline in portrait-centric diffusion pipelines. Inversion-based style transfer further extends diffusion to explicit content--style decomposition \cite{zhang2022inversionbasedst}.
+
+Beyond the adapters above, a wave of 2024--2025 works targets identity-preserving and tuning-free stylization on diffusion backbones. PhotoMaker~\cite{li2024photomaker} stacks ID embeddings for efficient personalized portrait generation, while PULID~\cite{guo2024pulid} and ConsistentID~\cite{huang2024consistentid} improve ID fidelity through contrastive alignment and multimodal fine-grained identity control, respectively. For pure style transfer, StyleShot~\cite{gao2024styleshot} introduces a style-aware encoder with a decoupling strategy to mimic arbitrary reference styles without test-time tuning. Together these works show a clear shift from full fine-tuning toward lightweight, identity-aware, and test-free diffusion stylization.
+
+Closely related, rectified-flow and flow-matching editors (e.g., FlowEdit, DVRF, FlowAlign, introduced in Section~\ref{sec:foundations:flow}) reformulate stylization as a deterministic optimal-transport ODE, providing inversion-free editing with stronger structure retention than stochastic diffusion sampling \cite{flowedit2025,dvrf2025,flowalign2025}.
 
 \textbf{Advantages:} Diffusion models offer \textit{unprecedented semantic diversity} and open-vocabulary control. Unlike GANs, they are not constrained by facial alignment and can seamlessly stylize the portrait alongside complex backgrounds, lighting, and out-of-domain aesthetic concepts.
 
@@ -348,27 +366,28 @@ Recent empirical results highlight the competitiveness of this paradigm. For exa
 \label{tab:comparison_matrix}
 \small
 \setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{lcccp{1.8cm}ccl}
+\begin{tabular}{lcccp{1.8cm}cl}
 \toprule
-\textbf{Method} & \textbf{Paradigm} & \textbf{Identity} & \textbf{Setup} & \textbf{Speed} & \textbf{T} & \textbf{Limitation} \\
+\textbf{Method} & \textbf{Paradigm} & \textbf{Identity} & \textbf{Setup} & \textbf{Speed} & \textbf{Limitation} \\
 \midrule
-Gatys et al.~\cite{gatys2015ana} & NST & Gram matrix & Opt., style img & $\bullet$~min & --- & Structural drift \\
-AdaIN~\cite{huang2017arbitraryst} & NST & AdaIN stats & FF, style set & $\bigstar$~$<$1s & --- & Washed-out texture \\
-Deep Photo~\cite{luan2017deepps} & NST & Semantic corresp. & Opt., style img & $\bullet$~min & --- & Semantic misalign. \\
+Gatys et al.~\cite{gatys2015ana} & NST & Gram matrix & Opt., style img & $\bullet$~min & Structural drift \\
+AdaIN~\cite{huang2017arbitraryst} & NST & AdaIN stats & FF, style set & $\bigstar$~$<$1s & Washed-out texture \\
+Deep Photo~\cite{luan2017deepps} & NST & Semantic corresp. & Opt., style img & $\bullet$~min & Semantic misalign. \\
 \midrule
-DualStyleGAN~\cite{yang2022dualstylegan} & GAN & Intrinsic/extrinsic path & FF, StyleGAN & $\bigstar$~$<$1s & --- & Domain lock-in \\
-pSp/e4e~\cite{richardson2021encoding} & GAN & Encoder $W^+$ inv. & FF, enc. trn. & $\blacktriangle$~sec & --- & Inv. quality trade-off \\
-AgileGAN~\cite{song2021agilegan} & GAN & Hier. VAE $W^+$ inv. & FF, few-shot & $\bigstar$~130ms & --- & Geometric collapse \\
-VToonify~\cite{yang2022vtoonify} & GAN & Multiscale feat.+StyleGAN & FF, StyleGAN ft. & $\bigstar$~RT & $\checkmark$ & Domain bound \\
+DualStyleGAN~\cite{yang2022dualstylegan} & GAN & Intrinsic/extrinsic path & FF, StyleGAN & $\bigstar$~$<$1s & Domain lock-in \\
+pSp/e4e~\cite{richardson2021encoding} & GAN & Encoder $W^+$ inv. & FF, enc. trn. & $\blacktriangle$~sec & Inv. quality trade-off \\
+AgileGAN~\cite{song2021agilegan} & GAN & Hier. VAE $W^+$ inv. & FF, few-shot & $\bigstar$~130ms & Geometric collapse \\
+VToonify~\cite{yang2022vtoonify} & GAN & Multiscale feat.+StyleGAN & FF, StyleGAN ft. & $\bigstar$~RT & Domain bound \\
 \midrule
-InstantID~\cite{wang2024instantid} & Diff. & ArcFace cross-attn. & FF, zero-shot & $\blacktriangle$~sec & --- & Content leakage \\
-IP-Adapter~\cite{ye2023ipadapter} & Diff. & Decoupled cross-attn. & FF, adapt. trn. & $\blacktriangle$~sec & --- & Style bleeding \\
-DreamBooth~\cite{ruiz2023dreambooth} & Diff. & Subject token tuning & FT, few-shot & $\bullet$~min & --- & Catastr. overfit \\
-StyleMaster~\cite{ye2024stylemastersy} & Diff. & Motion adapt.+global proj. & FF, 10K pairs & $\blacktriangle$~0.6s & $\checkmark$ & Flicker \\
+InstantID~\cite{wang2024instantid} & Diff. & ArcFace cross-attn. & FF, zero-shot & $\blacktriangle$~sec & Content leakage \\
+IP-Adapter~\cite{ye2023ipadapter} & Diff. & Decoupled cross-attn. & FF, adapt. trn. & $\blacktriangle$~sec & Style bleeding \\
+DreamBooth~\cite{ruiz2023dreambooth} & Diff. & Subject token tuning & FT, few-shot & $\bullet$~min & Catastr. overfit \\
+StyleMaster~\cite{ye2024stylemastersy} & Diff. & Motion adapt.+global proj. & FF, 10K pairs & $\blacktriangle$~0.6s & Flicker \\
+FlowEdit/DVRF~\cite{flowedit2025,dvrf2025} & Diff. & Rectified-flow ODE & FF, inversion-free & $\bigstar$~sec & Trajectory tuning \\
 \midrule
-EditAR~\cite{mu2025editar} & AR & Feat. distill.+tokens & FF, large-scale & $\bigstar$~$<$1s & --- & Quantiz. artifacts \\
-VAR~\cite{tian2024var} & AR & Next-scale predict. & FF, large-scale & $\bigstar$~0.8s & --- & Codebook collapse \\
-MaskGIT~\cite{chang2022maskgit} & AR & Bidir. masked modeling & FF, large-scale & $\bigstar$~$<$1s & --- & Resolution limit \\
+EditAR~\cite{mu2025editar} & AR & Feat. distill.+tokens & FF, large-scale & $\bigstar$~$<$1s & Quantiz. artifacts \\
+VAR~\cite{tian2024var} & AR & Next-scale predict. & FF, large-scale & $\bigstar$~0.8s & Codebook collapse \\
+MaskGIT~\cite{chang2022maskgit} & AR & Bidir. masked modeling & FF, large-scale & $\bigstar$~$<$1s & Resolution limit \\
 \bottomrule
 \end{tabular}
 \setlength{\tabcolsep}{6pt}
@@ -410,6 +429,8 @@ Methods such as VToonify are commonly used as baselines for video consistency, e
 
 For transparency, currently available reports in this survey's source set do not provide a unified CelebV-HQ benchmark table with FID/CLIP-S/ID-Sim simultaneously reported for StyleMaster, VToonify-D, and ReRender-A-Video under one protocol. We therefore avoid constructing a pseudo-comparable numeric ranking in this subsection.
 
+Complementary to stylization-specific pipelines, general portrait video generation has advanced rapidly in 2024--2025. AnimateDiff~\cite{guo2024animatediff} animates personalized text-to-image diffusion models without task-specific tuning, while MagicAnimate~\cite{xu2024magicanimate} and AnimateAnyone~\cite{hu2024animateanyone} focus on temporally consistent human-image and character animation driven by pose signals. LivePortrait~\cite{guo2024liveportrait} further enables efficient portrait animation with stitching and retargeting control for expressive facial motion. These methods supply the motion and identity priors that downstream portrait stylization can build upon.
+
 \subsection{Local Editing and Makeup Transfer (Fine-grained Control)}
 \label{sec:advanced:local}
 Local editing shifts the goal from global stylization to region-specific manipulation (e.g., lips or eyes) while preserving skin texture and global identity. This introduces a ``precision paradox'': commercial scenarios such as virtual try-on demand near-perfect identity preservation, yet require high-frequency local texture changes without introducing artifacts in non-target regions \cite{yan2023facestudiopy,liu2023portraitdt,ambiel2023portraitsa}. Cross-domain cartoon/manga stylization (e.g., photo-to-manga) further exemplifies the precision--fidelity trade-off under extreme stylization \cite{su2021mangagan}.
@@ -420,18 +441,18 @@ Stable-Makeup \cite{zhang2024stablemakeup} explicitly separates identity prompts
 
 \subsubsection{Baselines and Data Synthesis}
 \label{sec:advanced:local:baselines}
-Classic GAN-based baselines include BeautyGAN \cite{li2018beautygan}, PSGAN \cite{jiang2020psgan}, and LADN \cite{gu2019ladn}, which emphasize robust spatial alignment and local-region transfer under pose/expression variation. EleGANt further improves local editability through style-to-source alignment and shifted-window attention, and reports reconstruction-oriented metrics on MT-Eval and Makeup-Wild \cite{yang2022elegant}. More recent editing/synthesis pipelines (e.g., prompt-guided editors) can also generate pseudo-paired data or guidance signals that encourage high-frequency cosmetic detail without corrupting non-target facial regions.
+Classic GAN-based baselines include BeautyGAN \cite{li2018beautygan}, PSGAN \cite{jiang2020psgan}, and LADN \cite{gu2019ladn}, which emphasize robust spatial alignment and local-region transfer under pose/expression variation. EleGANt further improves local editability through style-to-source alignment and shifted-window attention, and reports reconstruction-oriented metrics on MT-Eval and Makeup-Wild \cite{yang2022elegant}. More recent editing/synthesis pipelines (e.g., prompt-guided editors) can also generate pseudo-paired data or guidance signals that encourage high-frequency cosmetic detail without corrupting non-target facial regions. At the intersection of local editing and global compositing, Barbershop~\cite{zhu2021barbershop} performs GAN-based image compositing using segmentation masks to transplant local attributes (e.g., hair) between portraits while preserving surrounding identity, illustrating the precision--fidelity trade-off in localized portrait manipulation.
 
 \subsection{3D-Aware Portrait Stylization}
 \label{sec:advanced:3d}
 Current methodologies for 3D-aware stylization are rapidly transitioning from Neural Radiance Fields (NeRF) to 3D Gaussian Splatting (3DGS) due to the latter's explicit geometric representation and real-time rendering capabilities. Recent pioneering works, such as 3DToonify \cite{threedtoonify2024} and StyleSplat \cite{jain2024stylesplat}, have demonstrated high-fidelity stylized avatar creation by coupling 3DGS with diffusion priors.
 
-To address multi-view inconsistency and rendering latency, a series of concurrent works in 2024--2025 have further extended these frameworks. While NeRF-based methods prioritize continuous volumetric quality, emerging 3DGS adaptations specifically target sub-second interactive rendering (as self-reported in recent concurrent literature, though standard cross-platform benchmarks remain to be independently verified) and dynamic audio-driven expressions. Despite these rapid advances, decoupling non-rigid topological deformations (e.g., exaggerated anime eyes) from static appearance fields without causing catastrophic geometric collapse remains a critical open challenge.
+To address multi-view inconsistency and rendering latency, a series of concurrent works in 2024--2025 have further extended these frameworks. While NeRF-based methods prioritize continuous volumetric quality, emerging 3DGS adaptations specifically target sub-second interactive rendering (as self-reported in recent concurrent literature, though standard cross-platform benchmarks remain to be independently verified) and dynamic audio-driven expressions. Despite these rapid advances, decoupling non-rigid topological deformations (e.g., exaggerated anime eyes) from static appearance fields without causing catastrophic geometric collapse remains a critical open challenge. The 2024--2025 3DGS wave also brings specialized portrait components. 3DGS-Avatar~\cite{qian20243dgsavatar} models animatable avatars via deformable 3D Gaussian splatting with explicit skeletal control, while GaussianHair~\cite{luo2024gaussianhair} reconstructs and renders hair using light-aware Gaussians for photorealistic strand-level detail. Such components extend stylized avatars from holistic appearance toward disentangled, animatable, and high-frequency geometry. Earlier NeRF-based stylization laid the groundwork: NeRF-Art~\cite{wang2022nerf} performs text-driven 3D scene stylization, while StylizedNeRF~\cite{huang2022stylizednerf} extends radiance-field stylization to portraits.
 
 \subsubsection{Key Technical Challenges}
 The primary obstacle lies in disentangling rigid topology from stylistic textures. Methods such as those by Feng and Singhal \cite{feng20233dfs} utilize hybrid NeRF and mesh rasterization to address this. Current 3DGS implementations must balance texture and aesthetic guidance while ensuring the underlying canonical face mesh does not collapse during extreme artistic stylization.
 \label{sec:advanced:3d:rigging}
-3D-aware control mechanisms leverage parametric facial models and semantic directions (pose, expression, age) to preserve structural controllability during stylization. Such rigging-style controls provide stable geometry priors that help maintain identity under multi-view rendering \cite{zheng2024puffnet}.
+3D-aware control mechanisms leverage parametric facial models and semantic directions (pose, expression, age) to preserve structural controllability during stylization. Such rigging-style controls provide stable geometry priors that help maintain identity under multi-view rendering.
 
 \subsubsection{Texture and Aesthetic Guidance}
 \label{sec:advanced:3d:guidance}
@@ -439,7 +460,7 @@ Depth-heavy aesthetics can be encouraged using 3D-oriented prompts (e.g., ``3D r
 
 \subsection{Summary}
 \label{sec:advanced:summary}
-For 3D-aware tasks, while static NeRFs provide high-fidelity novel views, dynamic 3DGS methods trade some geometric rigidity for sub-second rendering and real-time animatability. For a structured comparison of open challenges across these advanced task domains, see Table \ref{tab:research_roadmap} in Section \ref{sec:discussion}. Overall, advanced portrait tasks push PST beyond global 2D stylization toward temporal coherence, fine-grained local control, and multi-view consistency. These settings typically require specialized auxiliary networks, stronger regularization, and structure-aware controls to maintain identity under significantly more demanding constraints \cite{ye2024stylemastersy,zheng2024puffnet,jain2024stylesplat}.
+For 3D-aware tasks, while static NeRFs provide high-fidelity novel views, dynamic 3DGS methods trade some geometric rigidity for sub-second rendering and real-time animatability. For a structured comparison of open challenges across these advanced task domains, see Table \ref{tab:research_roadmap} in Section \ref{sec:discussion}. Overall, advanced portrait tasks push PST beyond global 2D stylization toward temporal coherence, fine-grained local control, and multi-view consistency. These settings typically require specialized auxiliary networks, stronger regularization, and structure-aware controls to maintain identity under significantly more demanding constraints \cite{ye2024stylemastersy,jain2024stylesplat}.
 
 \section{Evaluation Metrics and The Benchmark Protocol}
 \label{sec:evaluation}
@@ -467,20 +488,20 @@ User Study       & Occasional & Common & Occasional & Rare \\
 \end{tabular}
 \end{table*}
 
-To address the inconsistencies highlighted in prior works and improve cross-paper reproducibility, we formalize a comprehensive benchmark framework, termed the \textbf{"Golden Protocol"}. This protocol mandates a multi-pillar approach encompassing standardized experimental configurations, distribution-aware quantitative metrics, and rigorous human-centric qualitative studies.
+To address the inconsistencies highlighted in prior works and improve cross-paper reproducibility, we formalize a comprehensive benchmark framework, termed the \textbf{"Golden Protocol"} (a \textit{proposed} guideline; it is \underline{not} empirically executed within this survey, which only surveys existing reports). This protocol recommends a multi-pillar approach encompassing standardized experimental configurations, distribution-aware quantitative metrics, and rigorous human-centric qualitative studies.
 
 % ==========================================
 % 5.1 Standardized Configuration & Reproducibility
 % ==========================================
-\subsection{The Golden Protocol: Benchmark Configuration}
+\subsection{The Golden Protocol: A Proposed Benchmark Guideline}
 \label{sec:evaluation:configuration}
 
-A persistent flaw in current literature is the "cherry-picking" of style-content pairs. To ensure a fair and reproducible evaluation, the Golden Protocol requires researchers to explicitly report the following standardized configurations:
+A persistent flaw in current literature is the "cherry-picking" of style-content pairs. To ensure a fair and reproducible evaluation, the Golden Protocol recommends that researchers report the following standardized configurations:
 
 \begin{itemize}
-\item \textbf{Dataset Standardization:} Evaluations must be conducted on universally recognized test splits. We recommend sampling 1,000 to 5,000 paired combinations using high-quality content datasets (e.g., FFHQ or CelebA-HQ) and specific style domains (e.g., WikiArt for textures, Danbooru for anime, or AAHQ for artistic portraits). For prompt-based models, standard prompt suites from OmniStyle-1M (see Section~\ref{sec:datasets:omnistyle}) should be utilized to test long-tail style vocabularies.
-\item \textbf{Sampling \& Hyperparameters:} For diffusion-based models, authors must strictly report the inference settings: the choice of sampler (e.g., DDIM), the exact number of denoising steps (typically 30--50 steps for training-free methods), and the Classifier-Free Guidance (CFG) scale.
-\item \textbf{Reporting Format:} All quantitative results must be aggregated over fixed random seeds (e.g., 3-5 seeds per prompt/image) and reported in a strict \textit{Mean $\pm$ Standard Deviation} format. For deterministic models (e.g., GAN-based), seed variation applies to inversion optimization; report mean $\pm$ std over 3-5 inversion runs.
+\item \textbf{Dataset Standardization:} Evaluations should be conducted on universally recognized test splits. We recommend sampling 1,000 to 5,000 paired combinations using high-quality content datasets (e.g., FFHQ or CelebA-HQ) and specific style domains (e.g., WikiArt for textures, Danbooru for anime, or AAHQ for artistic portraits). For prompt-based models, standard prompt suites from OmniStyle-1M (see Section~\ref{sec:datasets:omnistyle}) should be utilized to test long-tail style vocabularies.
+\item \textbf{Sampling \& Hyperparameters:} For diffusion-based models, authors should report the inference settings: the choice of sampler (e.g., DDIM), the exact number of denoising steps (typically 30--50 steps for training-free methods), and the Classifier-Free Guidance (CFG) scale.
+\item \textbf{Reporting Format:} All quantitative results should be aggregated over fixed random seeds (e.g., 3-5 seeds per prompt/image) and reported in a strict \textit{Mean $\pm$ Standard Deviation} format. For deterministic models (e.g., GAN-based), seed variation applies to inversion optimization; report mean $\pm$ std over 3-5 inversion runs.
 \end{itemize}
 
 % ==========================================
@@ -489,7 +510,7 @@ A persistent flaw in current literature is the "cherry-picking" of style-content
 \subsection{Multi-Pillar Quantitative Benchmarking}
 \label{sec:evaluation:quantitative}
 
-Following the configurations above, the generated outputs must be assessed along three distinct axes to reflect the Portrait Editing Trilemma:
+Following the configurations above, the generated outputs should be assessed along three distinct axes to reflect the Portrait Editing Trilemma:
 
 \textbf{1) Identity Integrity (ID Score):} Identity preservation is measured by computing the cosine similarity between the deep facial embeddings of the source and stylized images using pre-trained recognition models (e.g., ArcFace \cite{deng2019arcface} or CurricularFace), and this protocol is widely adopted by portrait-specific baselines such as StyleFace \cite{sain2023styleface}.
 \textit{Critical Caveat:} It is crucial to acknowledge that ID networks are trained on photorealistic domains. When applied to abstract or exaggerated styles (e.g., Cubism or Caricatures), the ID Score naturally degrades despite human recognizable likeness. Thus, ID Scores should only be compared strictly within the same target style domain.
@@ -508,13 +529,13 @@ Following the configurations above, the generated outputs must be assessed along
 
 Because stylization quality is ultimately determined by human perception, objective metrics must be anchored by rigorous subjective evaluation.
 
-\textbf{Human A/B Testing Protocol:} We standardize the user study methodology to a Two-Alternative Forced Choice (2AFC) or a Mean Opinion Score (MOS) framework \cite{ambiel2023portraitsa}. Evaluators must score outputs on a 5-point Likert scale across three isolated criteria: \textit{(i) Identity Preservation}, \textit{(ii) Style Faithfulness}, and \textit{(iii) Overall Aesthetic Preference}.
+\textbf{Human A/B Testing Protocol:} We standardize the user study methodology to a Two-Alternative Forced Choice (2AFC) or a Mean Opinion Score (MOS) framework \cite{streijl2016mean}. Evaluators must score outputs on a 5-point Likert scale across three isolated criteria: \textit{(i) Identity Preservation}, \textit{(ii) Style Faithfulness}, and \textit{(iii) Overall Aesthetic Preference}.
 
 \emph{Methodological considerations.} Surveying current user studies in PST reveals wide variability: sample sizes range from 10 to 100+ raters per condition, and fewer than half report inter-rater reliability (e.g., Fleiss' Kappa or Krippendorff's Alpha) \cite{selim2016portrait,yi2019apdrawinggan}. Best practices from perceptual quality assessment recommend at least 20--30 raters per condition for MOS and 15+ pairwise comparisons per pair for 2AFC designs to achieve 80\% statistical power at $\alpha = 0.05$ \cite{streijl2016mean}. To further reduce demographic bias in aesthetic judgments, rater pools should include diverse age, gender, and cultural backgrounds.
 
 While current literature coverage of ArtFID remains limited, we strongly call for its adoption as a standard metric in future PST benchmarks to unify aesthetic evaluation.
 
-\textbf{Large Multimodal Models (LMMs) as Evaluators:} Driven by the high cost of human crowdsourcing, recent pipelines incorporate advanced LMMs (e.g., GPT-4o \cite{hurst2024gpt4o}) as scalable proxies for qualitative scoring. Under the Golden Protocol, when using LMMs, the evaluation prompt must be explicitly structured to mimic human cognitive processes via Chain-of-Thought (CoT) reasoning. The prompt should explicitly instruct the LMM to disentangle "biometric preservation" from "stylistic abstraction".
+\textbf{Large Multimodal Models (LMMs) as Evaluators:} Driven by the high cost of human crowdsourcing, recent pipelines incorporate advanced LMMs (e.g., GPT-4o \cite{hurst2024gpt4o}) as scalable proxies for qualitative scoring. Under the Golden Protocol, when using LMMs, the evaluation prompt should be explicitly structured to mimic human cognitive processes via Chain-of-Thought (CoT) reasoning. The prompt should explicitly instruct the LMM to disentangle "biometric preservation" from "stylistic abstraction".
 
 \emph{Current limitations and calibration.} Despite their promise, LMM-based evaluation introduces systematic biases. Recent benchmarks show LMMs exhibit position bias, authority bias, and sensitivity to superficial visual features (e.g., color saturation and contrast), while under-detecting high-frequency artifacts such as texture swimming \cite{chen2024mllmjudge}. Moreover, LMM judgments lack the perceptual grounding of human vision; they are trained on caption--image alignment rather than aesthetic preference. Calibration strategies---including multi-prompt aggregation, temperature averaging over repeated trials, and human-anchored normalization---can reduce but not eliminate these distortions. We therefore recommend LMM scores as a rapid screening tool rather than a replacement for formal user studies.
 
@@ -534,7 +555,7 @@ The evolution of portrait style transfer has been fundamentally reshaped by the 
 
 \textbf{Content Datasets and Privacy Compliance.} In common research practice, dataset deployment must navigate strict licensing constraints rather than relying solely on technical availability. For instance, FFHQ provides specific opt-out mechanisms for privacy compliance\footnote{See maintainer documentation: \url{https://github.com/NVlabs/ffhq-dataset}}, while CelebA-HQ and Danbooru carry varying degrees of commercial restriction and copyright risks\footnote{Refer to community compliance guidelines regarding scraped datasets for non-commercial research.}. To mitigate these legal risks, recent methodologies are pivoting towards large-scale synthetic datasets.
 
-\textbf{Style Repositories.} To define the artistic target domain, researchers predominantly utilize WikiArt \cite{wikiart} (250,000+ general artworks) for global brushstroke modeling, and Danbooru \cite{danbooru2021} for tag-based controllable anime stylization. For human-centric artistic portraits, AAHQ (25,000+ curated artistic faces) serves as a robust benchmark to prevent models from collapsing into a generic "average" artistic style.
+\textbf{Style Repositories.} To define the artistic target domain, researchers predominantly utilize WikiArt \cite{wikiart} (250,000+ general artworks) for global brushstroke modeling, and Danbooru \cite{danbooru2021} for tag-based controllable anime stylization. For human-centric artistic portraits, AAHQ \cite{liu2021blendgan} (25,000+ curated artistic faces) serves as a robust benchmark to prevent models from collapsing into a generic "average" artistic style.
 
 % ==========================================
 % 6.2 Large-Scale Synthetic Data: The OmniStyle-1M Paradigm
@@ -546,7 +567,7 @@ Historically, the advancement of supervised style transfer and instruction-guide
 
 To bridge this critical gap, Wang et al. \cite{wang2025omnistyle} recently introduced \textbf{OmniStyle-1M}, a massive dataset comprising over one million highly curated triplets: (1) a content image, (2) a style reference, and (3) the resulting stylized output, spanning 1,000 fine-grained style categories.
 
-\textbf{Data Generation and OmniFilter:} The construction of OmniStyle-1M represents a paradigm shift in automated dataset curation. Content images across 20 categories are initially synthesized using the FLUX model combined with ChatGPT-generated prompts. To ensure diverse style representations, six state-of-the-art (SOTA) transfer models are employed to generate candidate stylized results. Crucially, to eliminate structural drift and style degradation, the authors proposed \textbf{OmniFilter}, an automated evaluation pipeline utilizing Large Multimodal Models (LMMs, such as InternVL). OmniFilter strictly scores each generated triplet across three explicit axes: \textit{Content Preservation} (semantic and structural integrity), \textit{Style Consistency}, and \textit{Aesthetic Appeal}. Only triplets passing this rigorous filtering are retained. Training on this strictly aligned, explicitly filtered triplet data enables current Diffusion Transformers (DiT) to achieve highly predictable and artifact-free zero-shot stylizations \cite{wang2025omnistyle}. Since content images in OmniStyle-1M are AI-synthesized, downstream models may inherit generative biases from FLUX; complementary evaluation on real-face datasets (e.g., FFHQ) is strongly recommended.
+\textbf{Data Generation and OmniFilter:} The construction of OmniStyle-1M represents a paradigm shift in automated dataset curation. Content images across 20 categories are initially synthesized using the FLUX model combined with ChatGPT-generated prompts. To ensure diverse style representations, six strong transfer models are employed to generate candidate stylized results. Crucially, to eliminate structural drift and style degradation, the authors proposed \textbf{OmniFilter}, an automated evaluation pipeline utilizing Large Multimodal Models (LMMs, such as InternVL). OmniFilter strictly scores each generated triplet across three explicit axes: \textit{Content Preservation} (semantic and structural integrity), \textit{Style Consistency}, and \textit{Aesthetic Appeal}. Only triplets passing this rigorous filtering are retained. Training on this strictly aligned, explicitly filtered triplet data enables current Diffusion Transformers (DiT) to achieve highly predictable and artifact-free zero-shot stylizations \cite{wang2025omnistyle}. Since content images in OmniStyle-1M are AI-synthesized, downstream models may inherit generative biases from FLUX; complementary evaluation on real-face datasets (e.g., FFHQ) is strongly recommended.
 
 % ==========================================
 % 6.3 Dataset Selection Guide
@@ -573,9 +594,9 @@ Selecting the appropriate dataset is the most critical determinant of a model's 
 \midrule
 FFHQ \cite{karras2019style} & 2019 & 70k & Real Faces & CC BY-NC-SA 4.0 (Research) & High-res face prior for GAN inversion \\
 CelebAMask-HQ \cite{lee2020} & 2020 & 30k & Real+Labels & Non-Commercial; redistrib.-sensitive & Semantic parsing for region-aware local editing \\
-Danbooru \cite{danbooru2021} & 2021 & 4.9M & Anime Art & BSD; artwork rights mixed/high-risk & Tag-based controllable anime stylization \\
+Danbooru \cite{danbooru2021} & 2021 & 4.9M & Anime Art & No explicit license; artwork copyright mixed (research/non-commercial) & Tag-based controllable anime stylization \\
 WikiArt \cite{wikiart} & 2015 & 250k+ & Artworks & Public Domain (Mixed) & General artistic textures and brushstroke \\
-AAHQ & 2021 & 25k & Artistic Faces & Research-Only & Artistic portrait benchmark \\
+AAHQ \cite{liu2021blendgan} & 2021 & 25k & Artistic Faces & CC BY-NC-SA 4.0 (Research) & Artistic portrait benchmark \\
 OmniStyle-1M \cite{wang2025omnistyle} & 2025 & 1M & Synthetic Tr. & Open for Research & Text-image triplets for instruction editing \\
 CelebV-HQ \cite{celebvhq} & 2022 & 35k clips & Real Video & Non-Commercial (Research) & Temporal consistency benchmarks for video \\
 StyleGAN-Human \cite{stylegan-human} & 2022 & 40k+ & Synthetic F. & Open (Privacy-Compliant) & Diversity pretraining without real-face GDPR risk \\

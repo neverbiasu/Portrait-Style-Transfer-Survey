@@ -27,6 +27,39 @@
 | 23 | "Proposing a Golden Protocol" → "Proposing (and calling for adoption of) a Golden Protocol" | 结构/逻辑 | ✅ | Contributions | 措辞已修正 | ✅ 已修 |
 | 24 | "over 115 publications" vs "~90 distinct methods" vs 151 managed sources 三个覆盖数字不一致 | 一致性 | 🟠 主要 | Abstract / Sec. I-C | 统一 scope 声明，明确各数字计算口径 | ✅ 已修 |
 
+## 🆕 4-Reviewer 深度评审核验后须修项（2026-07-13，详见 REVIEW_SUMMARY.md 矩阵表）
+
+> 来源:NotebookLM 深度评审 + Rev1/Rev2/Rev3/Rev4 共 4 份。已逐条用 references.bib + main.tex 交叉核验；**剔除 Rev3/Rev4 的 3 处幻觉**(Table III 空白、StyleAligned=CVPR2023)。
+
+| # | 问题 | 类型 | 严重程度 | 位置 | 修改建议 | 审计/核验证据 | 状态 |
+|---|------|------|----------|------|----------|--------------|------|
+| 25 | Trilemma 末段脚注4篇引文错挂(wang2024instantstyle 等4篇均非三角框架来源) | 引文造假 | 🔴 致命 | Sec.1.2 末(L37) | 删该脚注引用;若称原创写明"We coin the term";或换真实 editing trade-off 文献 | 已修:明写 "to the best of our knowledge, the first explicit formalization"(原创声明);4 篇改为各轴背景引文(identity adapter / domain-generalizable / dual-style / ArtFID 指标),不再谎称支撑框架;4 键均在别处另有引用(未产生新未引);pdflatex 通过 | ✅ 已修 |
+| 26 | ArtFID 数字不可溯源：AdaIN 31.85(StyleInV)编造;InstantStyle 42.48/StyleID 38.57 错引视频论文 StyleMaster,且 bib 无 StyleID 独立条目 | 事实错误 | 🔴 致命 | Sec.3.1 L278 / Sec.2.7 L206-208 | 三数字全删或换原 paper 可 trace 真值;补 StyleID bib 条目 | 已修(NotebookLM 读 PDF 表格核验):①AdaIN 改填 **真值 13.222±0.549**(Wright&Ommer ArtFID 原论文 Table 1,Places365/COCO×WikiArt/BAM @512²,引 wright2022artfidqe);②InstantStyle 原论文(arXiv:2404.02733)**无任何 ArtFID 数字**→保持定性,不填 42.48;③"StyleID 38.57"为混淆:StyleID 实为 *Identity Disentanglement for Anonymizing Faces*(PoPETs23)或 *Style Injection in Diffusion*(CVPR24=chung2023styleii),**非风格迁移 ArtFID 方法**→删除正确;④pdflatex 编译通过 | ✅ 已修 |
+| 27 | "115+ peer-reviewed" 统计矛盾:含 28 arXiv 预印本未扣 | 一致性 | 🔴 致命 | Abstract(L23) / Sec.1.3(L64) | 分层报告;摘要改 "over 110" 或区分两类 | 已修:摘要改 "over 115 publications (including 28 screened arXiv preprints)";L64 改 "115+ publications, comprising 88 peer-reviewed venues and 28 screened arXiv preprints";venue 分布 28+10+8+5+12+10+15=88 与 28 预印本自洽;pdflatex 通过 | ✅ 已修 |
+| 28 | 2024-25 SOTA 大规模漏引:PhotoMaker/PULID/LivePortrait/ConsistentID/MagicAnimate/AnimateAnyone/AnimateDiff/GaussianHair/3DGS-Avatar/DragGAN/Barbershop/JoJoGAN/DCT-Net/StyleShot | 文献覆盖 | 🟠 主要 | Sec.3-C / Sec.4 各节 | 每类补 3-5 篇近2年顶会;增 "Recent IP-preserving Diffusion (2024-25)" 小节 | ✅ 已修:14 篇全部补入正文并加 bib(经 NotebookLM research 核验,未猜 arXiv ID);分布=GAN(DragGAN/JoJoGAN/DCT-Net)+Diffusion(PhotoMaker/PULID/ConsistentID/StyleShot)+Video(AnimateDiff/MagicAnimate/AnimateAnyone/LivePortrait)+3D(GaussianHair/3DGS-Avatar)+Local(Barbershop);StyleShot 按 arXiv preprint 2024 引(agent曾误报 TPAMI 2026,已纠);pdflatex+bibtex 通过,无 undefined citation,18pp | ✅ 已修 |
+| 29 | bib 中 10 条未被正文引用(artflow/jojogan/MUNIT/NeRF-Art/StylizedNeRF/GP-UNIT/StyleGAN3/zhang2025-decade 等) | 引文 | 🟠 主要 | References | 补讨论或删 bib;JoJoGAN/ArtFlow 入 GAN;NeRF 两篇入 3D;Zhang2025 入 related work | ✅ 已修:jojogan 经 R28 已引;其余 8 条全部补入正文(NST: artflow/huang2018multimodal/zheng2024puffnet;GAN: karras2021stylegan3/gal2021stylegannada/gpunit_paper;Diffusion: zhang2022inversionbasedst;3D: wang2022nerf/huang2022stylizednerf);zhang2025-decade(泛化综述,非肖像专述)按"删 bib"选项移除;audit A5 现 = 0 UNUSED;pdflatex+bibtex 通过 | ✅ 已修 |
+| 30 | PRISMA 声明 vs 28 预印本 + 无 formal inclusion/exclusion + 漏斗空(仅3行) | 方法学 | 🟠 主要 | Sec.1.3 | 摘要改 "archival + 28 screened preprints";漏斗表格化 + 检索式/引擎/日期 | ✅ 已修:摘要已在 R27 改 "over 115 publications (including 28 screened arXiv preprints)";新增 Table(tabular:prisma) 将原文 480→320→180→115+(88+28) 漏斗表格化,并显式列出检索范围(旗舰 venue+期刊)、年份 2015-2025、4 类 query、title/abstract 排除标准;数字沿用原文已声明近似值(未新编造);pdflatex+bibtex 通过 | ✅ 已修 |
+| 31 | Puff-Net(2D NST)错归类进 3D rigging 语境 | 分类错误 | 🟠 主要 | Sec.4.3 | 移回 Sec.3.1 NST | 人工核验(zheng2024puffnet 为 2D NST) | ✅ 已修:从 Sec.4.3 两处(zheng2024puffnet 在 rigging/summary 句)移除,补入 Sec.3.1 NST 段("Puff-Net ... pure content--style feature fusion");分类正确;pdflatex 通过 | ✅ 已修 |
+| 32 | MOS/2AFC 框架错引 ambiel2023 预印本(streijl2016mean 已在 bib 却用错) | 引文 | 🟠 主要 | Sec.5.3 L504 | 删 ambiel 对 MOS/2AFC 引用,改引经典心理测量文献 | ✅ 已修:Human A/B Testing Protocol 句 MOS/2AFC 框架改引 streijl2016mean(MOS Revisited,真实经典心理测量文献),不再把框架归功 ambiel2023;pdflatex 通过 | ✅ 已修 |
+| 33 | Flow Mapping 在 II-F 引入却被排除于 III 分类法 + 对比表 | 结构断裂 | 🟠 主要 | Sec.2.7 / Sec.3 / Tab.IV | 升为独立 paradigm 或并入 III-C diffusion 子节 | ✅ 已修:采用"并入 diffusion 子节"方案(保持 four families 一致性);给 Sec.2.7 Flow Matching 加 \\label{sec:foundations:flow};在 Sec.3.3 Diffusion 段补一句将 FlowEdit/DVRF/FlowAlign 作为确定性 optimal-transport ODE 编辑家族并入,并 cross-ref;能力矩阵(tab:comparison_matrix)新增 FlowEdit/DVRF 行(paradigm 标 Diff.);pdflatex 通过 | ✅ 已修 |
+| 34 | 数据集表许可/数字错:Danbooru 标 BSD(实 CC0/CC-BY-NC);WikiArt 引错(Saleh2015 vs Nichol2016);AAHQ 缺 bib;CelebAMask-HQ 引错 | 事实错误 | 🟠 主要 | Table VI | 逐条核对正确 arXiv/paper + 许可;补 AAHQ 条目 | ✅ 已修(经 websearch 逐条核验):Danbooru "BSD" 错→改为 "No explicit license; artwork copyright mixed (research/non-commercial)"(图本身版权混杂);WikiArt `wikiart`=Saleh&Elgammal 2015 实为 WikiArt 分类数据集标准引文,正确保留;AAHQ 经核验=Artstation-Artistic-face-HQ(BlendGAN, Liu et al. NeurIPS2021, arXiv:2110.11728, 数据集许可 CC BY-NC-SA 4.0),已用既存 `liu2021blendgan` 引文 + 表许可改 "CC BY-NC-SA 4.0 (Research)";CelebAMask-HQ `lee2020`=MaskGAN(CVPR2020)正是该数据集提出论文,正确保留;pdflatex+bibtex 通过,无 undefined | ✅ 已修 |
+| 35 | Golden Protocol 仅提议未执行,无统一 benchmark | 可信度 | 🟠 主要 | Sec.5 | 降级为 "Proposed Guideline" 或真跑 5-8 方法出统一表 | ✅ 已修:Sec.5 引言显式声明 "a \textit{proposed} guideline; it is \underline{not} empirically executed within this survey, which only surveys existing reports";subtitle 改为 "A Proposed Benchmark Guideline";全段 mandate/require/must 软化为 recommend/should(含 L538 LMM 子弹);与 L693 既有 "proposed Golden Protocol... evaluation recommendation" 语气一致;pdflatex+bibtex 通过 | ✅ 已修 |
+| 36 | NST "theoretically unbiased" 过度宣称(VGG 有 ImageNet 偏置) | 过度宣称 | 🟡 次要 | Sec.3.1 L276 | 删该词,改 "deep feature-space texture bias enables arbitrary style" | ✅ 已修:已删 "theoretically unbiased,"(NST 段);现仅存 "unbiased" 指向 ArtFlow 真实论文标题("Unbiased Image Style Transfer"),非过度宣称;audit B3 余 1 命中为 ArtFlow 准确描述,可接受 | ✅ 已修 |
+| 37 | yang2023zeroshotcl 错挂 CLIPScore 段(实为 training loss) | 引文 | 🟡 次要 | Sec.2.2.3 L128 | 移到 Sec.3.3 zero-shot 段 | grep L128 确认 | 未修 |
+| 38 | bib 作者写 "X and others" → TVCG/TOG 要求列全至第6 + et al. | 格式 | 🟡 次要 | References | 全面补作者至第6位 | audit A6:15 处 'and others' | 未修 |
+| 39 | 分类法不对称:NST(算法/损失)与 GAN/Diff/AR(架构)并列 | 结构 | 🟡 次要 | Sec.3 | 改名 "Optimization & Feed-Forward Autoencoders" | 人工核验(RULES C4) | 未修 |
+| 40 | 速度列无硬件标注(GPU/显存) | 图表 | 🟡 次要 | Tab.IV | 补 GPU 类型/显存 | 人工核验 | 未修 |
+| 41 | VToonify 表 IV "RT" 与 22ms/8B 混乱 | 图表 | 🟡 次要 | Tab.IV | 统一速度标注,注明 real-time 基准 | 人工核验 | 未修 |
+| 42 | One-Step 节标注 "SOTA" 带偏见 | 写作 | 🟡 次要 | Sec.3.5 | 改中性表述 | audit B3 命中 L206 'SOTA' | ✅ 已修:OmniStyle-1M 段 "six state-of-the-art (SOTA) transfer models" 改中性 "six strong transfer models";pdflatex 通过 | ✅ 已修 |
+| 43 | 伦理段过度膨胀(EU AI Act+GDPR 复述,与 PST 关联松) | 组织 | 🟡 次要 | Sec.9? | 减为 1-2 段 cross-link Sec.5/6 | 人工核验(RULES E2) | 未修 |
+| 44 | 缺独立 Benchmark 对比章 + PRISMA 流程图 | 组织 | 🟠 主要 | Sec.5/7 | 增 benchmark 对比章 + 流程图 | 人工核验(RULES D2) | 未修 |
+| 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | 人工核验(RULES E3) | 未修 |
+| 46 | 缺正式 Appendix(PRISMA 图/完整方法清单/benchmark 代码) | 组织 | 🟡 次要 | 文末 | 增 Appendix | 人工核验(RULES E5) | 未修 |
+| 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | audit E4:hits=2(边界通过) | 未修 |
+| 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | 前期 grep -c=2;audit D3 仅命中注释行(需人工复确认) | 未修 |
+| 49 | Table V LPIPS 对经典 NST 标 "Common"(LPIPS 2018 才提出) | 事实错误 | 🟡 次要 | Tab.V | 改 Rare/N-A,注明现代 retrospectively 应用 | 人工核验(RULES B2) | 未修 |
+| 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | grep 确认已加 caveat | 未修 |
+
 ## 评审意见（参考）
 
 | # | 维度 | 评价 |
