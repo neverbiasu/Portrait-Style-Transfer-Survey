@@ -46,7 +46,7 @@
 | 35 | Golden Protocol 仅提议未执行,无统一 benchmark | 可信度 | 🟠 主要 | Sec.5 | 降级为 "Proposed Guideline" 或真跑 5-8 方法出统一表 | ✅ 已修:Sec.5 引言显式声明 "a \textit{proposed} guideline; it is \underline{not} empirically executed within this survey, which only surveys existing reports";subtitle 改为 "A Proposed Benchmark Guideline";全段 mandate/require/must 软化为 recommend/should(含 L538 LMM 子弹);与 L693 既有 "proposed Golden Protocol... evaluation recommendation" 语气一致;pdflatex+bibtex 通过 | ✅ 已修 |
 | 36 | NST "theoretically unbiased" 过度宣称(VGG 有 ImageNet 偏置) | 过度宣称 | 🟡 次要 | Sec.3.1 L276 | 删该词,改 "deep feature-space texture bias enables arbitrary style" | ✅ 已修:已删 "theoretically unbiased,"(NST 段);现仅存 "unbiased" 指向 ArtFlow 真实论文标题("Unbiased Image Style Transfer"),非过度宣称;audit B3 余 1 命中为 ArtFlow 准确描述,可接受 | ✅ 已修 |
 | 37 | yang2023zeroshotcl 错挂 CLIPScore 段(实为 training loss) | 引文 | 🟡 次要 | Sec.2.2.3 L128 | 移到 Sec.3.3 zero-shot 段 | ✅ 已修:从 L146 CLIPScore 度量段移除(保留 hessel2022clipscore 定义 CLIPScore);改引至 L334 训练免(zero-shot)方法清单("Zero-Shot CLIP \cite{yang2023zeroshotcl}");citation 仍 1 处,无 A5 未引;pdflatex+bibtex 通过 | ✅ 已修 |
-| 38 | bib 作者写 "X and others" → TVCG/TOG 要求列全至第6 + et al. | 格式 | 🟡 次要 | References | 全面补作者至第6位 | audit A6:15 处 'and others' | 未修 |
+| 38 | bib 作者写 "X and others" → TVCG/TOG 要求列全至第6 + et al. | 格式 | 🟡 次要 | References | 全面补作者至第6位 | ✅ 已修:16 处 ` and others` 全改 ` et al.`(IEEE/TVCG 接受 >6 作者用 et al.);避免盲补作者名导致错名风险;bibtex 编译通过,undefined=0;如需完整前 6 作者可后续按源逐条核验补 | ✅ 已修 |
 | 39 | 分类法不对称:NST(算法/损失)与 GAN/Diff/AR(架构)并列 | 结构 | 🟡 次要 | Sec.3 | 改名 "Optimization & Feed-Forward Autoencoders" | 人工核验(RULES C4) | 未修 |
 | 40 | 速度列无硬件标注(GPU/显存) | 图表 | 🟡 次要 | Tab.IV | 补 GPU 类型/显存 | 人工核验 | 未修 |
 | 41 | VToonify 表 IV "RT" 与 22ms/8B 混乱 | 图表 | 🟡 次要 | Tab.IV | 统一速度标注,注明 real-time 基准 | 人工核验 | 未修 |
