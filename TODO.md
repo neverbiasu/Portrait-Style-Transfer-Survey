@@ -53,7 +53,7 @@
 | 42 | One-Step 节标注 "SOTA" 带偏见 | 写作 | 🟡 次要 | Sec.3.5 | 改中性表述 | audit B3 命中 L206 'SOTA' | ✅ 已修:OmniStyle-1M 段 "six state-of-the-art (SOTA) transfer models" 改中性 "six strong transfer models";pdflatex 通过 | ✅ 已修 |
 | 43 | 伦理段过度膨胀(EU AI Act+GDPR 复述,与 PST 关联松) | 组织 | 🟡 次要 | Sec.9? | 减为 1-2 段 cross-link Sec.5/6 | ✅ 已修:伦理子节由 ~2 段含 EU AI Act/GDPR 复述,压缩为 1 段,聚焦 PST 直接相关两项义务(透明水印/生物特征隐私),并 cross-link 至 Sec.6 数据集隐私 与 Sec.5 Golden Protocol 披露要求;pdflatex 通过 | ✅ 已修 |
 | 44 | 缺独立 Benchmark 对比章 + PRISMA 流程图 | 组织 | 🟠 主要 | Sec.5/7 | 增 benchmark 对比章 + 流程图 | 人工核验(RULES D2) | 未修 |
-| 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | 人工核验(RULES E3) | 未修 |
+| 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | ✅ 已修(差异化措辞强化):L64 在既有 Kyprianidis/Jing/Xia 三引文基础上,显式对比本综述增量——相对 NPR/NST 综述限定"人像"且以身份保持为核心约束;相对 inversion 综述覆盖至 2024-25 生成范式(diff/AR/video/3D)并贡献 Trilemma + Golden Protocol;未臆造 Fan TVCG24 / Garcia CGF24 / Zhang2025 条目(前者作者/venue 未核实、Zhang2025 decade survey 已在 R29 因"非肖像专述"删除,避免重复引入);pdflatex 通过 | ✅ 已修 |
 | 46 | 缺正式 Appendix(PRISMA 图/完整方法清单/benchmark 代码) | 组织 | 🟡 次要 | 文末 | 增 Appendix | 人工核验(RULES E5) | 未修 |
 | 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | ✅ 已修:新增独立子节 "Data and Code Availability"(Sec.9,L637 前),明确本综述不产新数据/代码、所有方法数据集引自原始源、BibTeX 与能力矩阵可合理索取;audit E4 由弱命中升级为显式声明;pdflatex 通过 | ✅ 已修 |
 | 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | ✅ 已修:L584 逐字重复句删除,改为 forward-reference 至 Sec.6.2(OmniStyle-1M 段)的偏差缓解说明;现仅 L570 保留原句一处;pdflatex 通过 | ✅ 已修 |
