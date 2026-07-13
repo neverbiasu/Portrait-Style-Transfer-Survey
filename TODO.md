@@ -55,7 +55,7 @@
 | 44 | 缺独立 Benchmark 对比章 + PRISMA 流程图 | 组织 | 🟠 主要 | Sec.5/7 | 增 benchmark 对比章 + 流程图 | 人工核验(RULES D2) | 未修 |
 | 45 | 缺相关综述区分(Fan TVCG24 / Garcia CGF24 / Zhang2025 decade survey) | 新颖性 | 🟡 次要 | Sec.1 | 增 related-work 小节 + 对比表 | 人工核验(RULES E3) | 未修 |
 | 46 | 缺正式 Appendix(PRISMA 图/完整方法清单/benchmark 代码) | 组织 | 🟡 次要 | 文末 | 增 Appendix | 人工核验(RULES E5) | 未修 |
-| 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | audit E4:hits=2(边界通过) | 未修 |
+| 47 | 无代码/数据可用性声明 | 规范 | 🟡 次要 | 文末 | 补 Data/Code Availability | ✅ 已修:新增独立子节 "Data and Code Availability"(Sec.9,L637 前),明确本综述不产新数据/代码、所有方法数据集引自原始源、BibTeX 与能力矩阵可合理索取;audit E4 由弱命中升级为显式声明;pdflatex 通过 | ✅ 已修 |
 | 48 | OmniStyle-1M 整句逐字重复两次(L542 & L556) | 重复 | 🟡 次要 | Sec.5 | 合并为一处 | ✅ 已修:L584 逐字重复句删除,改为 forward-reference 至 Sec.6.2(OmniStyle-1M 段)的偏差缓解说明;现仅 L570 保留原句一处;pdflatex 通过 | ✅ 已修 |
 | 49 | Table V LPIPS 对经典 NST 标 "Common"(LPIPS 2018 才提出) | 事实错误 | 🟡 次要 | Tab.V | 改 Rare/N-A,注明现代 retrospectively 应用 | ✅ 已修:LPIPS 行 NST 列由 "Common" 改 "N/A*";caption 加脚注说明 LPIPS(Zhang 2018)晚于经典 NST(Gatys 2015-16),仅后期 retrospectively 应用;pdflatex 通过 | ✅ 已修 |
 | 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | ✅ 已验证:caveat 已存在 — L23 abstract "though modern hybrid methods increasingly blur this boundary";L645 conclusion "this dichotomy is a historical generalization rather than a strict partition... boundary continues to blur as hybrid designs emerge" | ✅ 已修 |
