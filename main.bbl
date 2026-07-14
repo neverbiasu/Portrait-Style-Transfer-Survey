@@ -338,6 +338,14 @@ H.~Ye, J.~Zhang, S.~Liu, X.~Han, and W.~Yang, ``Ip-adapter: Text compatible
   image prompt adapter for text-to-image diffusion models,'' \emph{arXiv
   preprint arXiv:2308.06721}, 2023.
 
+\bibitem{he2026stylegallerytrainingfreesemanticawarepersonalized}
+\BIBentryALTinterwordspacing
+B.~He, Y.~Ye, C.~Liu, W.~Wu, F.~Liu, and Z.~Cai, ``Stylegallery: Training-free
+  and semantic-aware personalized style transfer from arbitrary image
+  references,'' 2026. [Online]. Available:
+  \url{https://arxiv.org/abs/2603.10354}
+\BIBentrySTDinterwordspacing
+
 \bibitem{cheng2023visual}
 \BIBentryALTinterwordspacing
 S.-I. Cheng, Y.-C. Yu, W.-C. Chien, X.~Cheng, S.-H. Lai, and M.~Sun, ``Visual
