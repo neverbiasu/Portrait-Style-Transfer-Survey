@@ -42,7 +42,7 @@ In this survey, we identify a structural tension among three critical objectives
   \item \textbf{Inference Speed}: The model must perform these edits in real time, ideally within a single step, to be viable for interactive applications.
 \end{enumerate}
 
-We use \textbf{Trilemma} as the primary framing in this survey; when prior work refers to an ``Impossible Triangle,'' it maps to the same three axes above.
+We adopt the well-established \emph{impossible triangle} of stylization---the competing tension among identity preservation, stylization strength, and computational efficiency---as the primary analytical lens of this survey, formalizing it as the \textbf{Portrait Editing Trilemma} that organizes the three axes above.
 
 To avoid term drift across sections, we explicitly standardize core terms in Table~\ref{tab:definitions_glossary} (Definitions/Glossary) and use these definitions consistently throughout the paper.
 
@@ -671,7 +671,7 @@ The current state of the art is shaped by the Trilemma---simultaneously achievin
 
 \subsubsection{Navigating the Style--Identity Trade-off}
 \label{sec:evaluation:innovations:tradeoff}
-A core idea is the statistical alignment hypothesis: It is widely hypothesized to encode structural/identity information \cite{huang2017arbitraryst}, though this mapping may not hold uniformly across all modern architectures. Systems that explicitly align or modulate these statistics provide a principled mechanism to balance identity and style.
+A core idea is the statistical alignment hypothesis: The instance-normalization statistics are widely hypothesized to encode structural/identity information \cite{huang2017arbitraryst}, though this mapping may not hold uniformly across all modern architectures. Systems that explicitly align or modulate these statistics provide a principled mechanism to balance identity and style.
 
 \subsubsection{Computational Efficiency and Real-time Deployment}
 \label{sec:evaluation:innovations:speed}
@@ -746,7 +746,7 @@ One-step trajectory distillation combined with lightweight 3DGS rendering is a p
 Portrait style transfer has transcended its origins as a graphics novelty to become a practical human--AI interface technology. Looking forward, accessibility will depend less on raw visual quality alone and more on system-level usability: low-latency interaction, reliable controllability for non-expert users, and transparent safeguards that can be inspected in deployment. In this perspective, Section~\ref{sec:discussion:ethics_regulation} provides the compliance baseline, while this subsection emphasizes product-facing translation: robust defaults, interpretable controls, and failure-aware UX for consumer and creative workflows. The next decade is therefore likely to be defined not merely by generating stylized faces, but by delivering consistent, controllable, and accountable digital identity tools at scale.
 
 \subsection{Limitations of This Survey}
-Despite expanded coverage, this survey still has several limitations. First, quantitative reporting remains heterogeneous across datasets, protocols, and metrics, which limits direct cross-paper comparability. This is why the Golden Protocol (Section \ref{sec:evaluation}) focuses on future standardization rather than retrospective harmonization. Second, several emerging tracks (especially fast-moving 3DGS and flow-based preprints) evolve faster than archival publication cycles, so categorization may lag behind the latest implementations. Third, some sections prioritize breadth over per-paper reproduction details; consequently, reported numbers should be interpreted in the context of each source paper's original setup. We therefore view the proposed Golden Protocol as both an evaluation recommendation and a call for standardization in future PST benchmarks.
+Despite expanded coverage, this survey still has several limitations. First, quantitative reporting remains heterogeneous across datasets, protocols, and metrics, which limits direct cross-paper comparability. This is why the Golden Protocol (Section \ref{sec:evaluation}) focuses on future standardization rather than retrospective harmonization. Second, several emerging tracks (especially fast-moving 3DGS and flow-based preprints) evolve faster than archival publication cycles, so categorization may lag behind the latest implementations. Third, some sections prioritize breadth over per-paper reproduction details; consequently, reported numbers should be interpreted in the context of each source paper's original setup. Fourth, this survey organizes method comparison through structured tables (the capability matrix, method overview, metric-frequency, and dataset tables) rather than a gallery of stylized images; a fair visual comparison would require re-running every surveyed method on unified inputs and protocols---the proposed Golden Protocol---which lies beyond the scope of a literature survey and is left as essential future work. We therefore view the proposed Golden Protocol as both an evaluation recommendation and a call for standardization in future PST benchmarks.
 
 % (Legacy placeholders removed; content integrated above.)
 
