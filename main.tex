@@ -154,7 +154,7 @@ Identity preservation is commonly enforced via face-recognition embeddings. Give
 \begin{equation}
   \mathcal{L}_{id} = 1 - \cos(F(I_{gen}), F(I_{src})).
 \end{equation}
-This constraint has become a de facto standard in portrait stylization and identity-preserving editing, especially when the target style includes strong texture changes or partial geometric deformation.
+This constraint has become a de facto standard in portrait stylization and identity-preserving editing, especially when the target style includes strong texture changes or partial geometric deformation. The inverse problem---recovering the original identity from an already-stylized portrait---has likewise been studied as an identity-preserving recovery task \cite{shiri2019identitypreservingfacerecoverystylized}.
 
 \subsubsection{Reference-free Alignment and CLIP-based Scores}
 Recent work increasingly complements reference-based objectives with reference-free evaluation and guidance in joint vision--language embedding spaces. CLIPScore, for instance, measures cosine similarity between image and text (or image) embeddings, providing a robust, reference-independent proxy for how well a generated output matches the semantic concept of a target style \cite{hessel2022clipscore}.
@@ -252,19 +252,19 @@ where each paradigm instantiates the three components differently (Table~\ref{ta
 
 \begin{table*}[t]
 \centering
-\caption{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families.}
+\caption{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components---control signal $c$, generative prior $p_\theta$, and constraint $\mathcal{L}$---to concrete instantiations across the four method families, with representative methods cited as examples.}
 \label{tab:unified_paradigms}
 \small
-\begin{tabular}{lccc}
+\begin{tabularx}{\textwidth}{@{}p{2.5cm}XXXp{4.3cm}@{}}
 \toprule
-\textbf{Paradigm} & \textbf{Control} $(c)$ & \textbf{Prior} $(p_\theta)$ & \textbf{Constraint} $(\mathcal{L})$ \\
+\textbf{Paradigm} & \textbf{Control} $(c)$ & \textbf{Prior} $(p_\theta)$ & \textbf{Constraint} $(\mathcal{L})$ & \textbf{Representative methods} \\
 \midrule
-NST & Style reference image & VGG feature hierarchy & Gram-matrix matching + content \\
-GAN & Inverted latent $w^+$ & StyleGAN face manifold & Adversarial + identity + recon. \\
-Diffusion & Text/style CLIP embedding & Score function $\nabla_x \log p_t$ & Denoising + classifier-free guidance \\
-AR & Discrete visual/text tokens & Transformer next-token distrib. & Cross-entropy over codebook \\
+NST / Optimization \& Feed-forward & Style reference image & VGG feature hierarchy & Gram-matrix matching + content loss & Gatys NST \cite{gatys2015ana}, AdaIN \cite{huang2017arbitraryst}, Johnson FST \cite{johnson2016perceptual} \\
+GAN-based & Inverted latent $w^+$ & StyleGAN face manifold & Adversarial + identity + reconstruction & StyleGAN \cite{karras2019style}, BlendGAN \cite{liu2021blendgan}, DualStyleGAN \cite{yang2022dualstylegan} \\
+Diffusion & Text / style / image embedding & Score function $\nabla_x \log p_t$ & Denoising + CFG + identity & LDM/SD \cite{rombach_2022_cvpr}, IP-Adapter \cite{ye2023ipadapter}, InstantID \cite{wang2024instantid} \\
+Autoregressive & Discrete visual / text tokens & Transformer next-token distribution & Cross-entropy over codebook + semantics & StyleTokenizer \cite{li2024styletokenizerdi}, EditAR \cite{mu2025editar}, VAR \cite{tian2024var} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table*}
 
 \begin{table*}[t]
@@ -505,7 +505,7 @@ Beyond the core paradigms above, portrait stylization is further organized along
 
 \subsection{Video Portrait Stylization (Temporal Consistency)}
 \label{sec:advanced:video}
-Video portrait stylization extends static style transfer to temporal sequences, where professional-grade results require both temporal coherence and identity stability \cite{ruder2018artistic,ye2024stylemastersy,huang2023styleavideoad,yang2023rerender,liu2023portraitdt,yang2024fresco}. While per-frame stylization is straightforward, the central technical challenge is to prevent high-frequency temporal variance from producing perceptually disruptive artifacts.
+Video portrait stylization extends static style transfer to temporal sequences, where professional-grade results require both temporal coherence and identity stability \cite{ruder2018artistic,ye2024stylemastersy,huang2023styleavideoad,yang2023rerender,liu2023portraitdt,yang2024fresco}. While per-frame stylization is straightforward, the central technical challenge is to prevent high-frequency temporal variance from producing perceptually disruptive artifacts. Content-preserving formulations that explicitly minimize structural deviation have also been proposed for both images and videos \cite{zhang2026telestylecontentpreservingstyletransfer}.
 
 The primary hurdle is \emph{flickering}: inconsistent stylization across consecutive frames that breaks the viewer's suspension of disbelief \cite{ye2024stylemastersy}. Temporal consistency is commonly formalized through optical-flow-based warping losses. Given consecutive frames $I_t, I_{t-1}$ and estimated optical flow $F_{t\to t-1}$, a warping loss encourages the stylized frames to be consistent under motion:
 \begin{equation}

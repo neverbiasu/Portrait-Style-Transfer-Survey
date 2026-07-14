@@ -196,6 +196,11 @@ J.~Deng, J.~Guo, J.~Yang, N.~Xue, I.~Kotsia, and S.~Zafeiriou, ``Arcface:
   Additive angular margin loss for deep face recognition,'' \emph{IEEE
   Transactions on Pattern Analysis and Machine Intelligence}, 2022.
 
+\bibitem{shiri2019identitypreservingfacerecoverystylized}
+F.~Shiri, X.~Yu, F.~Porikli, R.~Hartley, and P.~Koniusz, ``Identity-preserving
+  face recovery from stylized portraits,'' \emph{International Journal of
+  Computer Vision}, vol. 127, no.~11, pp. 1725--1743, 2019.
+
 \bibitem{hessel2022clipscore}
 \BIBentryALTinterwordspacing
 J.~Hessel, A.~Holtzman, M.~Forbes, R.~Le~Bras, and Y.~Choi, ``Clipscore: A
@@ -344,6 +349,28 @@ S.-I. Cheng, Y.-C. Yu, W.-C. Chien, X.~Cheng, S.-H. Lai, and M.~Sun, ``Visual
   \url{https://proceedings.neurips.cc/paper_files/paper/2023/file/771ec885c37617415170d11451000b0e-Paper-Conference.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{liu2021blendgan}
+M.~Liu, Q.~Li, Z.~Qin, G.~Zhang, P.~Wan, and W.~Zheng, ``Blendgan: Implicitly
+  gan blending for arbitrary stylized face generation,'' in \emph{Advances in
+  Neural Information Processing Systems}, vol.~34, 2021.
+
+\bibitem{li2024styletokenizerdi}
+W.~Li, M.~Fang, C.~Zou, B.~Gong, R.~Zheng, M.~Wang, J.~Chen, and M.~Yang,
+  ``Styletokenizer: Defining image style by a single instance for controlling
+  diffusion models,'' \emph{ArXiv}, vol. abs/2409.02543, 2024.
+
+\bibitem{mu2025editar}
+\BIBentryALTinterwordspacing
+J.~Mu, N.~Vasconcelos, and X.~Wang, ``Editar: Unified conditional generation
+  with autoregressive models,'' \emph{2025 IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition (CVPR)}, pp. 7899--7909, 2025. [Online].
+  Available: \url{https://api.semanticscholar.org/CorpusID:275358128}
+\BIBentrySTDinterwordspacing
+
+\bibitem{tian2024var}
+K.~e.~a. Tian, ``Visual autoregressive modeling: Scalable image generation via
+  next-scale prediction,'' \emph{arXiv preprint arXiv:2404.02905}, 2024.
+
 \bibitem{selim2016portrait}
 A.~Selim, M.~Elgharib, and L.~Doyle, ``Painting style transfer for head
   portraits using convolutional neural networks,'' in \emph{ACM SIGGRAPH 2016
@@ -407,11 +434,6 @@ R.~Yi, Y.-J. Liu, Y.-K. Lai, and P.~L. Rosin, ``{APDrawingGAN}: Generating
   artistic portrait drawings from face photos with hierarchical {GANs},'' in
   \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
   Recognition (CVPR)}, 2019, pp. 10\,743--10\,752.
-
-\bibitem{liu2021blendgan}
-M.~Liu, Q.~Li, Z.~Qin, G.~Zhang, P.~Wan, and W.~Zheng, ``Blendgan: Implicitly
-  gan blending for arbitrary stylized face generation,'' in \emph{Advances in
-  Neural Information Processing Systems}, vol.~34, 2021.
 
 \bibitem{pinkney2020resolution}
 J.~N. Pinkney and D.~Adler, ``Resolution dependent gan interpolation for
@@ -524,11 +546,6 @@ Z.~Han, C.~Mao, Z.~Jiang, Y.~Pan, and J.~Zhang, ``Stylebooth: Image style
   editing with multimodal instruction,'' \emph{ArXiv}, vol. abs/2404.12154,
   2024.
 
-\bibitem{li2024styletokenizerdi}
-W.~Li, M.~Fang, C.~Zou, B.~Gong, R.~Zheng, M.~Wang, J.~Chen, and M.~Yang,
-  ``Styletokenizer: Defining image style by a single instance for controlling
-  diffusion models,'' \emph{ArXiv}, vol. abs/2409.02543, 2024.
-
 \bibitem{huang2024creativesynthcf}
 N.~Huang, W.~Dong, Y.~Zhang, F.~Tang, R.~Li, C.~Ma, X.~Li, T.-Y. Lee, and
   C.~Xu, ``Creativesynth: Cross-art-attention for artistic image synthesis with
@@ -565,21 +582,9 @@ J.~Huang, X.~Dong, W.~Song, Z.~Chong, Z.~Tang, J.~Zhou, Y.~Cheng, L.~Chen,
 J.~Gao, Y.~Liu, Y.~Sun, Y.~Tang, Y.~Zeng, K.~Chen, and C.~Zhao, ``Styleshot: A
   snapshot on any style,'' \emph{arXiv preprint}, 2024.
 
-\bibitem{mu2025editar}
-\BIBentryALTinterwordspacing
-J.~Mu, N.~Vasconcelos, and X.~Wang, ``Editar: Unified conditional generation
-  with autoregressive models,'' \emph{2025 IEEE/CVF Conference on Computer
-  Vision and Pattern Recognition (CVPR)}, pp. 7899--7909, 2025. [Online].
-  Available: \url{https://api.semanticscholar.org/CorpusID:275358128}
-\BIBentrySTDinterwordspacing
-
 \bibitem{chang2022maskgit}
 H.~e.~a. Chang, ``Maskgit: Masked generative image transformer,'' in
   \emph{CVPR}, 2022.
-
-\bibitem{tian2024var}
-K.~e.~a. Tian, ``Visual autoregressive modeling: Scalable image generation via
-  next-scale prediction,'' \emph{arXiv preprint arXiv:2404.02905}, 2024.
 
 \bibitem{han2024infinity}
 J.~Han, J.~Liu, Y.~Jiang, B.~Yan, Y.~Zhang, Z.~Yuan, B.~Peng, and X.~Liu,
@@ -652,6 +657,13 @@ J.~Liu, H.~Huang, C.~Jin, and R.~He, ``Portrait diffusion: Training-free face
 S.~Yang, Y.~Zhou, Z.~Liu, and C.~C. Loy, ``Fresco: Spatial-temporal
   correspondence for zero-shot video translation,'' in \emph{Proceedings of the
   IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+
+\bibitem{zhang2026telestylecontentpreservingstyletransfer}
+\BIBentryALTinterwordspacing
+S.~Zhang, X.~Yang, B.~Zi, H.~Huang, C.~Zhang, and X.~Li, ``Telestyle:
+  Content-preserving style transfer in images and videos,'' 2026. [Online].
+  Available: \url{https://arxiv.org/abs/2601.20175}
+\BIBentrySTDinterwordspacing
 
 \bibitem{yan2023facestudiopy}
 Y.~Yan, C.~Zhang, R.~Wang, Y.~Zhou, G.~Zhang, P.~Cheng, G.~Yu, and B.~Fu,

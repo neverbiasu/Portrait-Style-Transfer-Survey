@@ -42,6 +42,7 @@
 \citation{zhang2018lpips}
 \citation{gatys2016image,johnson2016perceptual,huang2017arbitraryst,yang2022dualstylegan,sain2023styleface}
 \citation{deng2019arcface}
+\citation{shiri2019identitypreservingfacerecoverystylized}
 \citation{hessel2022clipscore}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit  {portrait stylization}, \textit  {style transfer}, \textit  {GAN inversion}, \textit  {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls.}}{3}{table.1}\protected@file@percent }
 \newlabel{tab:prisma}{{I}{3}{PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit {portrait stylization}, \textit {style transfer}, \textit {GAN inversion}, \textit {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls}{table.1}{}}
@@ -70,8 +71,6 @@
 \newlabel{sec:theory:priors}{{\mbox  {II-C}}{4}{Early Image Processing Priors}{subsection.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Variational Autoencoders (VAEs)}{4}{subsection.2.4}\protected@file@percent }
 \newlabel{sec:theory:vae}{{\mbox  {II-D}}{4}{Variational Autoencoders (VAEs)}{subsection.2.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Generative Adversarial Networks (GANs)}{4}{subsection.2.5}\protected@file@percent }
-\newlabel{sec:theory:gan}{{\mbox  {II-E}}{4}{Generative Adversarial Networks (GANs)}{subsection.2.5}{}}
 \citation{richardson2021encoding}
 \citation{roich2022pivotal}
 \citation{xia2023gan}
@@ -83,6 +82,8 @@
 \citation{flowalign2025}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Definitions/Glossary of core terms used in this survey.}}{5}{table.2}\protected@file@percent }
 \newlabel{tab:definitions_glossary}{{II}{5}{Definitions/Glossary of core terms used in this survey}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Generative Adversarial Networks (GANs)}{5}{subsection.2.5}\protected@file@percent }
+\newlabel{sec:theory:gan}{{\mbox  {II-E}}{5}{Generative Adversarial Networks (GANs)}{subsection.2.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Flow Matching Models}{5}{subsection.2.6}\protected@file@percent }
 \newlabel{sec:foundations:flow}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
 \newlabel{sec:theory:flowmatching}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
@@ -99,6 +100,18 @@
 \citation{wang2024instantstyle}
 \citation{kwon2022diffuseit}
 \citation{cheng2023visual}
+\citation{gatys2015ana}
+\citation{huang2017arbitraryst}
+\citation{johnson2016perceptual}
+\citation{karras2019style}
+\citation{liu2021blendgan}
+\citation{yang2022dualstylegan}
+\citation{rombach_2022_cvpr}
+\citation{ye2023ipadapter}
+\citation{wang2024instantid}
+\citation{li2024styletokenizerdi}
+\citation{mu2025editar}
+\citation{tian2024var}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-G}}Diffusion Models}{6}{subsection.2.7}\protected@file@percent }
 \newlabel{sec:theory:diffusion}{{\mbox  {II-G}}{6}{Diffusion Models}{subsection.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-H}}Unifying Framework: Control Signal, Prior, and Constraint}{6}{subsection.2.8}\protected@file@percent }
@@ -117,14 +130,6 @@
 \citation{artflow}
 \citation{huang2018multimodal}
 \citation{zheng2024puffnet}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families.}}{7}{table.3}\protected@file@percent }
-\newlabel{tab:unified_paradigms}{{III}{7}{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families}{table.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak.}}{7}{table.4}\protected@file@percent }
-\newlabel{tab:trilemma_paradigms}{{IV}{7}{Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak}{table.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches.}}{7}{figure.3}\protected@file@percent }
-\newlabel{fig:pst_taxonomy}{{3}{7}{Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Optimization and Feed-Forward Autoencoders (NST)}{7}{subsection.3.1}\protected@file@percent }
-\newlabel{sec:methodology:nst}{{\mbox  {III-A}}{7}{Optimization and Feed-Forward Autoencoders (NST)}{subsection.3.1}{}}
 \citation{wright2022artfidqe}
 \citation{karras2019style,karras2020stylegan2}
 \citation{song2021agilegan}
@@ -136,6 +141,14 @@
 \citation{sain2023styleface}
 \citation{pinkney2020resolution}
 \citation{choi2018stargan}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components---control signal $c$, generative prior $p_\theta $, and constraint $\mathcal  {L}$---to concrete instantiations across the four method families, with representative methods cited as examples.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:unified_paradigms}{{III}{7}{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components---control signal $c$, generative prior $p_\theta $, and constraint $\mathcal {L}$---to concrete instantiations across the four method families, with representative methods cited as examples}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak.}}{7}{table.4}\protected@file@percent }
+\newlabel{tab:trilemma_paradigms}{{IV}{7}{Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Optimization and Feed-Forward Autoencoders (NST)}{7}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:methodology:nst}{{\mbox  {III-A}}{7}{Optimization and Feed-Forward Autoencoders (NST)}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}GAN-Based Architectures: Geometric Manipulation}{7}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:methodology:gan}{{\mbox  {III-B}}{7}{GAN-Based Architectures: Geometric Manipulation}{subsection.3.2}{}}
 \citation{yang2022dualstylegan}
 \citation{yang2022dualstylegan}
 \citation{pan2023draggan}
@@ -145,6 +158,10 @@
 \citation{gal2021stylegannada}
 \citation{gpunit_paper}
 \citation{ho2020denoising}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches.}}{8}{figure.3}\protected@file@percent }
+\newlabel{fig:pst_taxonomy}{{3}{8}{Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Diffusion Models: Open-Domain Texture Synthesis}{8}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:methodology:diffusion}{{\mbox  {III-C}}{8}{Diffusion Models: Open-Domain Texture Synthesis}{subsection.3.3}{}}
 \citation{ruiz2023dreambooth}
 \citation{gal2022image}
 \citation{zhang2023prospectps}
@@ -168,10 +185,6 @@
 \citation{cheng2023visual}
 \citation{li2024styletokenizerdi}
 \citation{huang2024creativesynthcf}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}GAN-Based Architectures: Geometric Manipulation}{8}{subsection.3.2}\protected@file@percent }
-\newlabel{sec:methodology:gan}{{\mbox  {III-B}}{8}{GAN-Based Architectures: Geometric Manipulation}{subsection.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Diffusion Models: Open-Domain Texture Synthesis}{8}{subsection.3.3}\protected@file@percent }
-\newlabel{sec:methodology:diffusion}{{\mbox  {III-C}}{8}{Diffusion Models: Open-Domain Texture Synthesis}{subsection.3.3}{}}
 \citation{kim2022diffusionclip}
 \citation{zhang2022inversionbasedst}
 \citation{li2024photomaker}
@@ -181,15 +194,15 @@
 \citation{flowedit2025,dvrf2025,flowalign2025}
 \citation{mu2025editar}
 \citation{esser2021vqgan}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches.}}{9}{figure.4}\protected@file@percent }
+\newlabel{fig:stylegan_pipeline}{{4}{9}{StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Autoregressive Models: Bridging Discrete Tokens and Global Structure}{9}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:methodology:ar}{{\mbox  {III-D}}{9}{Autoregressive Models: Bridging Discrete Tokens and Global Structure}{subsection.3.4}{}}
 \citation{esser2021vqgan}
 \citation{chang2022maskgit}
 \citation{tian2024var}
 \citation{han2024infinity}
 \citation{mu2025editar}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches.}}{9}{figure.4}\protected@file@percent }
-\newlabel{fig:stylegan_pipeline}{{4}{9}{StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Autoregressive Models: Bridging Discrete Tokens and Global Structure}{9}{subsection.3.4}\protected@file@percent }
-\newlabel{sec:methodology:ar}{{\mbox  {III-D}}{9}{Autoregressive Models: Bridging Discrete Tokens and Global Structure}{subsection.3.4}{}}
 \citation{gatys2015ana}
 \citation{huang2017arbitraryst}
 \citation{luan2017deepps}
@@ -237,16 +250,13 @@
 \citation{qian20243dgsavatar}
 \citation{zhu2021barbershop}
 \citation{ruder2018artistic,ye2024stylemastersy,huang2023styleavideoad,yang2023rerender,liu2023portraitdt,yang2024fresco}
+\citation{zhang2026telestylecontentpreservingstyletransfer}
 \citation{ye2024stylemastersy}
 \citation{ruder2018artistic}
 \citation{yang2023rerender}
 \citation{ye2024stylemastersy}
 \citation{huang2023styleavideoad}
 \citation{yang2022vtoonify}
-\citation{guo2024animatediff}
-\citation{xu2024magicanimate}
-\citation{hu2024animateanyone}
-\citation{guo2024liveportrait}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Advanced Stylization Tasks and Applications}{10}{section.4}\protected@file@percent }
 \newlabel{sec:advanced}{{IV}{10}{Advanced Stylization Tasks and Applications}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Video Portrait Stylization (Temporal Consistency)}{10}{subsection.4.1}\protected@file@percent }
@@ -257,6 +267,10 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}2}Conditional Guidance in Style-A-Video}{10}{subsubsection.4.1.2}\protected@file@percent }
 \newlabel{sec:advanced:video:baselines}{{\mbox  {IV-A}3}{10}{Consistency Baselines}{subsubsection.4.1.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}3}Consistency Baselines}{10}{subsubsection.4.1.3}\protected@file@percent }
+\citation{guo2024animatediff}
+\citation{xu2024magicanimate}
+\citation{hu2024animateanyone}
+\citation{guo2024liveportrait}
 \citation{yan2023facestudiopy,liu2023portraitdt,ambiel2023portraitsa}
 \citation{su2021mangagan}
 \citation{zhang2024stablemakeup}
@@ -294,8 +308,6 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}2}Texture and Aesthetic Guidance}{12}{subsubsection.4.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Summary}{12}{subsection.4.4}\protected@file@percent }
 \newlabel{sec:advanced:summary}{{\mbox  {IV-D}}{12}{Summary}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation Metrics and The Benchmark Protocol}{12}{section.5}\protected@file@percent }
-\newlabel{sec:evaluation}{{V}{12}{Evaluation Metrics and The Benchmark Protocol}{section.5}{}}
 \citation{zhang2018lpips}
 \citation{gatys2015ana,gatys2016image}
 \citation{deng2019arcface}
@@ -308,7 +320,8 @@
 \citation{streijl2016mean}
 \citation{selim2016portrait,yi2019apdrawinggan}
 \citation{streijl2016mean}
-\citation{hurst2024gpt4o}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation Metrics and The Benchmark Protocol}{13}{section.5}\protected@file@percent }
+\newlabel{sec:evaluation}{{V}{13}{Evaluation Metrics and The Benchmark Protocol}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}The Golden Protocol: A Proposed Benchmark Guideline}{13}{subsection.5.1}\protected@file@percent }
 \newlabel{sec:benchmark}{{\mbox  {V-A}}{13}{The Golden Protocol: A Proposed Benchmark Guideline}{subsection.5.1}{}}
 \newlabel{sec:evaluation:configuration}{{\mbox  {V-A}}{13}{The Golden Protocol: A Proposed Benchmark Guideline}{subsection.5.1}{}}
@@ -316,11 +329,11 @@
 \newlabel{sec:evaluation:quantitative}{{\mbox  {V-B}}{13}{Multi-Pillar Quantitative Benchmarking}{subsection.5.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Qualitative Evaluation: Human Studies and LMM Proxies}{13}{subsection.5.3}\protected@file@percent }
 \newlabel{sec:evaluation:qualitative}{{\mbox  {V-C}}{13}{Qualitative Evaluation: Human Studies and LMM Proxies}{subsection.5.3}{}}
+\citation{hurst2024gpt4o}
 \citation{chen2024mllmjudge}
 \citation{wikiart}
 \citation{danbooru2021}
 \citation{liu2021blendgan}
-\citation{wang2025omnistyle}
 \@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite  {zhang2018lpips} was proposed in 2018, after classic NST \cite  {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works.}}{14}{table.7}\protected@file@percent }
 \newlabel{tab:metric_usage}{{VII}{14}{Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite {zhang2018lpips} was proposed in 2018, after classic NST \cite {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works}{table.7}{}}
 \@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-C}0a}Visual Artifact Analysis and Failure Modes.}{14}{paragraph.5.3.0.1}\protected@file@percent }
@@ -330,8 +343,7 @@
 \newlabel{sec:datasets}{{VI}{14}{Datasets, Privacy, and Ethical Benchmarks}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Content and Style Datasets: The Privacy Shift}{14}{subsection.6.1}\protected@file@percent }
 \newlabel{sec:datasets:content_style}{{\mbox  {VI-A}}{14}{Content and Style Datasets: The Privacy Shift}{subsection.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{14}{subsection.6.2}\protected@file@percent }
-\newlabel{sec:datasets:omnistyle}{{\mbox  {VI-B}}{14}{Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{subsection.6.2}{}}
+\citation{wang2025omnistyle}
 \citation{wang2025omnistyle}
 \citation{nguyen2021lipstick}
 \citation{celebvhq}
@@ -349,6 +361,8 @@
 \citation{euaiact2024}
 \citation{gdpr2016}
 \citation{carlini2023extracting,shamshad2023clip2protect}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{15}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:datasets:omnistyle}{{\mbox  {VI-B}}{15}{Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{subsection.6.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Dataset Selection Guide for Practitioners}{15}{subsection.6.3}\protected@file@percent }
 \newlabel{sec:datasets:guide}{{\mbox  {VI-C}}{15}{Dataset Selection Guide for Practitioners}{subsection.6.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion and Open Challenges}{15}{section.7}\protected@file@percent }
@@ -365,16 +379,16 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}3}Multimodal Control and Instruction Following}{15}{subsubsection.7.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethics, Regulation, and Deployment Constraints}{15}{subsection.7.3}\protected@file@percent }
 \newlabel{sec:discussion:ethics_regulation}{{\mbox  {VII-C}}{15}{Ethics, Regulation, and Deployment Constraints}{subsection.7.3}{}}
-\citation{karras2019style}
-\citation{ho2020denoising,rombach_2022_cvpr}
-\citation{ye2023ipadapter}
-\citation{wang2024instantid}
 \@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status.}}{16}{table.8}\protected@file@percent }
 \newlabel{tab:datasets_pst}{{VIII}{16}{Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status}{table.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Data and Code Availability}{16}{subsection.7.4}\protected@file@percent }
 \newlabel{sec:discussion:availability}{{\mbox  {VII-D}}{16}{Data and Code Availability}{subsection.7.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}Practical Guidelines: Lessons from a Decade of PST}{16}{subsection.7.5}\protected@file@percent }
 \newlabel{sec:discussion:guidelines}{{\mbox  {VII-E}}{16}{Practical Guidelines: Lessons from a Decade of PST}{subsection.7.5}{}}
+\citation{karras2019style}
+\citation{ho2020denoising,rombach_2022_cvpr}
+\citation{ye2023ipadapter}
+\citation{wang2024instantid}
 \citation{yang2022vtoonify}
 \citation{ye2024stylemastersy}
 \citation{yang2023rerender}
@@ -418,14 +432,14 @@
 \bibcite{song2020denoising}{17}
 \bibcite{kyprianidis2013state}{18}
 \bibcite{jing2020neural}{19}
-\bibcite{xia2023gan}{20}
-\bibcite{zhang2025decadesurvey}{21}
 \@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories.}}{18}{table.9}\protected@file@percent }
 \newlabel{tab:research_roadmap}{{IX}{18}{Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories}{table.9}{}}
 \@writefile{toc}{\contentsline {section}{Appendix}{18}{section*.1}\protected@file@percent }
 \newlabel{app:prisma}{{A}{18}{\appendixname }{section*.1}{}}
 \newlabel{app:checklist}{{A}{18}{\appendixname }{section*.1}{}}
 \@writefile{toc}{\contentsline {section}{References}{18}{section*.2}\protected@file@percent }
+\bibcite{xia2023gan}{20}
+\bibcite{zhang2025decadesurvey}{21}
 \bibcite{xu2025stylereview}{22}
 \bibcite{zhang2025personalized}{23}
 \bibcite{lai2025instantportraitop}{24}
@@ -439,120 +453,122 @@
 \bibcite{yang2022dualstylegan}{32}
 \bibcite{sain2023styleface}{33}
 \bibcite{deng2019arcface}{34}
-\bibcite{hessel2022clipscore}{35}
-\bibcite{hertzmann2001image}{36}
-\bibcite{winnemoller2006real}{37}
-\bibcite{chen2018facess}{38}
-\bibcite{luan2017deepps}{39}
-\bibcite{park2019arbitraryst}{40}
-\bibcite{kingma2013auto}{41}
-\bibcite{esser2021vqgan}{42}
-\bibcite{zhang2023ssrencoderes}{43}
-\bibcite{choi2018stargan}{44}
-\bibcite{heusel2017ttur}{45}
-\bibcite{karras2019style}{46}
-\bibcite{richardson2021encoding}{47}
-\bibcite{roich2022pivotal}{48}
-\bibcite{lipman2023flow}{49}
-\bibcite{cheng2023generalit}{50}
-\bibcite{yang2023rerender}{51}
-\bibcite{flowedit2025}{52}
-\bibcite{dvrf2025}{53}
-\bibcite{flowalign2025}{54}
-\bibcite{meng2021sdedit}{55}
-\bibcite{kim2023diffface}{56}
-\bibcite{zhang2023adding}{57}
-\bibcite{ye2023ipadapter}{58}
-\bibcite{cheng2023visual}{59}
-\bibcite{selim2016portrait}{60}
-\bibcite{avatar-net}{61}
-\bibcite{liu2021adaattnra}{62}
-\bibcite{cai2023imagestyle}{63}
-\bibcite{artflow}{64}
-\bibcite{huang2018multimodal}{65}
-\bibcite{zheng2024puffnet}{66}
-\bibcite{karras2020stylegan2}{67}
-\bibcite{song2021agilegan}{68}
-\bibcite{jang2021stylecarigan}{69}
-\bibcite{shi2018warpganac}{70}
-\bibcite{yi2019apdrawinggan}{71}
-\bibcite{liu2021blendgan}{72}
-\bibcite{pinkney2020resolution}{73}
-\bibcite{pan2023draggan}{74}
-\bibcite{jojogan}{75}
-\bibcite{men2022dctnet}{76}
-\bibcite{karras2021stylegan3}{77}
-\bibcite{gal2021stylegannada}{78}
-\bibcite{gpunit_paper}{79}
-\bibcite{ruiz2023dreambooth}{80}
-\bibcite{gal2022image}{81}
-\bibcite{zhang2023prospectps}{82}
-\bibcite{sohn2023styledrop}{83}
-\bibcite{shah2023ziplora}{84}
-\bibcite{huang2024diffstyler}{85}
-\bibcite{wang2025instantstyleplus}{86}
-\bibcite{chung2023styleii}{87}
-\bibcite{cao2023masactrl}{88}
-\bibcite{yang2023zecon}{89}
-\bibcite{jeong2024visualsp}{90}
-\bibcite{he2024freestylefl}{91}
-\bibcite{yang2023zeroshotcl}{92}
-\bibcite{liu2024zepozp}{93}
-\bibcite{qi2024deadiff}{94}
-\bibcite{han2024styleboothis}{95}
-\bibcite{li2024styletokenizerdi}{96}
-\bibcite{huang2024creativesynthcf}{97}
-\bibcite{kim2022diffusionclip}{98}
-\bibcite{zhang2022inversionbasedst}{99}
-\bibcite{li2024photomaker}{100}
-\bibcite{guo2024pulid}{101}
-\bibcite{huang2024consistentid}{102}
-\bibcite{gao2024styleshot}{103}
-\bibcite{mu2025editar}{104}
-\bibcite{chang2022maskgit}{105}
-\bibcite{tian2024var}{106}
-\bibcite{han2024infinity}{107}
-\bibcite{yang2022vtoonify}{108}
-\bibcite{ye2024stylemastersy}{109}
-\bibcite{guo2024animatediff}{110}
-\bibcite{xu2024magicanimate}{111}
-\bibcite{hu2024animateanyone}{112}
-\bibcite{guo2024liveportrait}{113}
-\bibcite{luo2024gaussianhair}{114}
-\bibcite{qian20243dgsavatar}{115}
-\bibcite{zhu2021barbershop}{116}
-\bibcite{ruder2018artistic}{117}
-\bibcite{huang2023styleavideoad}{118}
-\bibcite{liu2023portraitdt}{119}
-\bibcite{yang2024fresco}{120}
-\bibcite{yan2023facestudiopy}{121}
-\bibcite{ambiel2023portraitsa}{122}
-\bibcite{su2021mangagan}{123}
-\bibcite{zhang2024stablemakeup}{124}
-\bibcite{yang2025freeuv}{125}
-\bibcite{li2018beautygan}{126}
-\bibcite{jiang2020psgan}{127}
-\bibcite{gu2019ladn}{128}
-\bibcite{yang2022elegant}{129}
-\bibcite{chen20253dstylization}{130}
-\bibcite{threedtoonify2024}{131}
-\bibcite{jain2024stylesplat}{132}
-\bibcite{wang2022nerf}{133}
-\bibcite{huang2022stylizednerf}{134}
-\bibcite{feng20233dfs}{135}
-\bibcite{radford2021learningtv}{136}
-\bibcite{streijl2016mean}{137}
-\bibcite{hurst2024gpt4o}{138}
-\bibcite{chen2024mllmjudge}{139}
-\bibcite{wikiart}{140}
-\bibcite{danbooru2021}{141}
-\bibcite{wang2025omnistyle}{142}
-\bibcite{nguyen2021lipstick}{143}
-\bibcite{celebvhq}{144}
-\bibcite{lee2020}{145}
-\bibcite{stylegan-human}{146}
-\bibcite{euaiact2024}{147}
-\bibcite{gdpr2016}{148}
-\bibcite{carlini2023extracting}{149}
-\bibcite{shamshad2023clip2protect}{150}
+\bibcite{shiri2019identitypreservingfacerecoverystylized}{35}
+\bibcite{hessel2022clipscore}{36}
+\bibcite{hertzmann2001image}{37}
+\bibcite{winnemoller2006real}{38}
+\bibcite{chen2018facess}{39}
+\bibcite{luan2017deepps}{40}
+\bibcite{park2019arbitraryst}{41}
+\bibcite{kingma2013auto}{42}
+\bibcite{esser2021vqgan}{43}
+\bibcite{zhang2023ssrencoderes}{44}
+\bibcite{choi2018stargan}{45}
+\bibcite{heusel2017ttur}{46}
+\bibcite{karras2019style}{47}
+\bibcite{richardson2021encoding}{48}
+\bibcite{roich2022pivotal}{49}
+\bibcite{lipman2023flow}{50}
+\bibcite{cheng2023generalit}{51}
+\bibcite{yang2023rerender}{52}
+\bibcite{flowedit2025}{53}
+\bibcite{dvrf2025}{54}
+\bibcite{flowalign2025}{55}
+\bibcite{meng2021sdedit}{56}
+\bibcite{kim2023diffface}{57}
+\bibcite{zhang2023adding}{58}
+\bibcite{ye2023ipadapter}{59}
+\bibcite{cheng2023visual}{60}
+\bibcite{liu2021blendgan}{61}
+\bibcite{li2024styletokenizerdi}{62}
+\bibcite{mu2025editar}{63}
+\bibcite{tian2024var}{64}
+\bibcite{selim2016portrait}{65}
+\bibcite{avatar-net}{66}
+\bibcite{liu2021adaattnra}{67}
+\bibcite{cai2023imagestyle}{68}
+\bibcite{artflow}{69}
+\bibcite{huang2018multimodal}{70}
+\bibcite{zheng2024puffnet}{71}
+\bibcite{karras2020stylegan2}{72}
+\bibcite{song2021agilegan}{73}
+\bibcite{jang2021stylecarigan}{74}
+\bibcite{shi2018warpganac}{75}
+\bibcite{yi2019apdrawinggan}{76}
+\bibcite{pinkney2020resolution}{77}
+\bibcite{pan2023draggan}{78}
+\bibcite{jojogan}{79}
+\bibcite{men2022dctnet}{80}
+\bibcite{karras2021stylegan3}{81}
+\bibcite{gal2021stylegannada}{82}
+\bibcite{gpunit_paper}{83}
+\bibcite{ruiz2023dreambooth}{84}
+\bibcite{gal2022image}{85}
+\bibcite{zhang2023prospectps}{86}
+\bibcite{sohn2023styledrop}{87}
+\bibcite{shah2023ziplora}{88}
+\bibcite{huang2024diffstyler}{89}
+\bibcite{wang2025instantstyleplus}{90}
+\bibcite{chung2023styleii}{91}
+\bibcite{cao2023masactrl}{92}
+\bibcite{yang2023zecon}{93}
+\bibcite{jeong2024visualsp}{94}
+\bibcite{he2024freestylefl}{95}
+\bibcite{yang2023zeroshotcl}{96}
+\bibcite{liu2024zepozp}{97}
+\bibcite{qi2024deadiff}{98}
+\bibcite{han2024styleboothis}{99}
+\bibcite{huang2024creativesynthcf}{100}
+\bibcite{kim2022diffusionclip}{101}
+\bibcite{zhang2022inversionbasedst}{102}
+\bibcite{li2024photomaker}{103}
+\bibcite{guo2024pulid}{104}
+\bibcite{huang2024consistentid}{105}
+\bibcite{gao2024styleshot}{106}
+\bibcite{chang2022maskgit}{107}
+\bibcite{han2024infinity}{108}
+\bibcite{yang2022vtoonify}{109}
+\bibcite{ye2024stylemastersy}{110}
+\bibcite{guo2024animatediff}{111}
+\bibcite{xu2024magicanimate}{112}
+\bibcite{hu2024animateanyone}{113}
+\bibcite{guo2024liveportrait}{114}
+\bibcite{luo2024gaussianhair}{115}
+\bibcite{qian20243dgsavatar}{116}
+\bibcite{zhu2021barbershop}{117}
+\bibcite{ruder2018artistic}{118}
+\bibcite{huang2023styleavideoad}{119}
+\bibcite{liu2023portraitdt}{120}
+\bibcite{yang2024fresco}{121}
+\bibcite{zhang2026telestylecontentpreservingstyletransfer}{122}
+\bibcite{yan2023facestudiopy}{123}
+\bibcite{ambiel2023portraitsa}{124}
+\bibcite{su2021mangagan}{125}
+\bibcite{zhang2024stablemakeup}{126}
+\bibcite{yang2025freeuv}{127}
+\bibcite{li2018beautygan}{128}
+\bibcite{jiang2020psgan}{129}
+\bibcite{gu2019ladn}{130}
+\bibcite{yang2022elegant}{131}
+\bibcite{chen20253dstylization}{132}
+\bibcite{threedtoonify2024}{133}
+\bibcite{jain2024stylesplat}{134}
+\bibcite{wang2022nerf}{135}
+\bibcite{huang2022stylizednerf}{136}
+\bibcite{feng20233dfs}{137}
+\bibcite{radford2021learningtv}{138}
+\bibcite{streijl2016mean}{139}
+\bibcite{hurst2024gpt4o}{140}
+\bibcite{chen2024mllmjudge}{141}
+\bibcite{wikiart}{142}
+\bibcite{danbooru2021}{143}
+\bibcite{wang2025omnistyle}{144}
+\bibcite{nguyen2021lipstick}{145}
+\bibcite{celebvhq}{146}
+\bibcite{lee2020}{147}
+\bibcite{stylegan-human}{148}
+\bibcite{euaiact2024}{149}
+\bibcite{gdpr2016}{150}
+\bibcite{carlini2023extracting}{151}
+\bibcite{shamshad2023clip2protect}{152}
 \gdef \@abspage@last{21}

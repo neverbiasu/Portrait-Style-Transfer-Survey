@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  14 JUL 2026 21:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.16)  14 JUL 2026 22:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -958,6 +958,9 @@ Underfull \hbox (badness 1852) in paragraph at lines 128--128
 [3 <./images/overview.png>]
 
 
+Underfull \vbox (badness 1152) has occurred while \output is active []
+
+
 
 [4 <./images/timeline.png>]
 
@@ -966,20 +969,22 @@ Underfull \hbox (badness 1852) in paragraph at lines 128--128
 [5]
 
 
+Underfull \hbox (badness 2142) in paragraph at lines 267--267
+[]|\OT1/ptm/m/n/9 (+20) Transformer next-token
+ []
+
+
 
 [6]
-Underfull \vbox (badness 1540) has occurred while \output is active []
-
-
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [7]
+Underfull \vbox (badness 8132) has occurred while \output is active []
 
-<images/pipeline.png, id=517, 2320.67pt x 970.62625pt>
+
+
+<images/pipeline.png, id=567, 2320.67pt x 970.62625pt>
 File: images/pipeline.png Graphic file (type png)
 <use images/pipeline.png>
 Package pdftex.def Info: images/pipeline.png  used on input line 369.
@@ -996,12 +1001,6 @@ LaTeX Font Warning: Font shape `OT1/ptm/m/scit' undefined
 (Font)              using `OT1/ptm/m/it' instead on input line 419.
 
 
-Overfull \hbox (1.14552pt too wide) in paragraph at lines 508--509
-\OT1/ptm/m/n/10 (-20) both tem-po-ral co-her-ence and iden-tity sta-bil-ity [[]
-51[]], [[]109[]], [[]117[]]--
- []
-
-
 
 
 
@@ -1010,9 +1009,6 @@ Overfull \hbox (1.14552pt too wide) in paragraph at lines 508--509
 
 
 [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 
 
@@ -1025,6 +1021,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [14]
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 713--713
 []|\OT1/ptm/m/n/8 (+20) Non-Commercial;
  []
@@ -1066,8 +1064,6 @@ Underfull \hbox (badness 10000) in alignment at lines 713--713
 
 
 
-
-
 [15]
 
 
@@ -1090,6 +1086,9 @@ Underfull \hbox (badness 3138) in paragraph at lines 810--813
 (./main.bbl
 
 
+Underfull \vbox (badness 1688) has occurred while \output is active []
+
+
 
 [18]
 
@@ -1102,7 +1101,7 @@ Underfull \hbox (badness 3138) in paragraph at lines 810--813
 [20]
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 765--768
+Underfull \hbox (badness 1960) in paragraph at lines 777--780
 \OT1/ptm/m/n/8 (+20) sourced & tagged anime il-lus-tra-tion dataset,'' []$https
  : / / gwern . net /
  []
@@ -1118,11 +1117,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 467A22EF511C391E0D4849A0A59B2427;14637.
  ) 
 Here is how much of TeX's memory you used:
- 25269 strings out of 473190
- 463489 string characters out of 5715799
- 911967 words of memory out of 5000000
- 47272 multiletter control sequences out of 15000+600000
- 635410 words of font info for 499 fonts, out of 8000000 for 9000
+ 25288 strings out of 473190
+ 463822 string characters out of 5715799
+ 914714 words of memory out of 5000000
+ 47274 multiletter control sequences out of 15000+600000
+ 636005 words of font info for 509 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,87p,2640b,839s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1149,10 +1148,10 @@ exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (21 pages, 863726 bytes).
+Output written on main.pdf (21 pages, 866570 bytes).
 PDF statistics:
- 1105 PDF objects out of 1200 (max. 8388607)
- 993 compressed objects within 10 object streams
- 269 named destinations out of 1000 (max. 500000)
+ 1148 PDF objects out of 1200 (max. 8388607)
+ 1011 compressed objects within 11 object streams
+ 271 named destinations out of 1000 (max. 500000)
  72172 words of extra memory for PDF output out of 74296 (max. 10000000)
 
