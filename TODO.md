@@ -60,6 +60,29 @@
 | 49 | Table V LPIPS 对经典 NST 标 "Common"(LPIPS 2018 才提出) | 事实错误 | 🟡 次要 | Tab.V | 改 Rare/N-A,注明现代 retrospectively 应用 | ✅ 已修:LPIPS 行 NST 列由 "Common" 改 "N/A*";caption 加脚注说明 LPIPS(Zhang 2018)晚于经典 NST(Gatys 2015-16),仅后期 retrospectively 应用;pdflatex 通过 | ✅ 已修 |
 | 50 | "Structure/Texture Masters" 二分法仍需在 abstract/conclusion 加 caveat(reviewer 仍认为自相矛盾) | 写作 | 🟡 次要 | Abstract / Sec.8 | 确保已加 caveat;考虑改 continuum | ✅ 已验证:caveat 已存在 — L23 abstract "though modern hybrid methods increasingly blur this boundary";L645 conclusion "this dichotomy is a historical generalization rather than a strict partition... boundary continues to blur as hybrid designs emerge" | ✅ 已修 |
 
+## 表格 / 结构 TODO（2026-07-14 补充，对标 5 篇 Zotero `survey`）
+
+> 背景：与 Zotero `survey` 收藏 5 篇综述对标后，补结构范式（图/表/定义/实践指南）。详见 `review-stage/SURVEY_STRUCTURE.zh.md`、`STRUCTURE_PLAN.zh.md`、`GAP_AND_HANDOFF.zh.md`。
+
+### Archived（已实现）
+| # | 项 | 说明 | 提交 | 状态 |
+|---|---|---|---|---|
+| T1 | Table III (`tab:unified_paradigms`) 重设计 | 新增 *Representative methods* 列，逐范式补具体被引方法（Gatys/AdaIN/Johnson；StyleGAN/BlendGAN/DualStyleGAN；LDM-SD/IP-Adapter/InstantID；StyleTokenizer/EditAR/VAR）；`tabularx` 消除 280pt 溢出 | 451cb0a | ✅ |
+| T2 | PRISMA 表 (`tab:prisma`) | `table`→`table*`，修复 75pt 单列溢出 | daf4f9e | ✅ |
+| T3 | Trilemma 三轴术语统一 | Identity Preservation / Stylization Strength / Computational Efficiency；同步 `tab:trilemma_paradigms` 表头与图注 | daf4f9e | ✅ |
+| T4 | 新增 3 篇前沿引用落正文 | shiri2019（身份恢复）、zhang2026 TeleStyle（内容保持）、he2026 StyleGallery（免训练语义感知） | 451cb0a / 3cafe71 | ✅ |
+| T5 | 时间线图 + taxonomy 树图 | `fig:pst_timeline`（已纳入，待人工目检）、`fig:pst_taxonomy`（TikZ 三轴） | daf4f9e | ✅（图） |
+| T6 | PST 形式化 Definition 1 + 实践指南 G1–G7 | Introduction / Discussion | daf4f9e | ✅ |
+
+### Pending（待做，交接 Prism）
+| # | 项 | 优先级 | 说明 |
+|---|---|---|---|
+| T7 | 人工目检 `images/timeline.png` / 必要时矢量重绘 | P1 | 模型无法看图，需人工确认节点与范式覆盖（NST→GAN→Diffusion→AR→video/3D）；否则重绘 TikZ 与 `fig:pst_taxonomy` 同风格 |
+| T8 | 补年份排序 PST 里程碑总览表（对标 Decade Survey Table 1） | P1 | 与 `tab:method_overview` 互补（后者未按年份）；四列 Year / Method / Venue / Innovation |
+| T9 | Table IV (`tab:trilemma_paradigms`) 补具体方法示例 | P2 | 目前仅范式级评级（★▲●），可加每行 1–2 代表方法 |
+| T10 | 应用域索引表 / 附录方法全表 | P3 | 对标 Decade Survey Table 7，压缩规模；附录可出 ~90 方法精简全表 |
+| T11 | 表编号与引用一致性复核 | P3 | 运行 `refine-logs/audit.sh` 确认 A5=0；核对 Table I–IX 编号 |
+
 ## 评审意见（参考）
 
 | # | 维度 | 评价 |
