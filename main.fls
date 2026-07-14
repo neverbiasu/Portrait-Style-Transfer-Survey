@@ -1,4 +1,4 @@
-PWD /Users/nev4rb14su/workspace/Awesome-Portraits-Style-Transfer
+PWD /Users/nev4rb14su/workspace/Portrait-Style-Transfer-Survey
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -245,11 +245,6 @@ INPUT ./images/overview.png
 INPUT ./images/overview.png
 INPUT ./images/overview.png
 INPUT ./images/overview.png
-INPUT ./images/timeline.png
-INPUT ./images/timeline.png
-INPUT ./images/timeline.png
-INPUT ./images/timeline.png
-INPUT ./images/timeline.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm

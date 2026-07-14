@@ -132,6 +132,20 @@ W.~Xia, Y.~Zhang, Y.~Yang, J.-H. Xue, B.~Zhou, and M.-H. Yang, ``{GAN}
   inversion: A survey,'' \emph{IEEE Transactions on Pattern Analysis and
   Machine Intelligence}, vol.~45, no.~3, pp. 3121--3138, 2023.
 
+\bibitem{zhang2025decadesurvey}
+T.~Zhang and H.~Tang, ``Style transfer: A decade survey,'' \emph{arXiv preprint
+  arXiv:2506.19278}, 2025.
+
+\bibitem{xu2025stylereview}
+Y.~Xu, M.~Xia, K.~Hu, S.~Zhou, and L.~Weng, ``Style transfer review:
+  Traditional machine learning to deep learning,'' \emph{Information}, vol.~16,
+  no.~2, p. 157, 2025.
+
+\bibitem{zhang2025personalized}
+Y.~Zhang, Y.~Wei, Z.~Ji, W.~Zuo, L.~Zhang, Y.~Zheng, and M.~Liu, ``Personalized
+  image generation with deep generative models: A decade survey,''
+  \emph{Computational Visual Media}, vol.~11, pp. 1141--1194, 2025.
+
 \bibitem{lai2025instantportraitop}
 Z.~Lai, K.~Sun, F.~Wang, D.~Sagar, and E.~Ding, ``Instantportrait: One-step
   portrait editing via diffusion multi-objective distillation,'' in
@@ -170,12 +184,12 @@ R.~Zhang, P.~Isola, A.~A. Efros, E.~Shechtman, and O.~Wang, ``The unreasonable
   June 2018, pp. 586--595.
 
 \bibitem{yang2022dualstylegan}
-S.~Yang \emph{et~al.}, ``Dualstylegan: Intrinsic-extrinsic disentangled style
+S.~Y. et~al., ``Dualstylegan: Intrinsic-extrinsic disentangled style
   transfer,'' in \emph{CVPR}, 2022.
 
 \bibitem{sain2023styleface}
-A.~Sain \emph{et~al.}, ``Styleface: Stylizing face images with disentangled
-  style and identity,'' \emph{IEEE TMM}, 2023.
+A.~e.~a. Sain, ``Styleface: Stylizing face images with disentangled style and
+  identity,'' \emph{IEEE TMM}, 2023.
 
 \bibitem{deng2019arcface}
 J.~Deng, J.~Guo, J.~Yang, N.~Xue, I.~Kotsia, and S.~Zafeiriou, ``Arcface:
@@ -192,11 +206,6 @@ J.~Hessel, A.~Holtzman, M.~Forbes, R.~Le~Bras, and Y.~Choi, ``Clipscore: A
   7514--7528. [Online]. Available:
   \url{https://aclanthology.org/2021.emnlp-main.595/}
 \BIBentrySTDinterwordspacing
-
-\bibitem{yang2023zeroshotcl}
-S.~Yang, H.~Hwang, and J.-C. Ye, ``Zero-shot contrastive loss for text-guided
-  diffusion image style transfer,'' \emph{2023 IEEE/CVF International
-  Conference on Computer Vision (ICCV)}, pp. 22\,816--22\,825, 2023.
 
 \bibitem{hertzmann2001image}
 A.~Hertzmann, C.~E. Jacobs, N.~Oliver, B.~Curless, and D.~H. Salesin, ``Image
@@ -239,7 +248,7 @@ Y.~Zhang, J.~Liu, Y.~Song, R.~Wang, H.~Tang, J.~Yu, H.~Li, X.~Tang, Y.~Hu,
   Vision and Pattern Recognition (CVPR)}, pp. 8069--8078, 2023.
 
 \bibitem{choi2018stargan}
-Y.~Choi \emph{et~al.}, ``Stargan: Unified generative adversarial networks for
+Y.~C. et~al., ``Stargan: Unified generative adversarial networks for
   multi-domain image-to-image translation,'' in \emph{CVPR}, 2018.
 
 \bibitem{heusel2017ttur}
@@ -280,7 +289,7 @@ B.~Cheng, Z.~Liu, Y.~Peng, and Y.~Lin, ``General image-to-image translation
   on Computer Vision (ICCV)}, pp. 22\,679--22\,689, 2023.
 
 \bibitem{yang2023rerender}
-S.~Yang \emph{et~al.}, ``Rerender a video: Zero-shot text-guided video-to-video
+S.~e.~a. Yang, ``Rerender a video: Zero-shot text-guided video-to-video
   translation,'' in \emph{SIGGRAPH}, 2023.
 
 \bibitem{flowedit2025}
@@ -324,12 +333,6 @@ H.~Ye, J.~Zhang, S.~Liu, X.~Han, and W.~Yang, ``Ip-adapter: Text compatible
   image prompt adapter for text-to-image diffusion models,'' \emph{arXiv
   preprint arXiv:2308.06721}, 2023.
 
-\bibitem{ye2024stylemastersy}
-Z.~Ye, H.~Huang, X.~Wang, P.~Wan, D.~Zhang, and W.~Luo, ``Stylemaster: Stylize
-  your video with artistic generation and translation,'' \emph{2025 IEEE/CVF
-  Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.
-  2630--2640, 2024.
-
 \bibitem{cheng2023visual}
 \BIBentryALTinterwordspacing
 S.-I. Cheng, Y.-C. Yu, W.-C. Chien, X.~Cheng, S.-H. Lai, and M.~Sun, ``Visual
@@ -356,11 +359,29 @@ S.~Liu, T.~Lin, D.~He, F.~Li, M.~Wang, X.~Li, Z.~Sun, Q.~Li, and E.~Ding,
   \emph{2021 IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.
   6629--6638, 2021.
 
-\bibitem{chung2023styleii}
-J.~Chung, S.~Hyun, and J.-P. Heo, ``Style injection in diffusion: A
-  training-free approach for adapting large-scale diffusion models for style
-  transfer,'' \emph{2024 IEEE/CVF Conference on Computer Vision and Pattern
-  Recognition (CVPR)}, pp. 8795--8805, 2023.
+\bibitem{cai2023imagestyle}
+Q.~Cai, M.~Ma, C.~Wang, and H.~Li, ``Image neural style transfer: A review,''
+  \emph{Computers and Electrical Engineering}, vol. 108, p. 108723, 2023.
+
+\bibitem{artflow}
+J.~An, S.~Gu, C.~Yang, J.~Li, Z.~Wang, and Q.~Xu, ``Artflow: Unbiased image
+  style transfer via reversible neural flows,'' \emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 2021.
+
+\bibitem{huang2018multimodal}
+X.~Huang, M.-Y. Liu, S.~Belongie, and J.~Kautz, ``Multimodal unsupervised
+  image-to-image translation,'' \emph{Proceedings of the European Conference on
+  Computer Vision (ECCV)}, 2018.
+
+\bibitem{zheng2024puffnet}
+\BIBentryALTinterwordspacing
+S.~Zheng, P.~Gao, P.~Zhou, and J.~Qin, ``Puff-net: Efficient style transfer
+  with pure content and style feature fusion network,'' in \emph{2024 IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE Computer Society, 2024, pp. 8059--8068.
+  [Online]. Available:
+  \url{https://doi.ieeecomputersociety.org/10.1109/CVPR52733.2024.00770}
+\BIBentrySTDinterwordspacing
 
 \bibitem{karras2020stylegan2}
 T.~Karras, S.~Laine, M.~Aittala, J.~Hellsten, J.~Lehtinen, and T.~Aila,
@@ -368,9 +389,9 @@ T.~Karras, S.~Laine, M.~Aittala, J.~Hellsten, J.~Lehtinen, and T.~Aila,
   2020.
 
 \bibitem{song2021agilegan}
-G.~Song, L.~Zhang, Y.~Shen, Y.~Tai \emph{et~al.}, ``Agilegan: Stylizing
-  portraits via inversion-consistent transfer learning,'' \emph{ACM TOG
-  (SIGGRAPH)}, 2021.
+G.~Song, L.~Zhang, Y.~Shen, and Y.~e.~a. Tai, ``Agilegan: Stylizing portraits
+  via inversion-consistent transfer learning,'' \emph{ACM TOG (SIGGRAPH)},
+  2021.
 
 \bibitem{jang2021stylecarigan}
 G.~Jang, Wonjong~andjh and Y.~J. Kim, ``Stylecarigan: Caricature generation via
@@ -397,6 +418,34 @@ J.~N. Pinkney and D.~Adler, ``Resolution dependent gan interpolation for
   controllable image synthesis between domains,'' \emph{arXiv preprint
   arXiv:2010.05334}, 2020.
 
+\bibitem{pan2023draggan}
+X.~Pan, A.~Tewari, T.~Leimk{\"u}hler, L.~Liu, A.~Meka, and C.~Theobalt, ``Drag
+  your gan: Interactive point-based manipulation on the generative image
+  manifold,'' in \emph{SIGGRAPH}, 2023.
+
+\bibitem{jojogan}
+M.~J. Chong and D.~Forsyth, ``Jojogan: One shot face stylization,'' \emph{arXiv
+  preprint arXiv:2112.11641}, 2021.
+
+\bibitem{men2022dctnet}
+Y.~Men, Y.~Yao, M.~Cui, Z.~Lian, and X.~Xie, ``Dct-net: Domain-calibrated
+  translation for portrait stylization,'' \emph{ACM Transactions on Graphics
+  (Proc. SIGGRAPH)}, 2022.
+
+\bibitem{karras2021stylegan3}
+T.~Karras, M.~Aittala, S.~Laine, E.~H{\"a}rk{\"o}nen, J.~Hellsten, J.~Lehtinen,
+  and T.~Aila, ``Alias-free generative adversarial networks,'' in
+  \emph{NeurIPS}, 2021.
+
+\bibitem{gal2021stylegannada}
+R.~e.~a. Gal, ``Stylegan-nada: Clip-guided domain adaptation of image
+  generators,'' in \emph{SIGGRAPH}, 2021.
+
+\bibitem{gpunit_paper}
+J.~Kim, J.~Jeong, G.~Lee, and Y.~Uh, ``Gp-unit: Generative prior for unpaired
+  image-to-image translation,'' in \emph{European Conference on Computer Vision
+  (ECCV)}, 2022.
+
 \bibitem{ruiz2023dreambooth}
 N.~Ruiz, T.~Li, and N.~Jegelova, ``{DreamBooth}: Fine tuning text-to-image
   diffusion models for subject-driven generation,'' in \emph{Proceedings of the
@@ -415,12 +464,12 @@ Y.~xin Zhang, W.~Dong, F.~Tang, N.~Huang, H.~Huang, C.~Ma, T.-Y. Lee,
 
 \bibitem{sohn2023styledrop}
 K.~Sohn, N.~Ruiz, K.~Lee, D.~C. Chinatspongse, I.~Blok, H.~Chang, J.~Barber,
-  L.~Jiang, G.~Entis, Y.~Li \emph{et~al.}, ``Styledrop: Text-to-image
-  generation in any style,'' in \emph{NeurIPS}, 2023.
+  L.~Jiang, G.~Entis, and Y.~e.~a. Li, ``Styledrop: Text-to-image generation in
+  any style,'' in \emph{NeurIPS}, 2023.
 
 \bibitem{shah2023ziplora}
-V.~Shah \emph{et~al.}, ``Ziplora: Any subject, any style,'' \emph{arXiv
-  preprint arXiv:2311.13600}, 2023.
+V.~e.~a. Shah, ``Ziplora: Any subject, any style,'' \emph{arXiv preprint
+  arXiv:2311.13600}, 2023.
 
 \bibitem{huang2024diffstyler}
 N.~Huang, Y.~Zhang, F.~Tang, C.~Ma, H.~Huang, W.~Dong, and C.~Xu, ``Diffstyler:
@@ -432,13 +481,19 @@ H.~Wang, Q.~Wang, X.~Bai, Z.~Qin, and A.~Chen, ``Instantstyle-plus: Style
   transfer with content-preserving in text-to-image generation,'' \emph{arXiv
   preprint arXiv:2407.00788}, 2024.
 
+\bibitem{chung2023styleii}
+J.~Chung, S.~Hyun, and J.-P. Heo, ``Style injection in diffusion: A
+  training-free approach for adapting large-scale diffusion models for style
+  transfer,'' \emph{2024 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp. 8795--8805, 2023.
+
 \bibitem{cao2023masactrl}
 M.~Cao, X.~Wang, Z.~Qi, Y.~Shan, X.~Peng, and Z.~Liu, ``Masactrl: Tuning-free
   mutual self-attention control for consistent image synthesis and editing,''
   in \emph{ICCV}, 2023.
 
 \bibitem{yang2023zecon}
-Y.~Yang \emph{et~al.}, ``Zecon: Zero-shot content-style disentanglement,'' in
+Y.~e.~a. Yang, ``Zecon: Zero-shot content-style disentanglement,'' in
   \emph{CVPR}, 2023.
 
 \bibitem{jeong2024visualsp}
@@ -450,13 +505,18 @@ F.~He, G.~Li, M.~Zhang, L.~Yan, L.~Si, and F.~Li, ``Freestyle: Free lunch for
   text-guided style transfer using diffusion models,'' \emph{ArXiv}, vol.
   abs/2401.15636, 2024.
 
+\bibitem{yang2023zeroshotcl}
+S.~Yang, H.~Hwang, and J.-C. Ye, ``Zero-shot contrastive loss for text-guided
+  diffusion image style transfer,'' \emph{2023 IEEE/CVF International
+  Conference on Computer Vision (ICCV)}, pp. 22\,816--22\,825, 2023.
+
 \bibitem{liu2024zepozp}
 J.~Liu, H.~Huang, J.~Cao, and R.~He, ``Zepo: Zero-shot portrait stylization
   with faster sampling,'' \emph{Proceedings of the 32nd ACM International
   Conference on Multimedia}, 2024.
 
 \bibitem{qi2024deadiff}
-Z.~Qi \emph{et~al.}, ``Deadiff: An efficient stylization diffusion model with
+Z.~e.~a. Qi, ``Deadiff: An efficient stylization diffusion model with
   disentangled representations,'' \emph{CVPR}, 2024.
 
 \bibitem{han2024styleboothis}
@@ -476,8 +536,34 @@ N.~Huang, W.~Dong, Y.~Zhang, F.~Tang, R.~Li, C.~Ma, X.~Li, T.-Y. Lee, and
   Graphics}, vol.~31, pp. 8425--8438, 2024.
 
 \bibitem{kim2022diffusionclip}
-G.~Kim \emph{et~al.}, ``Diffusionclip: Text-guided diffusion models for robust
-  image manipulation,'' in \emph{CVPR}, 2022.
+G.~e.~a. Kim, ``Diffusionclip: Text-guided diffusion models for robust image
+  manipulation,'' in \emph{CVPR}, 2022.
+
+\bibitem{zhang2022inversionbasedst}
+Y.~xin Zhang, N.~Huang, F.~Tang, H.~Huang, C.~Ma, W.~Dong, and C.~Xu,
+  ``Inversion-based style transfer with diffusion models,'' \emph{2023 IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.
+  10\,146--10\,156, 2022.
+
+\bibitem{li2024photomaker}
+Z.~Li, M.~Cao, X.~Wang, Z.~Qi, M.-M. Cheng, and Y.~Shan, ``Photomaker:
+  Customizing realistic human photos via stacked id embedding,'' in
+  \emph{CVPR}, 2024.
+
+\bibitem{guo2024pulid}
+Z.~Guo, Y.~Wu, Z.~Chen, L.~Chen, P.~Zhang, and Q.~He, ``Pulid: Pure and
+  lightning id customization via contrastive alignment,'' in \emph{Advances in
+  Neural Information Processing Systems (NeurIPS)}, 2024.
+
+\bibitem{huang2024consistentid}
+J.~Huang, X.~Dong, W.~Song, Z.~Chong, Z.~Tang, J.~Zhou, Y.~Cheng, L.~Chen,
+  H.~Li, Y.~Yan, S.~Liao, and X.~Liang, ``Consistentid: Portrait generation
+  with multimodal fine-grained identity preserving,'' \emph{arXiv preprint},
+  2024.
+
+\bibitem{gao2024styleshot}
+J.~Gao, Y.~Liu, Y.~Sun, Y.~Tang, Y.~Zeng, K.~Chen, and C.~Zhao, ``Styleshot: A
+  snapshot on any style,'' \emph{arXiv preprint}, 2024.
 
 \bibitem{mu2025editar}
 \BIBentryALTinterwordspacing
@@ -488,13 +574,12 @@ J.~Mu, N.~Vasconcelos, and X.~Wang, ``Editar: Unified conditional generation
 \BIBentrySTDinterwordspacing
 
 \bibitem{chang2022maskgit}
-H.~Chang \emph{et~al.}, ``Maskgit: Masked generative image transformer,'' in
+H.~e.~a. Chang, ``Maskgit: Masked generative image transformer,'' in
   \emph{CVPR}, 2022.
 
 \bibitem{tian2024var}
-K.~Tian \emph{et~al.}, ``Visual autoregressive modeling: Scalable image
-  generation via next-scale prediction,'' \emph{arXiv preprint
-  arXiv:2404.02905}, 2024.
+K.~e.~a. Tian, ``Visual autoregressive modeling: Scalable image generation via
+  next-scale prediction,'' \emph{arXiv preprint arXiv:2404.02905}, 2024.
 
 \bibitem{han2024infinity}
 J.~Han, J.~Liu, Y.~Jiang, B.~Yan, Y.~Zhang, Z.~Yuan, B.~Peng, and X.~Liu,
@@ -506,6 +591,47 @@ J.~Han, J.~Liu, Y.~Jiang, B.~Yan, Y.~Zhang, Z.~Yuan, B.~Peng, and X.~Liu,
 S.~Yang, L.~Jiang, Z.~Liu, and C.~C. Loy, ``Vtoonify: Controllable
   high-resolution portrait video style transfer,'' \emph{ACM Transactions on
   Graphics (TOG)}, vol.~41, no.~6, pp. 1--15, 2022.
+
+\bibitem{ye2024stylemastersy}
+Z.~Ye, H.~Huang, X.~Wang, P.~Wan, D.~Zhang, and W.~Luo, ``Stylemaster: Stylize
+  your video with artistic generation and translation,'' \emph{2025 IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.
+  2630--2640, 2024.
+
+\bibitem{guo2024animatediff}
+Y.~Guo, C.~Yang, A.~Rao, Z.~Liang, Y.~Wang, Y.~Qiao, M.~Agrawala, D.~Lin, and
+  B.~Dai, ``Animatediff: Animate your personalized text-to-image diffusion
+  models without specific tuning,'' in \emph{ICLR}, 2024.
+
+\bibitem{xu2024magicanimate}
+Z.~Xu, J.~Zhang, J.~H. Liew, H.~Yan, J.-W. Liu, C.~Zhang, J.~Feng, and M.~Z.
+  Shou, ``Magicanimate: Temporally consistent human image animation using
+  diffusion model,'' in \emph{CVPR}, 2024.
+
+\bibitem{hu2024animateanyone}
+L.~Hu, X.~Gao, P.~Zhang, K.~Sun, B.~Zhang, and L.~Bo, ``Animate anyone:
+  Consistent and controllable image-to-video synthesis for character
+  animation,'' in \emph{CVPR}, 2024.
+
+\bibitem{guo2024liveportrait}
+J.~Guo, D.~Zhang, X.~Liu, Z.~Zhong, Y.~Zhang, P.~Wan, and D.~Zhang,
+  ``Liveportrait: Efficient portrait animation with stitching and retargeting
+  control,'' \emph{arXiv preprint}, 2024.
+
+\bibitem{luo2024gaussianhair}
+H.~Luo, M.~Ouyang, Z.~Zhao, S.~Jiang, L.~Zhang, Q.~Zhang, W.~Yang, L.~Xu, and
+  J.~Yu, ``Gaussianhair: Hair modeling and rendering with light-aware
+  gaussians,'' \emph{arXiv preprint}, 2024.
+
+\bibitem{qian20243dgsavatar}
+Z.~Qian, S.~Wang, M.~Mihajlovic, A.~Geiger, and S.~Tang, ``3dgs-avatar:
+  Animatable avatars via deformable 3d gaussian splatting,'' in \emph{CVPR},
+  2024.
+
+\bibitem{zhu2021barbershop}
+P.~Zhu, R.~Abdal, J.~Femiani, and P.~Wonka, ``Barbershop: Gan-based image
+  compositing using segmentation masks,'' \emph{ACM Transactions on Graphics
+  (Proc. SIGGRAPH Asia)}, 2021.
 
 \bibitem{ruder2018artistic}
 M.~Ruder, A.~Dosovitskiy, and T.~Brox, ``Artistic style transfer for videos,''
@@ -578,11 +704,15 @@ Q.~Gu, G.~Wang, M.-T. Chiu, Y.-W. Tai, and C.-K. Tang, ``Ladn: Local
 C.~Yang, W.~He, Y.~Xu, and Y.~Gao, ``Elegant: Exquisite and locally editable
   gan for makeup transfer,'' in \emph{Computer Vision -- ECCV 2022}, 2022.
 
+\bibitem{chen20253dstylization}
+Y.~Chen, G.~Shao, K.~C. Shum, B.-S. Hua, and S.-K. Yeung, ``Advances in 3d
+  neural stylization: A survey,'' \emph{International Journal of Computer
+  Vision}, vol. 133, pp. 5026--5061, 2025.
+
 \bibitem{threedtoonify2024}
-X.~Zhu, Y.~Wang, W.~Liu \emph{et~al.}, ``3dtoonify: Creating your high-fidelity
-  3d stylized avatar easily from 2d portrait images,'' in \emph{Proceedings of
-  the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  2024.
+X.~Zhu, Y.~Wang, and W.~e.~a. Liu, ``3dtoonify: Creating your high-fidelity 3d
+  stylized avatar easily from 2d portrait images,'' in \emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 2024.
 
 \bibitem{jain2024stylesplat}
 \BIBentryALTinterwordspacing
@@ -591,24 +721,23 @@ S.~Jain, A.~Kuthiala, P.~S. Sethi, and P.~Saxena, ``Stylesplat: 3d object style
   \url{https://arxiv.org/abs/2407.09473}
 \BIBentrySTDinterwordspacing
 
+\bibitem{wang2022nerf}
+C.~Wang, R.~Jiang, M.~Chai, M.~He, D.~Chen, and J.~Liao, ``Nerf-art:
+  Text-driven neural radiance fields stylization,'' \emph{TPAMI}, 2023.
+
+\bibitem{huang2022stylizednerf}
+Y.-H. Huang, Y.~He, Y.-J. Lai, Y.-H. Peng, and D.~Cohen-Or, ``Stylizednerf:
+  Consistent 3d scene stylization as pseudo-view consistency,'' in \emph{CVPR},
+  2022.
+
 \bibitem{feng20233dfs}
 J.~Feng and P.~Singhal, ``3d face style transfer with a hybrid solution of nerf
   and mesh rasterization,'' \emph{2024 IEEE/CVF Winter Conference on
   Applications of Computer Vision (WACV)}, pp. 3492--3501, 2023.
 
-\bibitem{zheng2024puffnet}
-\BIBentryALTinterwordspacing
-S.~Zheng, P.~Gao, P.~Zhou, and J.~Qin, ``Puff-net: Efficient style transfer
-  with pure content and style feature fusion network,'' in \emph{2024 IEEE/CVF
-  Conference on Computer Vision and Pattern Recognition (CVPR)}.\hskip 1em plus
-  0.5em minus 0.4em\relax IEEE Computer Society, 2024, pp. 8059--8068.
-  [Online]. Available:
-  \url{https://doi.ieeecomputersociety.org/10.1109/CVPR52733.2024.00770}
-\BIBentrySTDinterwordspacing
-
 \bibitem{radford2021learningtv}
 A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
-  A.~Askell, P.~Mishkin, J.~Clark \emph{et~al.}, ``Learning transferable visual
+  A.~Askell, P.~Mishkin, and J.~e.~a. Clark, ``Learning transferable visual
   models from natural language supervision,'' \emph{Proceedings of the
   International Conference on Machine Learning (ICML)}, 2021.
 
@@ -618,8 +747,8 @@ R.~C. Streijl, S.~Winkler, and D.~S. Hands, ``Mean opinion score ({MOS})
   \emph{Multimedia Systems}, vol.~22, no.~2, pp. 213--227, 2016.
 
 \bibitem{hurst2024gpt4o}
-A.~Hurst, OpenAI \emph{et~al.}, ``Gpt-4o system card,'' OpenAI Technical
-  Report, 2024, online; accessed for multimodal evaluation protocol discussion.
+A.~Hurst and O.~et~al., ``Gpt-4o system card,'' OpenAI Technical Report, 2024,
+  online; accessed for multimodal evaluation protocol discussion.
 
 \bibitem{chen2024mllmjudge}
 D.~Chen, R.~Chen, S.~Zhang, Y.~Wang, Y.~Liu, H.~Zhou, Q.~Zhang, Y.~Wan,
