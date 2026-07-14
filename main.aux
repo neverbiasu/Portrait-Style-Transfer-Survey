@@ -9,13 +9,13 @@
 \citation{wright2022artfidqe}
 \citation{brooks2023instructpix2pix}
 \citation{wang2024instantid}
-\citation{song2020denoising,rombach_2022_cvpr}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{I}{1}{Introduction}{section.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Technological Evolution}{1}{subsection.1.1}\protected@file@percent }
 \newlabel{sec:intro:evolution}{{\mbox  {I-A}}{1}{Technological Evolution}{subsection.1.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-B}}The Portrait Editing Trilemma: A Framework}{1}{subsection.1.2}\protected@file@percent }
 \newlabel{sec:intro:trilemma}{{\mbox  {I-B}}{1}{The Portrait Editing Trilemma: A Framework}{subsection.1.2}{}}
+\citation{song2020denoising,rombach_2022_cvpr}
 \citation{ho2020denoising}
 \citation{kyprianidis2013state}
 \citation{jing2020neural}
@@ -35,8 +35,6 @@
 \citation{hertz2023styleai,kwon2022diffuseit}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-C}}Research Objectives and Contributions}{2}{subsection.1.3}\protected@file@percent }
 \newlabel{sec:intro:contributions}{{\mbox  {I-C}}{2}{Research Objectives and Contributions}{subsection.1.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit  {portrait stylization}, \textit  {style transfer}, \textit  {GAN inversion}, \textit  {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls.}}{2}{table.1}\protected@file@percent }
-\newlabel{tab:prisma}{{I}{2}{PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit {portrait stylization}, \textit {style transfer}, \textit {GAN inversion}, \textit {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls}{table.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Theoretical Foundations of Generative Stylization}{2}{section.2}\protected@file@percent }
 \newlabel{sec:theory}{{II}{2}{Theoretical Foundations of Generative Stylization}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Separation and Representation of Style and Identity}{2}{subsection.2.1}\protected@file@percent }
@@ -45,19 +43,18 @@
 \citation{gatys2016image,johnson2016perceptual,huang2017arbitraryst,yang2022dualstylegan,sain2023styleface}
 \citation{deng2019arcface}
 \citation{hessel2022clipscore}
-\citation{hertzmann2001image}
-\citation{winnemoller2006real}
-\citation{kyprianidis2013state}
-\citation{chen2018facess,luan2017deepps,li2018linearst,park2019arbitraryst}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref {sec:methodology}.}}{3}{figure.1}\protected@file@percent }
-\newlabel{fig:teaser_trilemma}{{1}{3}{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref {sec:methodology}}{figure.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit  {portrait stylization}, \textit  {style transfer}, \textit  {GAN inversion}, \textit  {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls.}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:prisma}{{I}{3}{PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit {portrait stylization}, \textit {style transfer}, \textit {GAN inversion}, \textit {diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization strength, and computational efficiency. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref {sec:methodology}.}}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:teaser_trilemma}{{1}{3}{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization strength, and computational efficiency. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref {sec:methodology}}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Loss Functions for Content--Style Disentanglement}{3}{subsection.2.2}\protected@file@percent }
 \newlabel{sec:theory:losses}{{\mbox  {II-B}}{3}{Loss Functions for Content--Style Disentanglement}{subsection.2.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-B}1}Identity Loss}{3}{subsubsection.2.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-B}2}Reference-free Alignment and CLIP-based Scores}{3}{subsubsection.2.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-B}3}Geometric and Perceptual Losses}{3}{subsubsection.2.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Early Image Processing Priors}{3}{subsection.2.3}\protected@file@percent }
-\newlabel{sec:theory:priors}{{\mbox  {II-C}}{3}{Early Image Processing Priors}{subsection.2.3}{}}
+\citation{hertzmann2001image}
+\citation{winnemoller2006real}
+\citation{kyprianidis2013state}
+\citation{chen2018facess,luan2017deepps,li2018linearst,park2019arbitraryst}
 \citation{luan2017deepps}
 \citation{gatys2015ana,huang2017arbitraryst}
 \citation{kingma2013auto}
@@ -66,14 +63,17 @@
 \citation{goodfellow2014generative}
 \citation{choi2018stargan,heusel2017ttur}
 \citation{karras2019style}
-\citation{richardson2021encoding}
-\citation{roich2022pivotal}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Definitions/Glossary of core terms used in this survey.}}{4}{table.2}\protected@file@percent }
-\newlabel{tab:definitions_glossary}{{II}{4}{Definitions/Glossary of core terms used in this survey}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Timeline of key milestones in Portrait Style Transfer (2015--2025), organized by generative paradigm and colored by the dominant methodological family. The trajectory moves from heuristic texture-matching (NST) through GAN-based geometric manipulation to diffusion-driven open-domain stylization, with emerging autoregressive, video, and 3D/NeRF frontiers---mirroring the paradigm shift analyzed under the Portrait Editing Trilemma.}}{4}{figure.2}\protected@file@percent }
+\newlabel{fig:pst_timeline}{{2}{4}{Timeline of key milestones in Portrait Style Transfer (2015--2025), organized by generative paradigm and colored by the dominant methodological family. The trajectory moves from heuristic texture-matching (NST) through GAN-based geometric manipulation to diffusion-driven open-domain stylization, with emerging autoregressive, video, and 3D/NeRF frontiers---mirroring the paradigm shift analyzed under the Portrait Editing Trilemma}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-B}3}Geometric and Perceptual Losses}{4}{subsubsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Early Image Processing Priors}{4}{subsection.2.3}\protected@file@percent }
+\newlabel{sec:theory:priors}{{\mbox  {II-C}}{4}{Early Image Processing Priors}{subsection.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Variational Autoencoders (VAEs)}{4}{subsection.2.4}\protected@file@percent }
 \newlabel{sec:theory:vae}{{\mbox  {II-D}}{4}{Variational Autoencoders (VAEs)}{subsection.2.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Generative Adversarial Networks (GANs)}{4}{subsection.2.5}\protected@file@percent }
 \newlabel{sec:theory:gan}{{\mbox  {II-E}}{4}{Generative Adversarial Networks (GANs)}{subsection.2.5}{}}
+\citation{richardson2021encoding}
+\citation{roich2022pivotal}
 \citation{xia2023gan}
 \citation{karras2019style}
 \citation{lipman2023flow}
@@ -81,6 +81,11 @@
 \citation{flowedit2025}
 \citation{dvrf2025}
 \citation{flowalign2025}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Definitions/Glossary of core terms used in this survey.}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:definitions_glossary}{{II}{5}{Definitions/Glossary of core terms used in this survey}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Flow Matching Models}{5}{subsection.2.6}\protected@file@percent }
+\newlabel{sec:foundations:flow}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
+\newlabel{sec:theory:flowmatching}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
 \citation{ho2020denoising,song2020denoising}
 \citation{song2020denoising}
 \citation{meng2021sdedit,kim2023diffface}
@@ -94,11 +99,13 @@
 \citation{wang2024instantstyle}
 \citation{kwon2022diffuseit}
 \citation{cheng2023visual}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Flow Matching Models}{5}{subsection.2.6}\protected@file@percent }
-\newlabel{sec:foundations:flow}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
-\newlabel{sec:theory:flowmatching}{{\mbox  {II-F}}{5}{Flow Matching Models}{subsection.2.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-G}}Diffusion Models}{5}{subsection.2.7}\protected@file@percent }
-\newlabel{sec:theory:diffusion}{{\mbox  {II-G}}{5}{Diffusion Models}{subsection.2.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-G}}Diffusion Models}{6}{subsection.2.7}\protected@file@percent }
+\newlabel{sec:theory:diffusion}{{\mbox  {II-G}}{6}{Diffusion Models}{subsection.2.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-H}}Unifying Framework: Control Signal, Prior, and Constraint}{6}{subsection.2.8}\protected@file@percent }
+\newlabel{sec:theory:unified}{{\mbox  {II-H}}{6}{Unifying Framework: Control Signal, Prior, and Constraint}{subsection.2.8}{}}
+\newlabel{eq:unified}{{13}{6}{Unifying Framework: Control Signal, Prior, and Constraint}{equation.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Methods and Method Taxonomy}{6}{section.3}\protected@file@percent }
+\newlabel{sec:methodology}{{III}{6}{Methods and Method Taxonomy}{section.3}{}}
 \citation{selim2016portrait}
 \citation{gatys2015ana}
 \citation{huang2017arbitraryst}
@@ -110,6 +117,14 @@
 \citation{artflow}
 \citation{huang2018multimodal}
 \citation{zheng2024puffnet}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:unified_paradigms}{{III}{7}{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak.}}{7}{table.4}\protected@file@percent }
+\newlabel{tab:trilemma_paradigms}{{IV}{7}{Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches.}}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:pst_taxonomy}{{3}{7}{Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Optimization and Feed-Forward Autoencoders (NST)}{7}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:methodology:nst}{{\mbox  {III-A}}{7}{Optimization and Feed-Forward Autoencoders (NST)}{subsection.3.1}{}}
 \citation{wright2022artfidqe}
 \citation{karras2019style,karras2020stylegan2}
 \citation{song2021agilegan}
@@ -121,15 +136,6 @@
 \citation{sain2023styleface}
 \citation{pinkney2020resolution}
 \citation{choi2018stargan}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-H}}Unifying Framework: Control Signal, Prior, and Constraint}{6}{subsection.2.8}\protected@file@percent }
-\newlabel{sec:theory:unified}{{\mbox  {II-H}}{6}{Unifying Framework: Control Signal, Prior, and Constraint}{subsection.2.8}{}}
-\newlabel{eq:unified}{{13}{6}{Unifying Framework: Control Signal, Prior, and Constraint}{equation.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Methods and Method Taxonomy}{6}{section.3}\protected@file@percent }
-\newlabel{sec:methodology}{{III}{6}{Methods and Method Taxonomy}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Optimization and Feed-Forward Autoencoders (NST)}{6}{subsection.3.1}\protected@file@percent }
-\newlabel{sec:methodology:nst}{{\mbox  {III-A}}{6}{Optimization and Feed-Forward Autoencoders (NST)}{subsection.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}GAN-Based Architectures: Geometric Manipulation}{6}{subsection.3.2}\protected@file@percent }
-\newlabel{sec:methodology:gan}{{\mbox  {III-B}}{6}{GAN-Based Architectures: Geometric Manipulation}{subsection.3.2}{}}
 \citation{yang2022dualstylegan}
 \citation{yang2022dualstylegan}
 \citation{pan2023draggan}
@@ -162,12 +168,10 @@
 \citation{cheng2023visual}
 \citation{li2024styletokenizerdi}
 \citation{huang2024creativesynthcf}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families.}}{7}{table.3}\protected@file@percent }
-\newlabel{tab:unified_paradigms}{{III}{7}{Unified tripartite decomposition of PST paradigms. Each row maps the same abstract components to concrete instantiations across the four method families}{table.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Qualitative mapping of PST paradigms to the Portrait Editing Trilemma axes. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak.}}{7}{table.4}\protected@file@percent }
-\newlabel{tab:trilemma_paradigms}{{IV}{7}{Qualitative mapping of PST paradigms to the Portrait Editing Trilemma axes. $\bigstar $ = strong, $\blacktriangle $ = moderate, $\bullet $ = weak}{table.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Diffusion Models: Open-Domain Texture Synthesis}{7}{subsection.3.3}\protected@file@percent }
-\newlabel{sec:methodology:diffusion}{{\mbox  {III-C}}{7}{Diffusion Models: Open-Domain Texture Synthesis}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}GAN-Based Architectures: Geometric Manipulation}{8}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:methodology:gan}{{\mbox  {III-B}}{8}{GAN-Based Architectures: Geometric Manipulation}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Diffusion Models: Open-Domain Texture Synthesis}{8}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:methodology:diffusion}{{\mbox  {III-C}}{8}{Diffusion Models: Open-Domain Texture Synthesis}{subsection.3.3}{}}
 \citation{kim2022diffusionclip}
 \citation{zhang2022inversionbasedst}
 \citation{li2024photomaker}
@@ -182,10 +186,10 @@
 \citation{tian2024var}
 \citation{han2024infinity}
 \citation{mu2025editar}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches.}}{8}{figure.2}\protected@file@percent }
-\newlabel{fig:stylegan_pipeline}{{2}{8}{StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Autoregressive Models: Bridging Discrete Tokens and Global Structure}{8}{subsection.3.4}\protected@file@percent }
-\newlabel{sec:methodology:ar}{{\mbox  {III-D}}{8}{Autoregressive Models: Bridging Discrete Tokens and Global Structure}{subsection.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches.}}{9}{figure.4}\protected@file@percent }
+\newlabel{fig:stylegan_pipeline}{{4}{9}{StyleGAN inversion and latent editing workflow for portrait stylization. The diagram highlights the main forward path and auxiliary identity/geometry regularization branches}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Autoregressive Models: Bridging Discrete Tokens and Global Structure}{9}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:methodology:ar}{{\mbox  {III-D}}{9}{Autoregressive Models: Bridging Discrete Tokens and Global Structure}{subsection.3.4}{}}
 \citation{gatys2015ana}
 \citation{huang2017arbitraryst}
 \citation{luan2017deepps}
@@ -243,20 +247,18 @@
 \citation{xu2024magicanimate}
 \citation{hu2024animateanyone}
 \citation{guo2024liveportrait}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Advanced Stylization Tasks and Applications}{10}{section.4}\protected@file@percent }
+\newlabel{sec:advanced}{{IV}{10}{Advanced Stylization Tasks and Applications}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Video Portrait Stylization (Temporal Consistency)}{10}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:advanced:video}{{\mbox  {IV-A}}{10}{Video Portrait Stylization (Temporal Consistency)}{subsection.4.1}{}}
+\newlabel{sec:advanced:video:stylemaster}{{\mbox  {IV-A}1}{10}{StyleMaster: Decoupling Motion and Style}{subsubsection.4.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}1}StyleMaster: Decoupling Motion and Style}{10}{subsubsection.4.1.1}\protected@file@percent }
+\newlabel{sec:advanced:video:styleavideo}{{\mbox  {IV-A}2}{10}{Conditional Guidance in Style-A-Video}{subsubsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}2}Conditional Guidance in Style-A-Video}{10}{subsubsection.4.1.2}\protected@file@percent }
+\newlabel{sec:advanced:video:baselines}{{\mbox  {IV-A}3}{10}{Consistency Baselines}{subsubsection.4.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}3}Consistency Baselines}{10}{subsubsection.4.1.3}\protected@file@percent }
 \citation{yan2023facestudiopy,liu2023portraitdt,ambiel2023portraitsa}
 \citation{su2021mangagan}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Advanced Stylization Tasks and Applications}{9}{section.4}\protected@file@percent }
-\newlabel{sec:advanced}{{IV}{9}{Advanced Stylization Tasks and Applications}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Video Portrait Stylization (Temporal Consistency)}{9}{subsection.4.1}\protected@file@percent }
-\newlabel{sec:advanced:video}{{\mbox  {IV-A}}{9}{Video Portrait Stylization (Temporal Consistency)}{subsection.4.1}{}}
-\newlabel{sec:advanced:video:stylemaster}{{\mbox  {IV-A}1}{9}{StyleMaster: Decoupling Motion and Style}{subsubsection.4.1.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}1}StyleMaster: Decoupling Motion and Style}{9}{subsubsection.4.1.1}\protected@file@percent }
-\newlabel{sec:advanced:video:styleavideo}{{\mbox  {IV-A}2}{9}{Conditional Guidance in Style-A-Video}{subsubsection.4.1.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}2}Conditional Guidance in Style-A-Video}{9}{subsubsection.4.1.2}\protected@file@percent }
-\newlabel{sec:advanced:video:baselines}{{\mbox  {IV-A}3}{9}{Consistency Baselines}{subsubsection.4.1.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-A}3}Consistency Baselines}{9}{subsubsection.4.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Local Editing and Makeup Transfer (Fine-grained Control)}{9}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:advanced:local}{{\mbox  {IV-B}}{9}{Local Editing and Makeup Transfer (Fine-grained Control)}{subsection.4.2}{}}
 \citation{zhang2024stablemakeup}
 \citation{yang2025freeuv}
 \citation{li2018beautygan}
@@ -271,29 +273,31 @@
 \citation{luo2024gaussianhair}
 \citation{wang2022nerf}
 \citation{huang2022stylizednerf}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Capability matrix of representative PST methods. Qualitative symbols: $\bigstar $ = strong/fast; $\blacktriangle $ = moderate; $\bullet $ = weak/slow. Speed figures are reported heterogeneously across the source papers (varying GPUs, resolutions, batch sizes, and backbone sizes) and are therefore \textit  {not} directly comparable; they indicate relative orders of magnitude only, under each method's original evaluation protocol. The $\bigstar $/$\blacktriangle $/$\bullet $ ratings are relative qualitative judgments derived from each method's original publication, not measurements produced by this survey.}}{11}{table.5}\protected@file@percent }
+\newlabel{tab:comparison_matrix}{{V}{11}{Capability matrix of representative PST methods. Qualitative symbols: $\bigstar $ = strong/fast; $\blacktriangle $ = moderate; $\bullet $ = weak/slow. Speed figures are reported heterogeneously across the source papers (varying GPUs, resolutions, batch sizes, and backbone sizes) and are therefore \textit {not} directly comparable; they indicate relative orders of magnitude only, under each method's original evaluation protocol. The $\bigstar $/$\blacktriangle $/$\bullet $ ratings are relative qualitative judgments derived from each method's original publication, not measurements produced by this survey}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Local Editing and Makeup Transfer (Fine-grained Control)}{11}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:advanced:local}{{\mbox  {IV-B}}{11}{Local Editing and Makeup Transfer (Fine-grained Control)}{subsection.4.2}{}}
+\newlabel{sec:advanced:local:stablemakeup}{{\mbox  {IV-B}1}{11}{Stable-Makeup: Prompt-guided Local Control}{subsubsection.4.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}1}Stable-Makeup: Prompt-guided Local Control}{11}{subsubsection.4.2.1}\protected@file@percent }
+\newlabel{sec:advanced:local:baselines}{{\mbox  {IV-B}2}{11}{Baselines and Data Synthesis}{subsubsection.4.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}2}Baselines and Data Synthesis}{11}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}3D-Aware Portrait Stylization}{11}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:advanced:3d}{{\mbox  {IV-C}}{11}{3D-Aware Portrait Stylization}{subsection.4.3}{}}
 \citation{feng20233dfs}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Capability matrix of representative PST methods. Qualitative symbols: $\bigstar $ = strong/fast; $\blacktriangle $ = moderate; $\bullet $ = weak/slow. Speed figures are reported heterogeneously across the source papers (varying GPUs, resolutions, batch sizes, and backbone sizes) and are therefore \textit  {not} directly comparable; they indicate relative orders of magnitude only, under each method's original evaluation protocol. The $\bigstar $/$\blacktriangle $/$\bullet $ ratings are relative qualitative judgments derived from each method's original publication, not measurements produced by this survey.}}{10}{table.5}\protected@file@percent }
-\newlabel{tab:comparison_matrix}{{V}{10}{Capability matrix of representative PST methods. Qualitative symbols: $\bigstar $ = strong/fast; $\blacktriangle $ = moderate; $\bullet $ = weak/slow. Speed figures are reported heterogeneously across the source papers (varying GPUs, resolutions, batch sizes, and backbone sizes) and are therefore \textit {not} directly comparable; they indicate relative orders of magnitude only, under each method's original evaluation protocol. The $\bigstar $/$\blacktriangle $/$\bullet $ ratings are relative qualitative judgments derived from each method's original publication, not measurements produced by this survey}{table.5}{}}
-\newlabel{sec:advanced:local:stablemakeup}{{\mbox  {IV-B}1}{10}{Stable-Makeup: Prompt-guided Local Control}{subsubsection.4.2.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}1}Stable-Makeup: Prompt-guided Local Control}{10}{subsubsection.4.2.1}\protected@file@percent }
-\newlabel{sec:advanced:local:baselines}{{\mbox  {IV-B}2}{10}{Baselines and Data Synthesis}{subsubsection.4.2.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}2}Baselines and Data Synthesis}{10}{subsubsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}3D-Aware Portrait Stylization}{10}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:advanced:3d}{{\mbox  {IV-C}}{10}{3D-Aware Portrait Stylization}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Key Technical Challenges}{10}{subsubsection.4.3.1}\protected@file@percent }
-\newlabel{sec:advanced:3d:rigging}{{\mbox  {IV-C}1}{10}{Key Technical Challenges}{subsubsection.4.3.1}{}}
 \citation{jain2024stylesplat}
 \citation{ye2024stylemastersy,jain2024stylesplat}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Representative portrait style-transfer methods surveyed in this work, organized by generative paradigm and advanced task axis. Contributions are stated from each method's original publication; this table complements Table~\ref {tab:comparison_matrix} (qualitative capability ratings) with an objective, citation-grounded overview.}}{12}{table.6}\protected@file@percent }
+\newlabel{tab:method_overview}{{VI}{12}{Representative portrait style-transfer methods surveyed in this work, organized by generative paradigm and advanced task axis. Contributions are stated from each method's original publication; this table complements Table~\ref {tab:comparison_matrix} (qualitative capability ratings) with an objective, citation-grounded overview}{table.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Key Technical Challenges}{12}{subsubsection.4.3.1}\protected@file@percent }
+\newlabel{sec:advanced:3d:rigging}{{\mbox  {IV-C}1}{12}{Key Technical Challenges}{subsubsection.4.3.1}{}}
+\newlabel{sec:advanced:3d:guidance}{{\mbox  {IV-C}2}{12}{Texture and Aesthetic Guidance}{subsubsection.4.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}2}Texture and Aesthetic Guidance}{12}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Summary}{12}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:advanced:summary}{{\mbox  {IV-D}}{12}{Summary}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation Metrics and The Benchmark Protocol}{12}{section.5}\protected@file@percent }
+\newlabel{sec:evaluation}{{V}{12}{Evaluation Metrics and The Benchmark Protocol}{section.5}{}}
 \citation{zhang2018lpips}
 \citation{gatys2015ana,gatys2016image}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Representative portrait style-transfer methods surveyed in this work, organized by generative paradigm and advanced task axis. Contributions are stated from each method's original publication; this table complements Table~\ref {tab:comparison_matrix} (qualitative capability ratings) with an objective, citation-grounded overview.}}{11}{table.6}\protected@file@percent }
-\newlabel{tab:method_overview}{{VI}{11}{Representative portrait style-transfer methods surveyed in this work, organized by generative paradigm and advanced task axis. Contributions are stated from each method's original publication; this table complements Table~\ref {tab:comparison_matrix} (qualitative capability ratings) with an objective, citation-grounded overview}{table.6}{}}
-\newlabel{sec:advanced:3d:guidance}{{\mbox  {IV-C}2}{11}{Texture and Aesthetic Guidance}{subsubsection.4.3.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}2}Texture and Aesthetic Guidance}{11}{subsubsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Summary}{11}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:advanced:summary}{{\mbox  {IV-D}}{11}{Summary}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation Metrics and The Benchmark Protocol}{11}{section.5}\protected@file@percent }
-\newlabel{sec:evaluation}{{V}{11}{Evaluation Metrics and The Benchmark Protocol}{section.5}{}}
 \citation{deng2019arcface}
 \citation{sain2023styleface}
 \citation{heusel2017ttur}
@@ -304,30 +308,31 @@
 \citation{streijl2016mean}
 \citation{selim2016portrait,yi2019apdrawinggan}
 \citation{streijl2016mean}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite  {zhang2018lpips} was proposed in 2018, after classic NST \cite  {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works.}}{12}{table.7}\protected@file@percent }
-\newlabel{tab:metric_usage}{{VII}{12}{Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite {zhang2018lpips} was proposed in 2018, after classic NST \cite {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works}{table.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}The Golden Protocol: A Proposed Benchmark Guideline}{12}{subsection.5.1}\protected@file@percent }
-\newlabel{sec:evaluation:configuration}{{\mbox  {V-A}}{12}{The Golden Protocol: A Proposed Benchmark Guideline}{subsection.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Multi-Pillar Quantitative Benchmarking}{12}{subsection.5.2}\protected@file@percent }
-\newlabel{sec:evaluation:quantitative}{{\mbox  {V-B}}{12}{Multi-Pillar Quantitative Benchmarking}{subsection.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Qualitative Evaluation: Human Studies and LMM Proxies}{12}{subsection.5.3}\protected@file@percent }
-\newlabel{sec:evaluation:qualitative}{{\mbox  {V-C}}{12}{Qualitative Evaluation: Human Studies and LMM Proxies}{subsection.5.3}{}}
 \citation{hurst2024gpt4o}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}The Golden Protocol: A Proposed Benchmark Guideline}{13}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:benchmark}{{\mbox  {V-A}}{13}{The Golden Protocol: A Proposed Benchmark Guideline}{subsection.5.1}{}}
+\newlabel{sec:evaluation:configuration}{{\mbox  {V-A}}{13}{The Golden Protocol: A Proposed Benchmark Guideline}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Multi-Pillar Quantitative Benchmarking}{13}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:evaluation:quantitative}{{\mbox  {V-B}}{13}{Multi-Pillar Quantitative Benchmarking}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Qualitative Evaluation: Human Studies and LMM Proxies}{13}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:evaluation:qualitative}{{\mbox  {V-C}}{13}{Qualitative Evaluation: Human Studies and LMM Proxies}{subsection.5.3}{}}
 \citation{chen2024mllmjudge}
 \citation{wikiart}
 \citation{danbooru2021}
 \citation{liu2021blendgan}
 \citation{wang2025omnistyle}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite  {zhang2018lpips} was proposed in 2018, after classic NST \cite  {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works.}}{14}{table.7}\protected@file@percent }
+\newlabel{tab:metric_usage}{{VII}{14}{Metric reporting frequency across paradigms. "Common" = $\ge $50\% of methods, "Occasional" = 10--50\%, "Rare" = $<$10\%. N/A* denotes a metric unavailable at the paradigm's inception (e.g., LPIPS \cite {zhang2018lpips} was proposed in 2018, after classic NST \cite {gatys2015ana,gatys2016image}), and is only applied retrospectively in later works}{table.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-C}0a}Visual Artifact Analysis and Failure Modes.}{14}{paragraph.5.3.0.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Benchmark Scope and Limitations}{14}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:evaluation:benchmark_scope}{{\mbox  {V-D}}{14}{Benchmark Scope and Limitations}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Datasets, Privacy, and Ethical Benchmarks}{14}{section.6}\protected@file@percent }
+\newlabel{sec:datasets}{{VI}{14}{Datasets, Privacy, and Ethical Benchmarks}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Content and Style Datasets: The Privacy Shift}{14}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:datasets:content_style}{{\mbox  {VI-A}}{14}{Content and Style Datasets: The Privacy Shift}{subsection.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{14}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:datasets:omnistyle}{{\mbox  {VI-B}}{14}{Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{subsection.6.2}{}}
 \citation{wang2025omnistyle}
-\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-C}0a}Visual Artifact Analysis and Failure Modes.}{13}{paragraph.5.3.0.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Benchmark Scope and Limitations}{13}{subsection.5.4}\protected@file@percent }
-\newlabel{sec:evaluation:benchmark_scope}{{\mbox  {V-D}}{13}{Benchmark Scope and Limitations}{subsection.5.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Datasets, Privacy, and Ethical Benchmarks}{13}{section.6}\protected@file@percent }
-\newlabel{sec:datasets}{{VI}{13}{Datasets, Privacy, and Ethical Benchmarks}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Content and Style Datasets: The Privacy Shift}{13}{subsection.6.1}\protected@file@percent }
-\newlabel{sec:datasets:content_style}{{\mbox  {VI-A}}{13}{Content and Style Datasets: The Privacy Shift}{subsection.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{13}{subsection.6.2}\protected@file@percent }
-\newlabel{sec:datasets:omnistyle}{{\mbox  {VI-B}}{13}{Large-Scale Synthetic Triplets: The OmniStyle-1M Paradigm}{subsection.6.2}{}}
 \citation{nguyen2021lipstick}
 \citation{celebvhq}
 \citation{wang2025omnistyle}
@@ -344,26 +349,32 @@
 \citation{euaiact2024}
 \citation{gdpr2016}
 \citation{carlini2023extracting,shamshad2023clip2protect}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Dataset Selection Guide for Practitioners}{14}{subsection.6.3}\protected@file@percent }
-\newlabel{sec:datasets:guide}{{\mbox  {VI-C}}{14}{Dataset Selection Guide for Practitioners}{subsection.6.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion and Open Challenges}{14}{section.7}\protected@file@percent }
-\newlabel{sec:discussion}{{VII}{14}{Discussion and Open Challenges}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}The Portrait Editing Trilemma in Practice}{14}{subsection.7.1}\protected@file@percent }
-\newlabel{sec:discussion:triangle}{{\mbox  {VII-A}}{14}{The Portrait Editing Trilemma in Practice}{subsection.7.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Key Innovations under the Trilemma}{14}{subsection.7.2}\protected@file@percent }
-\newlabel{sec:evaluation:innovations}{{\mbox  {VII-B}}{14}{Key Innovations under the Trilemma}{subsection.7.2}{}}
-\newlabel{sec:evaluation:innovations:tradeoff}{{\mbox  {VII-B}1}{14}{Navigating the Style--Identity Trade-off}{subsubsection.7.2.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}1}Navigating the Style--Identity Trade-off}{14}{subsubsection.7.2.1}\protected@file@percent }
-\newlabel{sec:evaluation:innovations:speed}{{\mbox  {VII-B}2}{14}{Computational Efficiency and Real-time Deployment}{subsubsection.7.2.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}2}Computational Efficiency and Real-time Deployment}{14}{subsubsection.7.2.2}\protected@file@percent }
-\newlabel{sec:evaluation:innovations:multimodal}{{\mbox  {VII-B}3}{14}{Multimodal Control and Instruction Following}{subsubsection.7.2.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}3}Multimodal Control and Instruction Following}{14}{subsubsection.7.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethics, Regulation, and Deployment Constraints}{14}{subsection.7.3}\protected@file@percent }
-\newlabel{sec:discussion:ethics_regulation}{{\mbox  {VII-C}}{14}{Ethics, Regulation, and Deployment Constraints}{subsection.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Dataset Selection Guide for Practitioners}{15}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:datasets:guide}{{\mbox  {VI-C}}{15}{Dataset Selection Guide for Practitioners}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion and Open Challenges}{15}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{VII}{15}{Discussion and Open Challenges}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}The Portrait Editing Trilemma in Practice}{15}{subsection.7.1}\protected@file@percent }
+\newlabel{sec:discussion:triangle}{{\mbox  {VII-A}}{15}{The Portrait Editing Trilemma in Practice}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Key Innovations under the Trilemma}{15}{subsection.7.2}\protected@file@percent }
+\newlabel{sec:evaluation:innovations}{{\mbox  {VII-B}}{15}{Key Innovations under the Trilemma}{subsection.7.2}{}}
+\newlabel{sec:evaluation:innovations:tradeoff}{{\mbox  {VII-B}1}{15}{Navigating the Style--Identity Trade-off}{subsubsection.7.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}1}Navigating the Style--Identity Trade-off}{15}{subsubsection.7.2.1}\protected@file@percent }
+\newlabel{sec:evaluation:innovations:speed}{{\mbox  {VII-B}2}{15}{Computational Efficiency and Real-time Deployment}{subsubsection.7.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}2}Computational Efficiency and Real-time Deployment}{15}{subsubsection.7.2.2}\protected@file@percent }
+\newlabel{sec:evaluation:innovations:multimodal}{{\mbox  {VII-B}3}{15}{Multimodal Control and Instruction Following}{subsubsection.7.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-B}3}Multimodal Control and Instruction Following}{15}{subsubsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethics, Regulation, and Deployment Constraints}{15}{subsection.7.3}\protected@file@percent }
+\newlabel{sec:discussion:ethics_regulation}{{\mbox  {VII-C}}{15}{Ethics, Regulation, and Deployment Constraints}{subsection.7.3}{}}
 \citation{karras2019style}
 \citation{ho2020denoising,rombach_2022_cvpr}
 \citation{ye2023ipadapter}
 \citation{wang2024instantid}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status.}}{16}{table.8}\protected@file@percent }
+\newlabel{tab:datasets_pst}{{VIII}{16}{Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Data and Code Availability}{16}{subsection.7.4}\protected@file@percent }
+\newlabel{sec:discussion:availability}{{\mbox  {VII-D}}{16}{Data and Code Availability}{subsection.7.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}Practical Guidelines: Lessons from a Decade of PST}{16}{subsection.7.5}\protected@file@percent }
+\newlabel{sec:discussion:guidelines}{{\mbox  {VII-E}}{16}{Practical Guidelines: Lessons from a Decade of PST}{subsection.7.5}{}}
 \citation{yang2022vtoonify}
 \citation{ye2024stylemastersy}
 \citation{yang2023rerender}
@@ -377,29 +388,19 @@
 \citation{jain2024stylesplat,feng20233dfs}
 \citation{threedtoonify2024,jain2024stylesplat}
 \citation{dvrf2025}
-\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status.}}{15}{table.8}\protected@file@percent }
-\newlabel{tab:datasets_pst}{{VIII}{15}{Summary of Key Datasets in Portrait Style Transfer, including License and Compliance Status}{table.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Data and Code Availability}{15}{subsection.7.4}\protected@file@percent }
-\newlabel{sec:discussion:availability}{{\mbox  {VII-D}}{15}{Data and Code Availability}{subsection.7.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion and Future Roadmap}{15}{section.8}\protected@file@percent }
-\newlabel{sec:conclusion}{{VIII}{15}{Conclusion and Future Roadmap}{section.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Retrospective: Navigating the Trilemma}{15}{subsection.8.1}\protected@file@percent }
-\newlabel{sec:conclusion:retrospective}{{\mbox  {VIII-A}}{15}{Retrospective: Navigating the Trilemma}{subsection.8.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}Open Challenges and Research Roadmap}{15}{subsection.8.2}\protected@file@percent }
-\newlabel{sec:conclusion:roadmap}{{\mbox  {VIII-B}}{15}{Open Challenges and Research Roadmap}{subsection.8.2}{}}
 \citation{lai2025instantportraitop}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion and Future Roadmap}{17}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{VIII}{17}{Conclusion and Future Roadmap}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Retrospective: Navigating the Trilemma}{17}{subsection.8.1}\protected@file@percent }
+\newlabel{sec:conclusion:retrospective}{{\mbox  {VIII-A}}{17}{Retrospective: Navigating the Trilemma}{subsection.8.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}Open Challenges and Research Roadmap}{17}{subsection.8.2}\protected@file@percent }
+\newlabel{sec:conclusion:roadmap}{{\mbox  {VIII-B}}{17}{Open Challenges and Research Roadmap}{subsection.8.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}Practical Deployment and Accessibility}{17}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}Limitations of This Survey}{17}{subsection.8.4}\protected@file@percent }
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{gatys2015ana}{1}
 \bibcite{gatys2016image}{2}
-\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories.}}{16}{table.9}\protected@file@percent }
-\newlabel{tab:research_roadmap}{{IX}{16}{Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories}{table.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}Practical Deployment and Accessibility}{16}{subsection.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}Limitations of This Survey}{16}{subsection.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Appendix}{16}{section*.1}\protected@file@percent }
-\newlabel{app:prisma}{{A}{16}{\appendixname }{section*.1}{}}
-\newlabel{app:checklist}{{A}{16}{\appendixname }{section*.1}{}}
-\@writefile{toc}{\contentsline {section}{References}{16}{section*.2}\protected@file@percent }
 \bibcite{johnson2016perceptual}{3}
 \bibcite{ulyanov2016texture}{4}
 \bibcite{huang2017arbitraryst}{5}
@@ -419,6 +420,12 @@
 \bibcite{jing2020neural}{19}
 \bibcite{xia2023gan}{20}
 \bibcite{zhang2025decadesurvey}{21}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories.}}{18}{table.9}\protected@file@percent }
+\newlabel{tab:research_roadmap}{{IX}{18}{Research Roadmap for Portrait Style Transfer: Open Challenges and Proposed Trajectories}{table.9}{}}
+\@writefile{toc}{\contentsline {section}{Appendix}{18}{section*.1}\protected@file@percent }
+\newlabel{app:prisma}{{A}{18}{\appendixname }{section*.1}{}}
+\newlabel{app:checklist}{{A}{18}{\appendixname }{section*.1}{}}
+\@writefile{toc}{\contentsline {section}{References}{18}{section*.2}\protected@file@percent }
 \bibcite{xu2025stylereview}{22}
 \bibcite{zhang2025personalized}{23}
 \bibcite{lai2025instantportraitop}{24}
@@ -548,4 +555,4 @@
 \bibcite{gdpr2016}{148}
 \bibcite{carlini2023extracting}{149}
 \bibcite{shamshad2023clip2protect}{150}
-\gdef \@abspage@last{20}
+\gdef \@abspage@last{21}

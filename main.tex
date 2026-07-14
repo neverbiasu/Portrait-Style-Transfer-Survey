@@ -10,6 +10,8 @@
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,trees}
 \emergencystretch=2em
 
 \begin{document}
@@ -34,12 +36,17 @@ Portrait style transfer has progressed from early texture synthesis and optimiza
 
 \subsection{The Portrait Editing Trilemma: A Framework}
 \label{sec:intro:trilemma}
+
+\noindent\textbf{Definition 1 (Portrait Style Transfer).} Given a source portrait $\mathbf{x}$ and a style reference $\mathbf{s}$ (an image, a text prompt, or a learned embedding), \emph{Portrait Style Transfer (PST)} is the task of synthesizing a portrait $\mathbf{y} = G(\mathbf{x}, \mathbf{s}; \theta)$ with a generative model $G$ parameterized by $\theta$, such that (i)~the subject's identity and facial topology are preserved, (ii)~the target visual style is faithfully conveyed, and (iii)~$\mathbf{y}$ remains a plausible, controllable portrait. Operationally this minimizes a joint objective
+$\mathcal{L}_{\mathrm{PST}} = \mathcal{L}_{\mathrm{style}}(\mathbf{y},\mathbf{s}) + \lambda_{\mathrm{id}}\,\mathcal{L}_{\mathrm{id}}(\mathbf{y},\mathbf{x}) + \lambda_{\mathrm{ctrl}}\,\mathcal{L}_{\mathrm{ctrl}}(\mathbf{y},\mathbf{x})$,
+subject to an identity-preservation constraint $I(\mathbf{y},\mathbf{x})\ge \tau_{\mathrm{id}}$ and a practical compute budget.\hfill$\diamond$
+
 In this survey, we identify a structural tension among three critical objectives. We term this the \textbf{"Portrait Editing Trilemma"}---to the best of our knowledge, the first explicit formalization of this three-way trade-off as a unifying lens for portrait editing. Its individual axes are instantiated by prior work on identity-preserving adapters \cite{wang2024instantstyle}, domain-generalizable stylization \cite{wang2025domaingp}, dual-style generation \cite{yang_2022_cvpr}, and the ArtFID fidelity metric \cite{wright2022artfidqe}:
 
 \begin{enumerate}
   \item \textbf{Identity Preservation}: The model must rigorously maintain the subject's unique likeness throughout the editing process.
-  \item \textbf{Editing Fidelity}: The model must accurately interpret and apply user instructions (typically via text prompts) to generate the desired stylistic or content changes.
-  \item \textbf{Inference Speed}: The model must perform these edits in real time, ideally within a single step, to be viable for interactive applications.
+  \item \textbf{Stylization Strength}: The model must convey the target visual style with sufficient artistic intensity while keeping the result legible as a portrait.
+  \item \textbf{Computational Efficiency}: The model must produce edits under a practical latency and compute budget (ideally in real time), to remain viable for interactive deployment.
 \end{enumerate}
 
 We adopt the well-established \emph{impossible triangle} of stylization---the competing tension among identity preservation, stylization strength, and computational efficiency---as the primary analytical lens of this survey, formalizing it as the \textbf{Portrait Editing Trilemma} that organizes the three axes above.
@@ -48,7 +55,7 @@ To avoid term drift across sections, we explicitly standardize core terms in Tab
 
 Existing models often sacrifice at least one of these strictly competing objectives. General-purpose editors (e.g., InstructPix2Pix~\cite{brooks2023instructpix2pix}) excel at fidelity but distort identity; specialized identity models (e.g., InstantID~\cite{wang2024instantid}) preserve likeness but often struggle with complex stylistic instructions or suffer from high latency.
 
-Formally, let a method $m$ be characterized by its identity preservation score $I_m$, editing fidelity $E_m$, and inference speed $S_m$ (higher is better on all axes). $m$ \emph{Pareto-dominates} $m'$ if $I_m \ge I_{m'}$, $E_m \ge E_{m'}$, and $S_m \ge S_{m'}$ with at least one strict inequality. The Pareto frontier $\mathcal{P}$ is the set of non-dominated methods. Qualitatively: NST methods achieve high editing fidelity and moderate speed but weak identity; GANs offer strong identity and fast speed yet limited editing range; diffusion models attain high identity and editing fidelity at the cost of speed; AR models balance structure control and speed but introduce quantization artifacts. This mapping is formalized in the unifying framework (Section~\ref{sec:theory:unified}).
+Formally, let a method $m$ be characterized by its identity-preservation score $I_m$, stylization-strength score $\mathrm{St}_m$, and computational-efficiency score $C_m$ (higher is better on all axes). $m$ \emph{Pareto-dominates} $m'$ if $I_m \ge I_{m'}$, $\mathrm{St}_m \ge \mathrm{St}_{m'}$, and $C_m \ge C_{m'}$ with at least one strict inequality. The Pareto frontier $\mathcal{P}$ is the set of non-dominated methods. Qualitatively: NST methods achieve high stylization strength and moderate speed but weak identity; GANs offer strong identity and fast speed yet limited stylization range; diffusion models attain high identity and stylization strength at the cost of efficiency; AR models balance structure control and efficiency but introduce quantization artifacts. This mapping is formalized in the unifying framework (Section~\ref{sec:theory:unified}).
 
 In diffusion pipelines, inference commonly uses tens of denoising steps; under typical training-free DDIM-family settings, stable stylization often falls in the 30--50 step range, while practical accelerated configurations are commonly reported around 20--50 steps \cite{song2020denoising,rombach_2022_cvpr}.
 
@@ -63,7 +70,7 @@ This paper makes the following principal contributions:
 
 \textbf{Survey Methodology:} To ensure rigorous coverage, we conducted a systematic literature search following PRISMA-inspired guidelines. Our search targeted flagship venues---CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH (conferences) and TPAMI, TOG, IJCV, TVCG, TIP (journals)---published between 2015 and 2025. Keywords comprised four query categories: ``portrait stylization'', ``style transfer'', ``GAN inversion'', and ``diffusion-based editing''. The initial search returned approximately 480 records. After removing duplicates, approximately 320 unique records proceeded to title and abstract screening, which excluded purely unconditional generation, non-face stylization, and methods without explicit identity-preserving or structure-preserving controls, narrowing the pool to approximately 180 candidates. Full-text eligibility assessment yielded a final corpus of 115+ publications, comprising 88 peer-reviewed venues and 28 screened arXiv preprints. Of these, approximately 90 are distinct PST methods with dedicated stylization components; the remainder are foundational generative models (e.g., DDPM \cite{ho2020denoising}) included as theoretical prerequisites. The venue distribution spans CVPR (28), SIGGRAPH/TOG (10), ICCV (8), ECCV (5), NeurIPS and ICLR (12), TPAMI and other journals (10), and additional conferences (15), summing to 88 peer-reviewed venues, with a further 28 arXiv preprints cited as emerging contributions. Relative to existing surveys---Kyprianidis et al.'s NPR taxonomy \cite{kyprianidis2013state}, Jing et al.'s NST survey \cite{jing2020neural}, Xia et al.'s GAN inversion survey \cite{xia2023gan}, the general style-transfer decade surveys of Zhang and Tang \cite{zhang2025decadesurvey} and Xu et al. \cite{xu2025stylereview}, and the personalized image-generation decade survey of Zhang et al. \cite{zhang2025personalized}---our work offers the first portrait-focused synthesis that bridges pre-deep-learning NPR foundations with modern generative paradigms and provides a unified evaluation protocol. Concretely, relative to NPR- and NST-centric reviews \cite{kyprianidis2013state,jing2020neural}, we restrict scope to human portraits and treat identity preservation as the central constraint rather than one metric among many; relative to inversion-focused surveys \cite{xia2023gan}, we extend coverage through 2024--2025 generative paradigms (diffusion, AR, video, and 3D/NeRF frontiers) and contribute the Portrait Editing Trilemma as a unifying analytical framework together with the proposed Golden Protocol for standardized benchmarking.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{PRISMA-style screening funnel. Search scope: flagship venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, ACM MM, SIGGRAPH; TPAMI, TOG, IJCV, TVCG, TIP), 2015--2025; queries: \textit{portrait stylization}, \textit{style transfer}, \textit{GAN inversion}, \textit{diffusion-based editing}. Exclusion at title/abstract: purely unconditional generation, non-face stylization, and methods without explicit identity-/structure-preserving controls.}
 \label{tab:prisma}
@@ -78,7 +85,7 @@ After title/abstract screening & $\sim$180 \\
 After full-text eligibility & 115+ (88 peer-reviewed + 28 arXiv preprints) \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 We further highlight recent one-shot and real-time portrait stylization systems as motivating use cases for the taxonomy and evaluation protocol \cite{lai2025instantportraitop,wang2024magicfacetu}. Figure~\ref{fig:teaser_trilemma} provides a visual teaser of the Trilemma framing used throughout this survey.
 Unlike early diffusion frameworks that often struggle with identity preservation during abstract stylization, recent adapter-based methods improve facial-topology consistency, as discussed in Section \ref{sec:methodology}. Nevertheless, failures under large style-domain shifts remain documented in recent analyses and benchmarks \cite{wright2022artfidqe,wang2025domaingp}. Furthermore, instead of vanilla 1000-step generation, practical pipelines commonly use accelerated samplers and typically operate in about 20--50 inference steps (e.g., DDIM-family settings) \cite{song2020denoising,rombach_2022_cvpr}.
@@ -86,8 +93,15 @@ Unlike early diffusion frameworks that often struggle with identity preservation
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.98\textwidth]{images/overview.png}
-  \caption{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization intensity, and inference speed. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref{sec:methodology}.}
+  \caption{Portrait editing trilemma concept. Left: structural trade-offs among identity preservation, stylization strength, and computational efficiency. Right: conceptual illustration of the Trilemma axes that frame the paradigm analysis in Section~\ref{sec:methodology}.}
   \label{fig:teaser_trilemma}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/timeline.png}
+  \caption{Timeline of key milestones in Portrait Style Transfer (2015--2025), organized by generative paradigm and colored by the dominant methodological family. The trajectory moves from heuristic texture-matching (NST) through GAN-based geometric manipulation to diffusion-driven open-domain stylization, with emerging autoregressive, video, and 3D/NeRF frontiers---mirroring the paradigm shift analyzed under the Portrait Editing Trilemma.}
+  \label{fig:pst_timeline}
 \end{figure*}
 
 \section{Theoretical Foundations of Generative Stylization}
@@ -255,12 +269,12 @@ AR & Discrete visual/text tokens & Transformer next-token distrib. & Cross-entro
 
 \begin{table*}[t]
 \centering
-\caption{Qualitative mapping of PST paradigms to the Portrait Editing Trilemma axes. $\bigstar$ = strong, $\blacktriangle$ = moderate, $\bullet$ = weak.}
+\caption{Qualitative mapping of PST paradigms to the three Portrait Editing Trilemma axes---identity preservation, stylization strength, and computational efficiency. $\bigstar$ = strong, $\blacktriangle$ = moderate, $\bullet$ = weak.}
 \label{tab:trilemma_paradigms}
 \small
 \begin{tabular}{lccc}
 \toprule
-\textbf{Paradigm} & \textbf{Identity} & \textbf{Editing Fidelity} & \textbf{Speed} \\
+\textbf{Paradigm} & \textbf{Identity Preservation} & \textbf{Stylization Strength} & \textbf{Computational Efficiency} \\
 \midrule
 NST (optimization)  & $\bullet$ & $\blacktriangle$ & $\bullet$ \\
 NST (feed-forward)  & $\bullet$ & $\blacktriangle$ & $\bigstar$ \\
@@ -272,6 +286,46 @@ AR                  & $\blacktriangle$ & $\bigstar$ & $\blacktriangle$ \\
 \end{table*}
 
 This decomposition reveals a clear spectrum: control signals progress from raw pixels (NST) to latent codes (GAN) to abstract embeddings (diffusion) to discrete tokens (AR); generative priors evolve from hand-crafted features to learned manifolds to score-based distributions to autoregressive distributions; and constraints transition from direct pixel objectives to learned adversarial and denoising losses. The choice of formulation determines each paradigm's inherent trade-off on the Trilemma, as detailed in Section~\ref{sec:methodology}.
+
+\begin{figure*}[t]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[
+      hub/.style={draw, rounded corners=3pt, fill=blue!8, text width=3.7cm, align=center, font=\footnotesize\bfseries},
+      leaf/.style={draw, rounded corners=2pt, fill=gray!7, text width=3.1cm, align=center, font=\scriptsize},
+      root/.style={draw, rounded corners=4pt, fill=blue!20, text width=4.4cm, align=center, font=\small\bfseries},
+      >=Stealth, line width=0.6pt
+    ]
+    \node[root] (R) at (0,0) {Portrait Style Transfer (PST)};
+    \node[hub] (H1) at (-7.6,-2.2) {Axis I:\\Generative Paradigm};
+    \node[hub] (H2) at (-2.5,-2.2) {Axis II:\\Task / Output};
+    \node[hub] (H3) at (2.5,-2.2) {Axis III:\\Control Signal};
+    \node[hub] (H4) at (7.6,-2.2) {Analytical Lens:\\Trilemma};
+    \draw (R) -- (H1); \draw (R) -- (H2); \draw (R) -- (H3); \draw (R) -- (H4);
+    \node[leaf] (a1) at (-7.6,-4.0) {NST / Optimization \& Feed-forward};
+    \node[leaf] (a2) at (-7.6,-5.3) {GAN-based (Geometric Manipulation)};
+    \node[leaf] (a3) at (-7.6,-6.6) {Diffusion (Open-Domain Texture)};
+    \node[leaf] (a4) at (-7.6,-7.9) {Autoregressive (Tokens \& Structure)};
+    \node[leaf] (a5) at (-7.6,-9.2) {Flow / Hybrid};
+    \foreach \x in {a1,a2,a3,a4,a5} \draw (H1) -- (\x);
+    \node[leaf] (b1) at (-2.5,-4.0) {Single-image Stylization};
+    \node[leaf] (b2) at (-2.5,-5.3) {Video (Temporal Consistency)};
+    \node[leaf] (b3) at (-2.5,-6.6) {Local / Makeup Transfer};
+    \node[leaf] (b4) at (-2.5,-7.9) {3D / NeRF-Aware};
+    \foreach \x in {b1,b2,b3,b4} \draw (H2) -- (\x);
+    \node[leaf] (c1) at (2.5,-4.0) {Pixel (loss-based)};
+    \node[leaf] (c2) at (2.5,-5.3) {Latent code (inversion)};
+    \node[leaf] (c3) at (2.5,-6.6) {Embedding (adapter / IP)};
+    \node[leaf] (c4) at (2.5,-7.9) {Discrete token (AR)};
+    \foreach \x in {c1,c2,c3,c4} \draw (H3) -- (\x);
+    \node[leaf] (d1) at (7.6,-4.0) {Identity Preservation};
+    \node[leaf] (d2) at (7.6,-5.3) {Stylization Strength};
+    \node[leaf] (d3) at (7.6,-6.6) {Computational Efficiency};
+    \foreach \x in {d1,d2,d3} \draw (H4) -- (\x);
+  \end{tikzpicture}}
+  \caption{Taxonomy of Portrait Style Transfer. The field decomposes along three orthogonal axes---generative paradigm (Axis I), task/output (Axis II), and control signal (Axis III)---each instantiated by the method families reviewed in this survey; the Portrait Editing Trilemma (identity preservation, stylization strength, computational efficiency) serves as the unifying analytical lens across all branches.}
+  \label{fig:pst_taxonomy}
+\end{figure*}
 
 \section{Methods and Method Taxonomy}
 \label{sec:methodology}
@@ -544,6 +598,7 @@ To address the inconsistencies highlighted in prior works and improve cross-pape
 % 5.1 Standardized Configuration & Reproducibility
 % ==========================================
 \subsection{The Golden Protocol: A Proposed Benchmark Guideline}
+\label{sec:benchmark}
 \label{sec:evaluation:configuration}
 
 A persistent flaw in current literature is the "cherry-picking" of style-content pairs. To ensure a fair and reproducible evaluation, the Golden Protocol recommends that researchers report the following standardized configurations:
@@ -667,7 +722,7 @@ Recent systems explicitly analyze this structure when proposing single-step or a
 
 \subsection{Key Innovations under the Trilemma}
 \label{sec:evaluation:innovations}
-The current state of the art is shaped by the Trilemma---simultaneously achieving strong stylization intensity, high identity fidelity, and diverse outputs under practical compute budgets. Recent innovations increasingly rely on latent disentanglement and controlled feature modulation rather than pixel-level heuristics.
+The current state of the art is shaped by the Trilemma---simultaneously achieving strong stylization strength, high identity fidelity, and diverse outputs under practical compute budgets. Recent innovations increasingly rely on latent disentanglement and controlled feature modulation rather than pixel-level heuristics.
 
 \subsubsection{Navigating the Style--Identity Trade-off}
 \label{sec:evaluation:innovations:tradeoff}
@@ -692,6 +747,21 @@ Taken together, practical portrait stylization now requires a dual-stack design:
 \subsection{Data and Code Availability}
 \label{sec:discussion:availability}
 This work is a literature survey and introduces no new datasets, models, or executable code. All methods, metrics, and datasets discussed are cited to their primary sources in the reference list. To support reproducibility of the survey itself, the curated BibTeX of the 115+ surveyed references and the qualitative capability matrix (Table~\ref{tab:comparison_matrix}) are maintained by the authors and available upon reasonable request.
+
+\subsection{Practical Guidelines: Lessons from a Decade of PST}
+\label{sec:discussion:guidelines}
+
+Beyond taxonomy and benchmarking, a decade of portrait stylization research yields actionable, experience-based guidance. We consolidate the most consequential lessons as practical guidelines for practitioners and future benchmark designers.
+
+\begin{itemize}
+  \item \textbf{G1 -- Choose the paradigm by your binding constraint, not by trend.} The generative family should be selected from the dominant limiting axis of the Trilemma (Fig.~\ref{fig:pst_taxonomy}): when identity fidelity is non-negotiable and the domain is fixed, GAN priors still win; when open-vocabulary style range matters more than latency, diffusion is the default; when structural/discrete control is the goal, autoregressive paradigms are emerging as the natural fit.
+  \item \textbf{G2 -- Treat identity preservation as a hard constraint, not a late metric.} Retrofitting identity after stylization almost always trades away style. Enforce it at the representation level (face-embedding losses, inversion-based conditioning, or adapter-gated identity paths) so that stylization operates within the identity manifold rather than correcting for its violation.
+  \item \textbf{G3 -- Disentangle style from content at the representation, not the pixel, level.} Pixel-space losses (e.g., naive Gram/IN statistics) couple style and structure and produce the artifacts the field has spent years fighting. Latent feature modulation, decoupled reference encoders, and Q-Former-style extraction are the more robust modern recipe.
+  \item \textbf{G4 -- Standardize evaluation \emph{before} claiming SOTA.} Cross-method comparison is only meaningful under a shared protocol; the proposed \emph{Golden Protocol} (Section~\ref{sec:benchmark}) exists precisely because ad-hoc settings inflate gains. Report identity, style, and efficiency jointly, never a single axis in isolation.
+  \item \textbf{G5 -- Respect the privacy shift in training data.} Scraped face datasets carry licensing and copyright risk; prefer large-scale synthetic triplets (e.g., OmniStyle-1M) and \emph{always} complement them with real-face evaluation (FFHQ) to surface generative bias.
+  \item \textbf{G6 -- Latency is a first-class requirement, not a footnote.} Interactive deployment binds you to accelerated samplers and lightweight adapters; match the sampler/adapter budget to the target device rather than reporting best-case offline quality.
+  \item \textbf{G7 -- For video and 3D, consistency dominates style.} In temporal and geometric domains, flicker and topology drift are perceived before stylistic nuance; prioritize cross-frame/geometric consistency mechanisms over raw texture fidelity.
+\end{itemize}
 
 \section{Conclusion and Future Roadmap}
 \label{sec:conclusion}
