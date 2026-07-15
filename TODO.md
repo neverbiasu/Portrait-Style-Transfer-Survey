@@ -83,6 +83,18 @@
 | T10 | 应用域索引表 / 附录方法全表 | P3 | 对标 Decade Survey Table 7，压缩规模；附录可出 ~90 方法精简全表 |
 | T11 | 表编号与引用一致性复核 | P3 | 运行 `refine-logs/audit.sh` 确认 A5=0；核对 Table I–IX 编号 |
 
+### Visual Gallery（R1 视觉画廊 — 2026-07-15 启动）
+| # | 项 | 状态 | 说明 |
+|---|---|---|---|
+| G1 | `main.tex` 画廊章节 + Fig 1–3 + Limitations 修订 | ✅ 已实现 | `sec:evaluation:gallery`；Fig 标签 `fig:gallery_overview/_grid/_failures`；编译通过 0 undefined、A1 OK |
+| G2 | Colab 引擎 `gallery/gallery.py` + 笔记本 `gallery/PST_Gallery.ipynb` | ✅ 已实现 | 统一输入+6 公共域风格+代表方法(Gatys/AdaIN/IP-Adapter)，每方法独立 try/except |
+| G3 | 引擎本地验证 | ✅ 已验证 | MPS 上 Gatys 实跑出 256px 风格化图（40 step ≈ 93s）；证明代码路径可用 |
+| G4 | 规范风格图（Wikimedia 公共域画作）生成 | ⏳ 待 Colab 跑 | 本机沙箱屏蔽 Wikimedia；Colab 可正常下载 → 产出 `images/gallery_*.png` 替换占位灰图 |
+| G5 | 把 3 张 PNG 落入 `images/` 并重编译 | ⏳ 待执行 | 跑完 Colab 后下载 PNG 覆盖占位图，再 pdflatex+bibtex 验证 |
+
+**运行（一键）**：打开 `gallery/PST_Gallery.ipynb` → Runtime→GPU(T4) → Run all → 上传 `gallery.py` → 下载 3 张 PNG 放入 `images/` → 重编译。
+**诚实声明**：画廊是 Golden Protocol 的 *代表子集试点*（3 方法 × 6 风格），非 90 方法穷举；Limitations 已相应修订，不再写"留作未来工作"。
+
 ## 评审意见（参考）
 
 | # | 维度 | 评价 |
