@@ -7,8 +7,8 @@
 ## 仓库状态
 
 - **位置**：`/Users/nev4rb14su/workspace/Portrait-Style-Transfer-Survey/`
-- **Git**：22 commits，纯论文历史，**无 remote**（纯本地，未上 GitHub）
-- **远程选项**：后续需要时 `git remote add origin <url> && git push -u origin main`
+- **Git**：23 commits，纯论文历史，**有 remote**（GitHub: `neverbiasu/Portrait-Style-Transfer-Survey`）
+- **远程仓库**：https://github.com/neverbiasu/Portrait-Style-Transfer-Survey
 - **编译**：18 页，0 overfull，0 undefined（最后一次完整编译结果）
 - **Bib**：131 条参考文献（106 个 `\cite{}` 在正文）
 - **.gitignore**：已添加 LaTeX build 产物（`.aux`, `.bbl`, `.log`, `main.pdf` 等）
@@ -17,12 +17,23 @@
 
 ```
 Portrait-Style-Transfer-Survey/
-├── main.tex              # 论文正文 (681 行)
+├── main.tex              # 论文正文 (869 行)
 ├── references.bib        # 参考文献 (131 条)
 ├── images/
 │   ├── overview.png      # Fig.1 - Trilemma 概念图
 │   ├── timeline.png      # Fig.2 - 时间线
 │   └── pipeline.png      # Fig.3 - StyleGAN 工作流
+├── gallery/              # Golden Protocol 视觉画廊引擎
+│   ├── gallery.py        # 画廊引擎（Colab T4 运行）
+│   ├── PST_Gallery.ipynb # Colab notebook（已更新 clone URL）
+│   ├── GOLDEN_PROTOCOL.md
+│   └── methods_impl.py
+├── gallery_data/         # 画廊资源（manifest + 风格图）
+├── scripts/
+│   └── progress_report.sh  # 进度报告生成脚本
+├── PROGRESS.md           # 进度追踪文件
+├── SUBMISSION_PLAN.md    # 投稿写作日程
+├── TODO.md               # 56 项 TODO 清单（52 项已完成）
 ├── Survey/paper/tabs/    # 孤儿文件（已不被引用，未来可清理）
 ├── TODO.md               # 24 项 TODO 清单（全部完成）
 ├── CONTENT_MAP.zh.md     # 中文内容对应表（用于审校对齐）
@@ -81,10 +92,14 @@ Portrait-Style-Transfer-Survey/
 2. **Fig.1**：仍为示意图，有足够时间可替换为真实风格化输出画廊（原 TODO #1 只修了图注，未补真实结果）
 3. **编译**：若环境缺少 LaTeX 包（如 `\usepackage{tikz}` 等），需安装相应包
 4. **Contact**：这个 session 用的是 neverbiasu 的工作站，后续 session 确保在 `Portrait-Style-Transfer-Survey/` 下启动
+5. **画廊**：Colab notebook 已更新 clone URL，但需手动在 Colab 中执行（G4–G5）
 
 ## 下一步建议
 
 下一步自然动作：
 - 用 `CONTENT_MAP.zh.md` 逐节审校，确保内容覆盖完整
 - 或进入写作阶段，用 `CONTENT_MAP.zh.md` 指导新增/删节
-- 或新建 GitHub remote，推送到远端备份
+- 或新建 GitHub remote，推送到远端备份 ✅（已完成）
+- 运行画廊：`open gallery/PST_Gallery.ipynb` → Runtime → GPU (T4) → Run all
+- 查看投稿日程：`SUBMISSION_PLAN.md`
+- 查看/更新进度：`PROGRESS.md`
