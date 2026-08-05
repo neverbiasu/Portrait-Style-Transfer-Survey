@@ -87,7 +87,7 @@
 | # | 项 | 状态 | 说明 |
 |---|---|---|---|
 | G1 | `main.tex` 画廊章节 + Fig 1–3 + Limitations 修订 | ✅ 已实现 | `sec:evaluation:gallery`；Fig 标签 `fig:gallery_overview/_grid/_failures`；编译通过 0 undefined、A1 OK |
-| G2 | Colab 引擎 `gallery/gallery.py` + 笔记本 `gallery/PST_Gallery.ipynb` | ✅ 已实现 | 统一输入+6 公共域风格+代表方法(Gatys/AdaIN/IP-Adapter)，每方法独立 try/except |
+| G2 | Colab 引擎 `gallery/gallery.py` + 笔记本 `gallery/PST_Gallery.ipynb` | ✅ 已实现 | 统一输入+6 公共域风格+代表方法(Gatys/AdaIN/IP-Adapter)，每方法独立 try/except；clone URL 已更新为 `neverbiasu/Portrait-Style-Transfer-Survey` |
 | G3 | 引擎本地验证 | ✅ 已验证 | MPS 上 Gatys 实跑出 256px 风格化图（40 step ≈ 93s）；证明代码路径可用 |
 | G4 | 规范风格图（Wikimedia 公共域画作）生成 | ⏳ 待 Colab 跑 | 本机沙箱屏蔽 Wikimedia；Colab 可正常下载 → 产出 `images/gallery_*.png` 替换占位灰图 |
 | G5 | 把 3 张 PNG 落入 `images/` 并重编译 | ⏳ 待执行 | 跑完 Colab 后下载 PNG 覆盖占位图，再 pdflatex+bibtex 验证 |
@@ -105,3 +105,13 @@
 | R4 | 评估方法论 | 优点：Golden Protocol Multi-Pillar 方向正确。不足：缺用户研究设计方法论讨论、ArtFID 等指标局限分析、MLLM-as-judge 仅一笔带过、缺标准评估基准对比表 |
 | R5 | 开放挑战与未来方向 | 优点：识别了 3D/NeRF/3DGS、视频一致性、伦理等前沿方向。不足：缺与经典图形学变形方法 (ARAP/MLS) 的联系、交互编辑未讨论蒸馏/量化/edge 部署、方法论融合展望不够深入 |
 | R6 | 最终建议 | Major Revision（大修） |
+
+## 基础设施与流程（2026-08-05 新增）
+
+| # | 项 | 说明 | 状态 |
+|---|------|------|------|
+| INF1 | GitHub 远程仓库 | 创建 `neverbiasu/Portrait-Style-Transfer-Survey`，已 push | ✅ 已完成 |
+| INF2 | Colab notebook clone URL | `<YOUR_ORG>` → `neverbiasu`，已修复并 push | ✅ 已完成 |
+| INF3 | 投稿写作日程 | 创建 `SUBMISSION_PLAN.md`，含 5 阶段时间线 | ✅ 已完成 |
+| INF4 | Progress 追踪系统 | 创建 `PROGRESS.md` + `scripts/progress_report.sh` | ✅ 已完成 |
+| INF5 | 每日/每周进度推送 | 手动更新 `PROGRESS.md`；可配置 cron 自动生成 | ⏳ 待配置 |
