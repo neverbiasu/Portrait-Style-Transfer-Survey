@@ -12,7 +12,8 @@
 - 修复 Colab notebook URL：`<YOUR_ORG>` → `neverbiasu`
 - 提交 `fae1344`：fix Colab notebook clone URL
 - 创建投稿日程 `SUBMISSION_PLAN.md`
-- 创建 Progress 追踪系统 `PROGRESS.md`
+- 创建 Progress 追踪系统 `PROGRESS.md` + `scripts/progress_report.sh`
+- 更新 HANDOFF.md、TODO.md 反映新状态
 
 ### 当前状态
 | 维度 | 数值 |
@@ -21,7 +22,7 @@
 | 参考文献 | 131 条（106 在正文中引用） |
 | TODO 总项 | 56 |
 | TODO 已完成 | 52（93%） |
-| 剩余 TODO | 4（G4, G5, T7, T8–T11） |
+| 剩余 TODO | 4（G4, G5, T7–T11）+ 5 项基础设施（INF1–INF5） |
 | 编译状态 | ✅ 0 overfull, 0 undefined |
 | 审稿轮次 | 4 轮已完成（R1–R4） |
 | 远程仓库 | ✅ 已创建并推送 |
@@ -32,7 +33,7 @@
 | 障碍 | 说明 | 预计解决时间 |
 |------|------|-------------|
 | 🟡 画廊真实视觉结果 | G4–G5 待 Colab 跑图 | 1–2 天 |
-| 🟡 剩余 TODO | T7–T11 结构/表改进 | 1–2 天 |
+| 🟡 剩余 TODO | T7–T11 结构/表改进 + INF5 进度推送配置 | 1–2 天 |
 | 🟠 最终审校 | 4 轮审稿意见逐条核对 | 0.5 天 |
 | 🟠 arXiv 预印本 | 提交 arXiv + 补充 artifact 链接 | 1 天 |
 | 🟠 投稿 | 选 venue + 格式化投稿 | 1–2 周 |
@@ -91,3 +92,6 @@
 # 每日 21:00 生成进度报告
 0 21 * * * cd /Users/nev4rb14su/workspace/Portrait-Style-Transfer-Survey && bash scripts/progress_report.sh
 ```
+
+> **注意**：`progress_report.sh` 会将新条目追加到 `PROGRESS.md` 末尾。
+> 手动编辑时请在最新条目上方插入新内容，保持时间倒序。
